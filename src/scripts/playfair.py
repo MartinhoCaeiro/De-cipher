@@ -31,6 +31,7 @@ def read_board_from_file(path):
     return board
 
 
+
 def search_letter(board, letter):
     """Procura uma letra na tabela."""
     letter = letter.upper().replace("J", "I")
