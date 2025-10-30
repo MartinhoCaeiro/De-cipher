@@ -1,66 +1,108 @@
 def generate_normal_board(key):
     board = []
-    letters = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
-    for char in key:
-        if char not in letters:
-            continue
+    letters = "ABCDEFGHIKLMNOPQRSTUVWXYZ"  # note: no J
+    key_norm = ''.join([c for c in key.upper() if c.isalpha()])
+    key_norm = key_norm.replace('J', 'I')
+
+    for char in key_norm:
         if char == 'I':
             if 'I/J' not in board:
                 board.append('I/J')
+            continue
         if char not in board:
             board.append(char)
-    # Fill the remaining spaces with letters not in the key
+
     for char in letters:
-        if char not in board:
-            if char == 'I':
+        if char == 'I':
+            if 'I/J' not in board:
                 board.append('I/J')
-            else:
-                board.append(char)
-            
-    # Create a 5x5 matrix
+            continue
+        if char not in board:
+            board.append(char)
+
+    # Cria o tabuleiro 5x5
     return [board[i:i + 5] for i in range(0, 25, 5)]
+
+
 def print_board(board):
     for row in board:
         print(' '.join(row))
 
+
 def search_letter(board, letter):
+    if not letter or not letter.isalpha():
+        return None
+    letter = letter.upper()
+    if letter == 'J':
+        letter = 'I'
     for i, row in enumerate(board):
         for j, char in enumerate(row):
-            if char == letter or (char == 'I/J' and letter in 'IJ'):
+            if char == 'I/J' and letter in ('I', 'J'):
+                return (i, j)
+            if char == letter:
                 return (i, j)
     return None
 
-def crypto_message(message, board):
-    new_message = fix_message(message)
-    pairs = [new_message[i:i+2] for i in range(0, len(new_message), 2)]
-    print_board(board)
-    for pair in pairs:
-        print(pair)
-        pair_coords = []
-        for char in pair:
-            pair_coords.append(search_letter(board, char))
-            print(search_letter(board, char))
-        if pair_coords[0][0] == pair_coords[1][0]:  # Same row
-                print("Same row")
-                board_row = board[pair_coords[0][0]]
-    
-                print(board_row)
-        elif pair_coords[0][1] == pair_coords[1][1]:  # Same column
-                print("Same column")
-        else:  # Rectangle swap
-                print("Rectangle swap")
-    
+
+def _board_char(board, i, j):
+    v = board[i][j]
+    return 'I' if v == 'I/J' else v
+
+
 def fix_message(message):
+    msg = ''.join([c for c in message.upper() if c.isalpha()])
+    msg = msg.replace('J', 'I')
+
+    digrams = []
     i = 0
-    for char in message:
-        i = i + 1 
+    while i < len(msg):
+        a = msg[i]
+        if i + 1 >= len(msg):
+            b = 'X'
+            i += 1
+        else:
+            b = msg[i + 1]
+            if a == b:
+                b = 'X'
+                i += 1  
+            else:
+                i += 2
+        digrams.append(a + b)
+    return digrams
 
-    for i in range(0, len(message), 2):
-        if message[i] == message[i + 1]:
-            message = message[:i + 1] + 'X' + message[i + 1:]
-    if i % 2 != 0:
-        message += 'X'
-    return message
-new_board = generate_normal_board("OLA")
 
-crypto_message("HELLO", new_board)
+def crypto_message(message, board):
+    digrams = fix_message(message)
+    ciphertext = []
+
+    for pair in digrams:
+        a, b = pair[0], pair[1]
+        pa = search_letter(board, a)
+        pb = search_letter(board, b)
+        if pa is None or pb is None:
+            continue
+
+        if pa[0] == pb[0]:
+            row = pa[0]
+            ca = _board_char(board, row, (pa[1] + 1) % 5)
+            cb = _board_char(board, row, (pb[1] + 1) % 5)
+            ciphertext.append(ca + cb)
+        elif pa[1] == pb[1]:
+            col = pa[1]
+            ca = _board_char(board, (pa[0] + 1) % 5, col)
+            cb = _board_char(board, (pb[0] + 1) % 5, col)
+            ciphertext.append(ca + cb)
+        else:
+            ca = _board_char(board, pa[0], pb[1])
+            cb = _board_char(board, pb[0], pa[1])
+            ciphertext.append(ca + cb)
+
+    result = ''.join(ciphertext)
+    print(result)
+    return result
+
+
+if __name__ == '__main__':
+    new_board = generate_normal_board("OLA")
+    print_board(new_board)
+    crypto_message("HELLO", new_board)
