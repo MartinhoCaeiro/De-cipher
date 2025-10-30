@@ -1,332 +1,261 @@
-#!/usr/bin/env python3
-"""
-Elegant GUI for file encryption/decryption.
-Place this file at: src/gui.py
-It expects your cipher implementations to live in the `scripts` package:
-  scripts/aes.py, scripts/des.py, scripts/vigenere.py, scripts/playfair.py
-Each module should expose at least these functions (examples):
-  encrypt_file(input_path, output_path, **kwargs)
-  decrypt_file(input_path, output_path, **kwargs)
+import tkinter as tk
+from tkinter import ttk, filedialog, messagebox
+from scripts import aes, des, vigenere, playfair
+from style_dark import apply_dark_theme
 
-If a cipher module is missing the GUI will show an informative error message but the GUI will still run.
+class CipherGUI:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("(De)cipher™")
+        self.root.geometry("960x540")
+        self.root.resizable(True, True)
 
-Dependencies: PyQt6
-  pip install PyQt6
+        # Aplica tema escuro
+        apply_dark_theme(self.root)
 
-This GUI is written to be self-contained and easy to adapt.
-"""
+        # Notebook
+        self.notebook = ttk.Notebook(root)
+        self.notebook.pack(fill="both", expand=True, padx=10, pady=10)
 
-import sys
-import traceback
-from pathlib import Path
+        self.tabs = {}
+        for tab_name in ["Início", "AES", "DES", "Vigenère", "Playfair"]:
+            frame = ttk.Frame(self.notebook)
+            self.notebook.add(frame, text=tab_name)
+            self.tabs[tab_name] = frame
 
-from PyQt6.QtWidgets import (
-    QApplication,
-    QWidget,
-    QTabWidget,
-    QVBoxLayout,
-    QHBoxLayout,
-    QLabel,
-    QLineEdit,
-    QTextEdit,
-    QPushButton,
-    QFileDialog,
-    QMessageBox,
-    QComboBox,
-    QRadioButton,
-    QButtonGroup,
-    QProgressBar,
-    QGroupBox,
-)
-from PyQt6.QtCore import Qt, QThread, pyqtSignal
+            # Centraliza o texto das abas
+        for i in range(len(self.notebook.tabs())):
+            # Notebook.tab supports padding; ignore other options if not supported on a platform
+            try:
+                self.notebook.tab(i, padding=[30, 10])
+            except Exception:
+                pass
 
+        self.setup_start_tab()
+        # Create cipher tabs' controls
+        self.setup_cipher_tab("AES")
+        self.setup_cipher_tab("DES")
+        self.setup_cipher_tab("Vigenère")
+        self.setup_cipher_tab("Playfair")
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-
-
-def safe_import(module_name: str):
-    """Try to import a cipher module from `scripts`. Returns module or None and error."""
-    try:
-        full = f"scripts.{module_name}"
-        mod = __import__(full, fromlist=["*"])  # dynamic import
-        return mod, None
-    except Exception as e:
-        return None, e
-
-
-class WorkerThread(QThread):
-    """Run encryption/decryption in background to keep UI responsive."""
-
-    finished = pyqtSignal(bool, str)
-
-    def __init__(self, func, *args, **kwargs):
-        super().__init__()
-        self.func = func
-        self.args = args
-        self.kwargs = kwargs
-
-    def run(self):
+        # Center the main window on the screen
         try:
-            self.func(*self.args, **self.kwargs)
-            self.finished.emit(True, "Completed successfully")
-        except Exception as e:
-            self.finished.emit(False, str(e) + "\n" + traceback.format_exc())
+            self.center_window()
+        except Exception:
+            # If centering fails for any reason, don't crash the app
+            pass
 
+    def setup_start_tab(self):
+        frame = self.tabs["Início"]
+        label = ttk.Label(
+            frame,
+            text=(
+                "🔐 Bem-vindo à aplicação de Cifra e Decifra de Ficheiros\n\n"
+                "Selecione uma aba acima para escolher o método de cifra.\n\n"
+                "• AES e DES utilizam ficheiros de chave binários ou texto.\n"
+                "• Vigenère e Playfair utilizam ficheiros de tabela e texto ASCII."
+            ),
+            justify="center",
+            font=("Segoe UI", 11)
+        )
+        label.pack(expand=True, pady=100)
+    def setup_cipher_tab(self, cipher_type):
+        frame = self.tabs[cipher_type]
 
-class CipherTab(QWidget):
-    def __init__(self, cipher_name: str, options: dict = None):
-        super().__init__()
-        self.cipher_name = cipher_name
-        self.options = options or {}
-        self.module, self.err = safe_import(cipher_name.lower())
-        self._build_ui()
+        # Create a centered content frame inside the tab frame.
+        # Configure outer frame to have three rows and three columns so the middle cell stays centered.
+        frame.grid_rowconfigure(0, weight=1)
+        frame.grid_rowconfigure(1, weight=0)
+        frame.grid_rowconfigure(2, weight=1)
+        frame.grid_columnconfigure(0, weight=1)
+        frame.grid_columnconfigure(1, weight=0)
+        frame.grid_columnconfigure(2, weight=1)
 
-    def _build_ui(self):
-        layout = QVBoxLayout()
+        content = ttk.Frame(frame)
+        # place content in the middle cell
+        content.grid(row=1, column=1)
 
-        # File selectors
-        file_layout = QHBoxLayout()
-        self.input_path = QLineEdit()
-        self.input_btn = QPushButton("Selecionar ficheiro")
-        self.input_btn.clicked.connect(self.select_input)
-        file_layout.addWidget(QLabel("Ficheiro input:"))
-        file_layout.addWidget(self.input_path)
-        file_layout.addWidget(self.input_btn)
-        layout.addLayout(file_layout)
+        # Determinar rótulo do arquivo de chave/tabela e construir widgets inside content
+        if cipher_type == "Playfair":
+            ttk.Label(content, text="Ficheiro da Tabela:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
+            key_entry = ttk.Entry(content, width=55)
+            key_entry.grid(row=0, column=1, padx=10, pady=5)
+            ttk.Button(content, text="Procurar", command=lambda e=key_entry: self.browse_file(e)).grid(row=0, column=2, padx=5)
+            key_row = 1
 
-        out_layout = QHBoxLayout()
-        self.output_path = QLineEdit()
-        self.output_btn = QPushButton("Salvar como...")
-        self.output_btn.clicked.connect(self.select_output)
-        out_layout.addWidget(QLabel("Ficheiro output:"))
-        out_layout.addWidget(self.output_path)
-        out_layout.addWidget(self.output_btn)
-        layout.addLayout(out_layout)
+        elif cipher_type == "Vigenère":
+            ttk.Label(content, text="Ficheiro da Tabela:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
+            self.vig_table_entry = ttk.Entry(content, width=55)
+            self.vig_table_entry.grid(row=0, column=1, padx=10, pady=5)
+            ttk.Button(content, text="Procurar", command=lambda: self.browse_file(self.vig_table_entry)).grid(row=0, column=2, padx=5)
 
-        # Key / params
-        params_box = QGroupBox("Parâmetros")
-        params_layout = QVBoxLayout()
+            ttk.Label(content, text="Ficheiro da Chave:").grid(row=1, column=0, padx=10, pady=5, sticky="e")
+            self.vig_key_entry = ttk.Entry(content, width=55)
+            self.vig_key_entry.grid(row=1, column=1, padx=10, pady=5)
+            ttk.Button(content, text="Procurar", command=lambda: self.browse_file(self.vig_key_entry)).grid(row=1, column=2, padx=5)
+            key_entry = self.vig_key_entry
+            key_row = 1
 
-        # Add specific option widgets based on options map
-        self.param_widgets = {}
-        for k, cfg in self.options.items():
-            row = QHBoxLayout()
-            row.addWidget(QLabel(cfg.get("label", k) + ":"))
-            if cfg["type"] == "text":
-                w = QLineEdit()
-            elif cfg["type"] == "combo":
-                w = QComboBox()
-                w.addItems(cfg.get("values", []))
-            else:
-                w = QLineEdit()
-            w.setToolTip(cfg.get("tooltip", ""))
-            row.addWidget(w)
-            params_layout.addLayout(row)
-            self.param_widgets[k] = w
-
-        params_box.setLayout(params_layout)
-        layout.addWidget(params_box)
-
-        # Encrypt/Decrypt radio buttons
-        ops_layout = QHBoxLayout()
-        self.encrypt_radio = QRadioButton("Encriptar")
-        self.decrypt_radio = QRadioButton("Desencriptar")
-        self.encrypt_radio.setChecked(True)
-        group = QButtonGroup(self)
-        group.addButton(self.encrypt_radio)
-        group.addButton(self.decrypt_radio)
-        ops_layout.addWidget(self.encrypt_radio)
-        ops_layout.addWidget(self.decrypt_radio)
-        layout.addLayout(ops_layout)
-
-        # Run button + progress
-        run_layout = QHBoxLayout()
-        self.run_btn = QPushButton("Executar")
-        self.run_btn.clicked.connect(self.execute)
-        self.progress = QProgressBar()
-        self.progress.setRange(0, 0)  # busy indicator when running
-        self.progress.setVisible(False)
-        run_layout.addWidget(self.run_btn)
-        run_layout.addWidget(self.progress)
-        layout.addLayout(run_layout)
-
-        # Log
-        self.log = QTextEdit()
-        self.log.setReadOnly(True)
-        self.log.setFixedHeight(140)
-        layout.addWidget(self.log)
-
-        # If module missing, show top warning
-        if self.module is None:
-            note = QLabel(
-                f"Módulo de cifra '{self.cipher_name}' não encontrado em scripts/.\n"
-                "Por favor coloque um ficheiro scripts/{name}.py com funções encrypt_file/decrypt_file"
-            )
-            note.setStyleSheet("color: darkred; font-weight: bold;")
-            layout.insertWidget(0, note)
-
-        self.setLayout(layout)
-
-    def select_input(self):
-        path, _ = QFileDialog.getOpenFileName(self, "Selecionar ficheiro")
-        if path:
-            self.input_path.setText(path)
-            # If output empty set default
-            if not self.output_path.text():
-                self.output_path.setText(path + (".enc" if self.encrypt_radio.isChecked() else ".dec"))
-
-    def select_output(self):
-        path, _ = QFileDialog.getSaveFileName(self, "Salvar como")
-        if path:
-            self.output_path.setText(path)
-
-    def _gather_kwargs(self):
-        kw = {}
-        for k, widget in self.param_widgets.items():
-            if isinstance(widget, QLineEdit):
-                kw[k] = widget.text()
-            elif isinstance(widget, QComboBox):
-                kw[k] = widget.currentText()
-            else:
-                kw[k] = widget.text()
-        return kw
-
-    def execute(self):
-        inp = self.input_path.text().strip()
-        out = self.output_path.text().strip()
-        if not inp or not out:
-            QMessageBox.warning(self, "Faltam ficheiros", "Por favor selecione ficheiro input e output.")
-            return
-
-        if self.module is None:
-            QMessageBox.critical(
-                self,
-                "Módulo em falta",
-                f"O módulo para {self.cipher_name} não está disponível: {self.err}",
-            )
-            return
-
-        kwargs = self._gather_kwargs()
-        op = "encrypt_file" if self.encrypt_radio.isChecked() else "decrypt_file"
-        if not hasattr(self.module, op):
-            QMessageBox.critical(
-                self,
-                "Função em falta",
-                f"O módulo {self.cipher_name} não implementa {op}()",
-            )
-            return
-
-        func = getattr(self.module, op)
-
-        # Start worker thread
-        self.run_btn.setEnabled(False)
-        self.progress.setVisible(True)
-        self.log.append(f"A iniciar {op} com {self.cipher_name}...\nInput: {inp}\nOutput: {out}\nParams: {kwargs}")
-
-        self.worker = WorkerThread(func, inp, out, **kwargs)
-        self.worker.finished.connect(self._on_finished)
-        self.worker.start()
-
-    def _on_finished(self, ok: bool, message: str):
-        self.run_btn.setEnabled(True)
-        self.progress.setVisible(False)
-        if ok:
-            self.log.append("OK: " + message)
-            QMessageBox.information(self, "Concluído", "Operação concluída com sucesso.")
         else:
-            self.log.append("ERRO: " + message)
-            QMessageBox.critical(self, "Erro", "Ocorreu um erro: " + message)
+            ttk.Label(content, text="Ficheiro da Chave:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
+            key_entry = ttk.Entry(content, width=55)
+            key_entry.grid(row=0, column=1, padx=10, pady=5)
+            ttk.Button(content, text="Procurar", command=lambda e=key_entry: self.browse_file(e)).grid(row=0, column=2, padx=5)
+            key_row = 0
+
+        # Entradas de input e output
+        ttk.Label(content, text="Ficheiro de Entrada:").grid(row=key_row+1, column=0, padx=10, pady=5, sticky="e")
+        input_entry = ttk.Entry(content, width=55)
+        input_entry.grid(row=key_row+1, column=1, padx=10, pady=5)
+        ttk.Button(content, text="Procurar", command=lambda e=input_entry: self.browse_file(e)).grid(row=key_row+1, column=2, padx=5)
+
+        ttk.Label(content, text="Ficheiro de Saída:").grid(row=key_row+2, column=0, padx=10, pady=5, sticky="e")
+        output_entry = ttk.Entry(content, width=55)
+        output_entry.grid(row=key_row+2, column=1, padx=10, pady=5)
+        ttk.Button(content, text="Guardar como", command=lambda e=output_entry: self.save_file(e)).grid(row=key_row+2, column=2, padx=5)
+
+        # Ação (cifrar/decifrar)
+        action_var = tk.StringVar(value="encrypt")
+        ttk.Radiobutton(content, text="Cifrar", variable=action_var, value="encrypt").grid(row=key_row+3, column=1, sticky="w", padx=10)
+        ttk.Radiobutton(content, text="Decifrar", variable=action_var, value="decrypt").grid(row=key_row+3, column=1, sticky="e", padx=10)
+
+        # Botão executar
+        if cipher_type == "Vigenère":
+            cmd = self.run_vigenere
+        else:
+            cmd = lambda ct=cipher_type, ke=key_entry, ie=input_entry, oe=output_entry, av=action_var: self.run_cipher(ct, ke, ie, oe, av)
+
+        ttk.Button(content, text="Executar", command=cmd).grid(row=key_row+4, column=1, pady=10)
+
+        # Caixa de log
+        log_box = tk.Text(content, height=10, width=90, bg="#2d2d2d", fg="#ffffff", insertbackground="white")
+        log_box.grid(row=key_row+5, column=0, columnspan=3, padx=10, pady=10)
+
+        # Armazenar referências
+        frame.key_entry = key_entry
+        frame.input_entry = input_entry
+        frame.output_entry = output_entry
+        frame.action_var = action_var
+        frame.log_box = log_box
+
+        # Se for Vigenère, manter referências de forma que run_vigenere as encontre
+        if cipher_type == "Vigenère":
+            self.vig_input_entry = input_entry
+            self.vig_output_entry = output_entry
+            self.vig_action = action_var
+            self.vig_log = log_box
+
+    def browse_file(self, entry):
+        path = filedialog.askopenfilename()
+        if path:
+            entry.delete(0, tk.END)
+            entry.insert(0, path)
+
+    def save_file(self, entry):
+        path = filedialog.asksaveasfilename(defaultextension=".txt")
+        if path:
+            entry.delete(0, tk.END)
+            entry.insert(0, path)
+
+    def log_message(self, box, message):
+        try:
+            box.config(state="normal")
+            box.insert(tk.END, message + "\n")
+            box.config(state="disabled")
+            box.see(tk.END)
+        except Exception:
+            # If the log box is not available, silently ignore to avoid crashes
+            pass
+
+    def center_window(self):
+        """Center the main window on the screen.
+
+        This computes the desired geometry and updates the window position.
+        Works even if the window manager hasn't fully realized the window yet.
+        """
+        # Ensure geometry info is up to date
+        self.root.update_idletasks()
+
+        # Try to get the current size; fall back to parsing geometry string if needed
+        width = self.root.winfo_width()
+        height = self.root.winfo_height()
+        if width <= 1 or height <= 1:
+            geom = self.root.geometry()  # format: 'WxH+X+Y'
+            try:
+                size = geom.split('+')[0]
+                width, height = map(int, size.split('x'))
+            except Exception:
+                # fallback to a reasonable default
+                width, height = 960, 540
+
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+
+        x = max(0, (screen_width - width) // 2)
+        y = max(0, (screen_height - height) // 2)
+
+        self.root.geometry(f"{width}x{height}+{x}+{y}")
 
 
-class HomeTab(QWidget):
-    def __init__(self):
-        super().__init__()
-        self._build_ui()
+    def run_cipher(self, cipher_type, key_entry, input_entry, output_entry, action_var):
+        key = key_entry.get().strip() if key_entry is not None else ""
+        input_path = input_entry.get().strip()
+        output_path = output_entry.get().strip()
+        action = action_var.get()
 
-    def _build_ui(self):
-        layout = QVBoxLayout()
-        h = QLabel(
-            "<h2>Bem-vindo à aplicação de cifra</h2>"
-            "<p>Use as abas para escolher a cifra. Se os módulos estiverem na pasta <code>scripts/</code>,"
-            "o botão Executar irá chamar as funções <code>encrypt_file</code> / <code>decrypt_file</code> do módulo correspondente.</p>"
-        )
-        h.setTextFormat(Qt.TextFormat.RichText)
-        layout.addWidget(h)
+        if not all([key, input_path, output_path]):
+            messagebox.showerror("Erro", "Por favor, preencha todos os campos.")
+            return
 
-        tips = QLabel(
-            "<ul>"
-            "<li>Arraste um ficheiro para a caixa de input para preencher o caminho (não implementado por arrastar — por favor usar selecionar).</li>"
-            "<li>Parâmetros específicos de cada cifra aparecem na respetiva aba.</li>"
-            "<li>Esta GUI usa PyQt6. Instale com <code>pip install PyQt6</code>.</li>"
-            "</ul>"
-        )
-        tips.setTextFormat(Qt.TextFormat.RichText)
-        layout.addWidget(tips)
+        module_map = {"AES": aes, "DES": des, "Playfair": playfair}
+        module = module_map.get(cipher_type)
+        if module is None:
+            messagebox.showerror("Erro", f"Módulo para '{cipher_type}' não encontrado.")
+            return
 
-        self.recent = QTextEdit()
-        self.recent.setReadOnly(True)
-        self.recent.setPlainText("Histórico de operações aparecerá aqui.")
-        layout.addWidget(self.recent)
+        log_box = self.tabs[cipher_type].log_box
 
-        self.setLayout(layout)
+        try:
+            if action == "encrypt":
+                module.encrypt_file(input_path, output_path, key)
+                self.log_message(log_box, f"[{cipher_type}] Ficheiro cifrado com sucesso.")
+            else:
+                module.decrypt_file(input_path, output_path, key)
+                self.log_message(log_box, f"[{cipher_type}] Ficheiro decifrado com sucesso.")
+        except Exception as e:
+            messagebox.showerror("Erro", str(e))
+            self.log_message(log_box, f"Erro: {e}")
 
+    def run_vigenere(self):
+        tabela_path = getattr(self, 'vig_table_entry', None)
+        chave_entry = getattr(self, 'vig_key_entry', None)
+        if tabela_path is None or chave_entry is None:
+            messagebox.showerror("Erro", "Widgets do Vigenère não estão inicializados corretamente.")
+            return
 
-class MainWindow(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Cifrador — GUI elegante")
-        self.resize(900, 640)
-        self._build_ui()
+        tabela_path = self.vig_table_entry.get().strip()
+        chave_path = self.vig_key_entry.get().strip()
+        input_path = self.vig_input_entry.get().strip()
+        output_path = self.vig_output_entry.get().strip()
+        action = self.vig_action.get()
 
-    def _build_ui(self):
-        layout = QVBoxLayout()
-        tabs = QTabWidget()
+        if not all([tabela_path, chave_path, input_path, output_path]):
+            messagebox.showerror("Erro", "Por favor, preencha todos os campos.")
+            return
 
-        home = HomeTab()
-        tabs.addTab(home, "Início")
-
-        # AES tab options
-        aes_opts = {
-            "key": {"label": "Chave (hex/str)", "type": "text", "tooltip": "Chave ou passphrase"},
-            "mode": {"label": "Modo", "type": "combo", "values": ["ECB", "CBC", "CFB", "OFB", "GCM"]},
-        }
-        tabs.addTab(CipherTab("AES", aes_opts), "AES")
-
-        # DES tab options
-        des_opts = {
-            "key": {"label": "Chave (56-bit)", "type": "text", "tooltip": "Chave para DES"},
-            "mode": {"label": "Modo", "type": "combo", "values": ["ECB", "CBC", "CFB", "OFB"]},
-        }
-        tabs.addTab(CipherTab("DES", des_opts), "DES")
-
-        # Viginère
-        vig_opts = {
-            "key": {"label": "Chave (texto)", "type": "text", "tooltip": "Chave alfabética para Viginère"},
-        }
-        tabs.addTab(CipherTab("Viginere", vig_opts), "Viginère")
-
-        # Playfair
-        pf_opts = {
-            "key": {"label": "Chave (texto)", "type": "text", "tooltip": "Chave para Playfair"},
-        }
-        tabs.addTab(CipherTab("Playfair", pf_opts), "Playfair")
-
-        layout.addWidget(tabs)
-        self.setLayout(layout)
-
-
-def main():
-    app = QApplication(sys.argv)
-    # Optional: nicer default font/size
-    app.setStyleSheet(
-        "QWidget { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11pt; }"
-        "QGroupBox { margin-top: 12px; }"
-        "QTabWidget::pane { border: 1px solid #ddd; }")
-
-    w = MainWindow()
-    w.show()
-    sys.exit(app.exec())
+        try:
+            if action == "encrypt":
+                vigenere.encrypt_file(input_path, output_path, [tabela_path, chave_path])
+                self.log_message(self.vig_log, "[Vigenère] Ficheiro cifrado com sucesso.")
+            else:
+                vigenere.decrypt_file(input_path, output_path, [tabela_path, chave_path])
+                self.log_message(self.vig_log, "[Vigenère] Ficheiro decifrado com sucesso.")
+        except Exception as e:
+            messagebox.showerror("Erro", str(e))
+            self.log_message(self.vig_log, f"Erro: {e}")
 
 
 if __name__ == "__main__":
-    main()
+    root = tk.Tk()
+    app = CipherGUI(root)
+    root.mainloop()
