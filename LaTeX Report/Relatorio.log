@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  30 OCT 2025 15:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  30 OCT 2025 20:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/Marti/Documents/Decipher-Tool/LaTeX Report/Relatorio.tex"
-(c:/Users/Marti/Documents/Decipher-Tool/LaTeX Report/Relatorio.tex
+**"c:/Users/Marti/Documents/De-cipher/LaTeX Report/Relatorio.tex"
+(c:/Users/Marti/Documents/De-cipher/LaTeX Report/Relatorio.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
 (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -831,37 +831,63 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \Hy@SectionHShift=\skip82
 ) (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
+) (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count486
+\lst@gtempboxa=\box79
+\lst@token=\toks42
+\lst@length=\count487
+\lst@currlwidth=\dimen288
+\lst@column=\count488
+\lst@pos=\count489
+\lst@lostspace=\dimen289
+\lst@width=\dimen290
+\lst@newlines=\count490
+\lst@lineno=\count491
+\lst@maxwidth=\dimen291
+ (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
+) (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
+\c@lstnumber=\count492
+\lst@skipnumbers=\count493
+\lst@framebox=\box80
+) (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2024/09/23 1.10c listings configuration
+))
+Package: listings 2024/09/23 1.10c (Carsten Heinz)
+ (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\courier.sty
+Package: courier 2020/03/25 PSNFSS-v9.3 (WaS) 
 ) (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/generic/soul\soul.sty
 Package: soul 2023-06-14 v3.1 Permit use of UTF-8 characters in soul (HO)
  (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/generic/soul\soul-ori.sty
 Package: soul-ori 2023-06-14 v3.1 letterspacing/underlining (mf)
-\SOUL@word=\toks42
-\SOUL@lasttoken=\toks43
-\SOUL@syllable=\toks44
-\SOUL@cmds=\toks45
-\SOUL@buffer=\toks46
-\SOUL@token=\toks47
-\SOUL@syllgoal=\dimen288
-\SOUL@syllwidth=\dimen289
-\SOUL@charkern=\dimen290
-\SOUL@hyphkern=\dimen291
-\SOUL@dimen=\dimen292
-\SOUL@dimeni=\dimen293
-\SOUL@minus=\count486
-\SOUL@comma=\count487
-\SOUL@apo=\count488
-\SOUL@grave=\count489
+\SOUL@word=\toks43
+\SOUL@lasttoken=\toks44
+\SOUL@syllable=\toks45
+\SOUL@cmds=\toks46
+\SOUL@buffer=\toks47
+\SOUL@token=\toks48
+\SOUL@syllgoal=\dimen292
+\SOUL@syllwidth=\dimen293
+\SOUL@charkern=\dimen294
+\SOUL@hyphkern=\dimen295
+\SOUL@dimen=\dimen296
+\SOUL@dimeni=\dimen297
+\SOUL@minus=\count494
+\SOUL@comma=\count495
+\SOUL@apo=\count496
+\SOUL@grave=\count497
 \SOUL@spaceskip=\skip83
-\SOUL@ttwidth=\dimen294
-\SOUL@uldp=\dimen295
-\SOUL@ulht=\dimen296
+\SOUL@ttwidth=\dimen298
+\SOUL@uldp=\dimen299
+\SOUL@ulht=\dimen300
 ) (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )) (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
 Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
-\AP@output=\toks48
-\AP@partial=\box79
-\AP@footins=\box80
+\AP@output=\toks49
+\AP@partial=\box81
+\AP@footins=\box82
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
@@ -870,24 +896,24 @@ Package csquotes Info: Redefining alias 'default' -> 'portuguese'.
  (Relatorio.aux)
 \openout1 = `Relatorio.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
 Package biblatex Info: Trying to load language 'portuguese' -> 'portuguese-apa'...
 Package biblatex Info: ... file 'portuguese-apa.lbx' found.
  (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-apa\portuguese-apa.lbx
@@ -910,21 +936,21 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Relatorio.bbl' found.
  (Relatorio.bbl)
-Package biblatex Info: Reference section=0 on input line 124.
-Package biblatex Info: Reference segment=0 on input line 124.
+Package biblatex Info: Reference section=0 on input line 126.
+Package biblatex Info: Reference segment=0 on input line 126.
  (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count490
-\scratchdimen=\dimen297
-\scratchbox=\box81
-\nofMPsegments=\count491
-\nofMParguments=\count492
-\everyMPshowfont=\toks49
-\MPscratchCnt=\count493
-\MPscratchDim=\dimen298
-\MPnumerator=\count494
-\makeMPintoPDFobject=\count495
-\everyMPtoPDFconversion=\toks50
+\scratchcounter=\count498
+\scratchdimen=\dimen301
+\scratchbox=\box83
+\nofMPsegments=\count499
+\nofMParguments=\count500
+\everyMPshowfont=\toks50
+\MPscratchCnt=\count501
+\MPscratchDim=\dimen302
+\MPnumerator=\count502
+\makeMPintoPDFobject=\count503
+\everyMPtoPDFconversion=\toks51
 ) (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -934,8 +960,9 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package translations Info: no dictionary file `translations-basic-dictionary-portuges.trsl' found. on input line 124.
+Package translations Info: no dictionary file `translations-basic-dictionary-portuges.trsl' found. on input line 126.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -971,20 +998,21 @@ Package translations Info: no dictionary file `translations-basic-dictionary-por
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 124.
+Package hyperref Info: Link coloring OFF on input line 126.
 (Relatorio.out) (Relatorio.out)
 \@outlinefile=\write5
 \openout5 = `Relatorio.out'.
 
-<Recursos/Logos/LOGO_IPB.png, id=61, 646.415pt x 499.8675pt>
+\c@lstlisting=\count504
+<Recursos/Logos/LOGO_IPB.png, id=65, 646.415pt x 499.8675pt>
 File: Recursos/Logos/LOGO_IPB.png Graphic file (type png)
 <use Recursos/Logos/LOGO_IPB.png>
-Package pdftex.def Info: Recursos/Logos/LOGO_IPB.png  used on input line 130.
+Package pdftex.def Info: Recursos/Logos/LOGO_IPB.png  used on input line 132.
 (pdftex.def)             Requested size: 170.71652pt x 132.01424pt.
-<Recursos/Logos/IPBejaESTIG.jpg, id=62, 501.875pt x 301.125pt>
+<Recursos/Logos/IPBejaESTIG.jpg, id=66, 501.875pt x 301.125pt>
 File: Recursos/Logos/IPBejaESTIG.jpg Graphic file (type jpg)
 <use Recursos/Logos/IPBejaESTIG.jpg>
-Package pdftex.def Info: Recursos/Logos/IPBejaESTIG.jpg  used on input line 130.
+Package pdftex.def Info: Recursos/Logos/IPBejaESTIG.jpg  used on input line 132.
 (pdftex.def)             Requested size: 170.71652pt x 102.43167pt.
 
 
@@ -996,21 +1024,21 @@ Package pdftex.def Info: Recursos/Logos/IPBejaESTIG.jpg  used on input line 130.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.132 \secondtitlepage
+l.134 \secondtitlepage
                        [1]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.145 \newpage
+l.147 \newpage
                [1]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.163 \newpage
+l.165 \newpage
                [2] (Relatorio.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
  (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1033,63 +1061,154 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.169 \newpage
+l.171 \newpage
                [3]
 
 [1]
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 208--210
+Underfull \hbox (badness 10000) in paragraph at lines 210--212
+
+ []
+
+<Recursos/GUI.png, id=147, 573.94424pt x 343.88475pt>
+File: Recursos/GUI.png Graphic file (type png)
+<use Recursos/GUI.png>
+Package pdftex.def Info: Recursos/GUI.png  used on input line 216.
+(pdftex.def)             Requested size: 376.42575pt x 225.53738pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--219
 
  []
 
 
 
-[3]
+[3 <./Recursos/GUI.png>]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 225.
+ (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 224--229
 
-[4]
+ []
 
-[5]
 
-[6]
+Underfull \hbox (badness 10000) in paragraph at lines 224--229
 
-[7]
+ []
+
+<Recursos/aes_enc.png, id=155, 466.1415pt x 413.1435pt>
+File: Recursos/aes_enc.png Graphic file (type png)
+<use Recursos/aes_enc.png>
+Package pdftex.def Info: Recursos/aes_enc.png  used on input line 234.
+(pdftex.def)             Requested size: 200.75996pt x 177.93822pt.
+<Recursos/aes_dec.png, id=156, 450.483pt x 451.6875pt>
+File: Recursos/aes_dec.png Graphic file (type png)
+<use Recursos/aes_dec.png>
+Package pdftex.def Info: Recursos/aes_dec.png  used on input line 241.
+(pdftex.def)             Requested size: 200.75996pt x 201.30011pt.
+
+
+[4{C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./Recursos/aes_enc.png> <./Recursos/aes_dec.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 252--257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--257
+
+ []
+
+<Recursos/des_enc.png, id=165, 450.483pt x 373.395pt>
+File: Recursos/des_enc.png Graphic file (type png)
+<use Recursos/des_enc.png>
+Package pdftex.def Info: Recursos/des_enc.png  used on input line 262.
+(pdftex.def)             Requested size: 200.75996pt x 166.4081pt.
+<Recursos/des_dec.png, id=166, 455.90324pt x 386.04225pt>
+File: Recursos/des_dec.png Graphic file (type png)
+<use Recursos/des_dec.png>
+Package pdftex.def Info: Recursos/des_dec.png  used on input line 269.
+(pdftex.def)             Requested size: 200.75996pt x 170.00049pt.
+
+
+[5 <./Recursos/des_enc.png> <./Recursos/des_dec.png>]
+Overfull \hbox (48.43803pt too wide) in paragraph at lines 279--287
+\T1/pcr/m/n/10 read_table_from_file \T1/cmr/m/n/10 lê e va-lida uma ta-bela com 26 li-nhas de 26 le-tras (A^^UZ); \T1/pcr/m/n/10 read_key_from_file
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--287
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--287
+
+ []
+
+<Recursos/vigenere.png, id=173, 488.42474pt x 256.5585pt>
+File: Recursos/vigenere.png Graphic file (type png)
+<use Recursos/vigenere.png>
+Package pdftex.def Info: Recursos/vigenere.png  used on input line 290.
+(pdftex.def)             Requested size: 418.25368pt x 219.7043pt.
+
+
+[6 <./Recursos/vigenere.png>]
+Overfull \hbox (43.90242pt too wide) in paragraph at lines 298--305
+\T1/cmr/m/n/10 Play-fair com uma ta-bela 5\TS1/cmr/m/n/10 Ö\T1/cmr/m/n/10 5 car-re-gada atra-vés de um fi-cheiro. A ro-tina in-terna \T1/pcr/m/n/10 read_board_from_file
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--305
+
+ []
+
+<Recursos/playfair.png, id=180, 561.89925pt x 380.622pt>
+File: Recursos/playfair.png Graphic file (type png)
+<use Recursos/playfair.png>
+Package pdftex.def Info: Recursos/playfair.png  used on input line 308.
+(pdftex.def)             Requested size: 418.25368pt x 283.3285pt.
+
+
+[7 <./Recursos/playfair.png>]
 
 [8]
-Overfull \hbox (7.78456pt too wide) in paragraph at lines 244--244
+
+[9]
+Overfull \hbox (7.78456pt too wide) in paragraph at lines 331--331
 [][]\T1/cmr/m/n/10 Python Soft-ware Foun-da-tion. (2025). \T1/cmr/m/it/10 Wel-come to Python.org \T1/cmr/m/n/10 [Lin-gua-gem de Pro-gra-ma-ção Python].
  []
 
 
-Overfull \hbox (2.20901pt too wide) in paragraph at lines 244--244
+Overfull \hbox (2.20901pt too wide) in paragraph at lines 331--331
 [][]\T1/cmr/m/n/10 Wikipedia. (2025d). \T1/cmr/m/it/10 Data En-cryp-tion Stan-dard\T1/cmr/m/n/10 . Ob-tido ou-tu-bro 30, 2025, de []$https : / / en . wikipedia .
  []
 
 
 
-[9] (Relatorio.aux)
+[10] (Relatorio.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
  ***********
 Package rerunfilecheck Info: File `Relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: 260CB03FC2F5BA9157C3CC98B80858A5;1381.
+(rerunfilecheck)             Checksum: DF579C0A01DEA8C1C2C59C4A5413C371;1551.
 Package logreq Info: Writing requests to 'Relatorio.run.xml'.
 \openout1 = `Relatorio.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36549 strings out of 473897
- 734581 string characters out of 5726462
- 1595302 words of memory out of 5000000
- 58888 multiletter control sequences out of 15000+600000
- 568412 words of font info for 56 fonts, out of 8000000 for 9000
+ 38051 strings out of 473897
+ 757449 string characters out of 5726462
+ 1616753 words of memory out of 5000000
+ 60359 multiletter control sequences out of 15000+600000
+ 570133 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,6n,107p,752b,2805s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1728.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk>
-Output written on Relatorio.pdf (14 pages, 223362 bytes).
+ 99i,8n,107p,748b,2805s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1728.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on Relatorio.pdf (15 pages, 450128 bytes).
 PDF statistics:
- 518 PDF objects out of 1000 (max. 8388607)
- 39 named destinations out of 1000 (max. 500000)
- 135 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 593 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
+ 178 words of extra memory for PDF output out of 10000 (max. 10000000)
 

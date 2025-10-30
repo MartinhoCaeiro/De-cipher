@@ -28,6 +28,8 @@
 \usepackage{xcolor}
 \usepackage{indentfirst}
 \usepackage{array}
+\usepackage{listings}
+\usepackage{courier}
 \usepackage{soul}
 \usepackage{afterpage}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
@@ -198,34 +200,119 @@ Ela é mais segura do que a cifra de César, pois não utiliza um deslocamento f
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
-\section{Desenvolvimento dos Scripts}\label{dev}
+\section{Desenvolvimento da Aplicação}\label{dev}
 Todos os seguintes scripts foram desenvolvidos em Python com o uso do VS Code (\cite{vscode}) e todos verificam se a maquina possui os pacotes necessários
 para o funcionamento da ferramenta, irá perguntar se quer instalar para poder continuar a utilizar. Caso
 o utilizador deseje prosseguir, o script irá instalar os pacotes necessários e depois irá ativá-los.
 
 %---------------------------------------------------------------------------------------------------------------------------
 \subsection{GUI}
-O menu GUI é o metodo principal de interação com a ferramenta. Para aceder a um dos metodos de cifra/decifra, o utilizador deve selecionar a aba correspondente.
-Para executar o menu apenas é necessário escrever `python gui.py`.\\
+A GUI é o metodo principal de interação com a ferramenta. Para aceder a um dos metodos de cifra/decifra, o utilizador deve selecionar a aba correspondente.
+Para executar a GUI apenas é necessário escrever `python gui.py`.\\
 
-O menu GUI apresenta-se da seguinte forma:
-
+A GUI apresenta-se da seguinte forma:\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{Recursos/GUI.png}
+	\caption{Exemplo da interface gráfica da aplicação.}
+	\label{fig:gui_main}
+\end{figure}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{AES}
+Implementou-se uma ferramenta para cifragem e decifragem de ficheiros utilizando AES em modo CBC (biblioteca PyCryptodome).
+A chave é carregada a partir de ficheiro através da rotina interna \texttt{\_read\_key\_file}. Essa rotina aceita uma string hexadecimal
+(preferencial) ou texto UTF‑8, converte para \texttt{bytes} e valida o comprimento (16, 24 ou 32 bytes). O formato do ficheiro cifrado utilizado
+pelo módulo é IV (16 bytes) concatenado com o ciphertext. A encriptação aplica preenchimento compatível com PKCS\#7 para completar blocos de 16 bytes;
+a descifragem valida e remove esse preenchimento. Em caso de ficheiro de chave inexistente, tamanho de chave inválido ou padding inválido, são lançadas exceções apropriadas.\\\\
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_enc.png}
+		\caption{Cifragem}
+		\label{fig:aes_enc}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_dec.png}
+		\caption{Decifragem}
+		\label{fig:aes_dec}
+	\end{subfigure}
+	\caption{AES em modo CBC.}
+	\label{fig:aes_combined}
+\end{figure}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{DES}
+Implementou‑se uma ferramenta para cifragem e decifragem de ficheiros utilizando DES em modo CBC (biblioteca PyCryptodome).
+A chave é carregada a partir de ficheiro pela rotina interna \texttt{\_read\_key\_file}, que aceita uma string hexadecimal (preferencial)
+ou texto UTF‑8, converte para \texttt{bytes} e valida o comprimento (exatamente 8 bytes). O formato do ficheiro cifrado é IV (8 bytes) concatenado com o ciphertext.
+A encriptação aplica preenchimento compatível com PKCS\#5 (blocos de 8 bytes); a descifragem valida e remove esse preenchimento. Em caso de ficheiro de chave inexistente,
+tamanho de chave inválido ou padding inválido, são lançadas exceções apropriadas.\\\\
 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/des_enc.png}
+		\caption{Cifragem}
+		\label{fig:des_enc}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/des_dec.png}
+		\caption{Decifragem}
+		\label{fig:des_dec}
+	\end{subfigure}
+	\caption{DES em modo CBC.}
+	\label{fig:des_combined}
+\end{figure}
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{Vigenère}
+Implementou‑se uma ferramenta para cifragem e decifragem de ficheiros usando a cifra de Vigenère com base numa tabela 26×26 carregada através de um ficheiro.
+A rotina interna \texttt{read\_table\_from\_file} lê e valida uma tabela com 26 linhas de 26 letras (A–Z);
+\texttt{read\_key\_from\_file} lê a chave, filtra apenas letras A–Z e devolve uma string em maiúsculas (valida que não esteja vazia).
+O texto é normalizado para letras ASCII visíveis em maiúsculas antes do processamento;
+a função \texttt{process\_text} avança o índice da chave apenas sobre letras e usa \texttt{encrypt\_char}/\texttt{decrypt\_char} para cifrar/decifrar carácter a carácter segundo a
+linha da tabela definida pelo carácter da chave. As funções \texttt{encrypt\_file}/\texttt{decrypt\_file} recebem \texttt{key} como o par [\texttt{table\_path}, \texttt{key\_path}],
+lêem os ficheiros de entrada e escrevem ficheiros de saída contendo apenas letras maiúsculas A–Z. Em caso de ficheiro de tabela/chave inexistente,
+tabela com formato inválido ou chave vazia, são lançadas exceções apropriadas.\\\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Recursos/vigenere.png}
+	\caption{Cifragem e Decifragem com Vigenère.}
+	\label{fig:vigenere}
+\end{figure}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{PlayFair}
+Implementou‑se uma ferramenta para cifragem e decifragem de ficheiros usando a cifra de Playfair com uma tabela 5×5 carregada através de um ficheiro.
+A rotina interna \texttt{read\_board\_from\_file} lê e valida a tabela (linhas de letras; caracteres não‑alfabéticos são ignorados), mapeia 'J' para 'I' e, se necessário,
+preenche os restantes caracteres A..Z (sem J). A normalização do texto é feita por \texttt{fix\_message}: conserva apenas letras ASCII, converte para maiúsculas,
+insere 'X' entre letras duplicadas num digrafo e adiciona 'X' se necessário para obter comprimento par. O par (digrafo) é transformado por \texttt{process\_pair}
+segundo as regras de Playfair (mesma linha → deslocamento horizontal; mesma coluna → deslocamento vertical; caso rectangular → troca de colunas).
+As funções \texttt{encrypt\_text}/\texttt{decrypt\_text} aplicam o processamento ao texto; \texttt{encrypt\_file}/\texttt{decrypt\_file} leem/escrevem
+ficheiros de texto usando o caminho da board como \texttt{key}. Em caso de ficheiro de board inexistente são lançadas exceções apropriadas.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Recursos/playfair.png}
+	\caption{Cifragem e Decifragem com PlayFair.}
+	\label{fig:playfair}
+\end{figure}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\newpage
+\subsection{Testes e Resultados}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
