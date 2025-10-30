@@ -1,10 +1,23 @@
-# scripts/des.py
+"""DES file encrypt/decrypt helpers (CBC mode).
+
+Small helpers to encrypt and decrypt files using DES-CBC. The key is
+read from a file that may contain a hex string or raw UTF-8 text. The
+encrypted output format is IV (8 bytes) followed by the ciphertext.
+"""
+
 from Crypto.Cipher import DES
-from Crypto.Random import get_random_bytes
 import os
 
+
 def _read_key_file(key_path: str) -> bytes:
-    """Lê a chave de um ficheiro de texto (como string hexadecimal ou bytes)."""
+    """Read a DES key from a file and return it as bytes.
+
+    The file may contain a hex-encoded key or plain UTF-8 text. The
+    returned key must be exactly 8 bytes long.
+    """
+    if not os.path.isfile(key_path):
+        raise FileNotFoundError(f"Ficheiro de chave não encontrado: {key_path}")
+
     with open(key_path, "r", encoding="utf-8") as f:
         content = f.read().strip()
     try:
@@ -17,7 +30,13 @@ def _read_key_file(key_path: str) -> bytes:
 
 
 def encrypt_file(input_path: str, output_path: str, key: str = ""):
-    """Cifra um ficheiro com DES (modo CBC)."""
+    """Encrypt a file using DES-CBC and write IV||ciphertext to output.
+
+    Args:
+        input_path: Path to the plaintext file (binary).
+        output_path: Path where the encrypted file will be written.
+        key: Path to the key file (hex or text).
+    """
     if not os.path.isfile(key):
         raise FileNotFoundError(f"Ficheiro de chave não encontrado: {key}")
     key_bytes = _read_key_file(key)
@@ -28,7 +47,6 @@ def encrypt_file(input_path: str, output_path: str, key: str = ""):
     with open(input_path, "rb") as f_in:
         data = f_in.read()
 
-    # Padding (PKCS7)
     pad_len = DES.block_size - (len(data) % DES.block_size)
     data += bytes([pad_len]) * pad_len
 
@@ -39,7 +57,13 @@ def encrypt_file(input_path: str, output_path: str, key: str = ""):
 
 
 def decrypt_file(input_path: str, output_path: str, key: str = ""):
-    """Decifra um ficheiro cifrado com DES (modo CBC)."""
+    """Decrypt a file produced by :func:`encrypt_file` and write plaintext.
+
+    Args:
+        input_path: Path to the encrypted input file.
+        output_path: Path to write the recovered plaintext.
+        key: Path to the key file (hex or text).
+    """
     if not os.path.isfile(key):
         raise FileNotFoundError(f"Ficheiro de chave não encontrado: {key}")
     key_bytes = _read_key_file(key)
@@ -51,7 +75,6 @@ def decrypt_file(input_path: str, output_path: str, key: str = ""):
     cipher = DES.new(key_bytes, DES.MODE_CBC, iv=iv)
     data = cipher.decrypt(ciphertext)
 
-    # Remove padding
     pad_len = data[-1]
     if pad_len < 1 or pad_len > DES.block_size:
         raise ValueError("Padding inválido ou chave incorreta.")

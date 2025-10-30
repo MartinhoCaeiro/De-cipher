@@ -1,19 +1,60 @@
+"""(De)cipher GUI application.
+
+This module provides a small Tkinter-based GUI wrapper around the
+encryption/decryption modules in `scripts` (AES, DES, Vigenère, Playfair).
+
+Run the file directly to start the GUI (creates a `tk.Tk()` root and
+instantiates `CipherGUI`). The GUI expects the cipher modules to expose
+`encrypt_file(input_path, output_path, key)` and
+`decrypt_file(input_path, output_path, key)` (Vigenère accepts a list of
+paths for table and key as shown in the implementation).
+
+The UI focuses on file selection and simple logging; cryptographic
+operations are delegated to the modules in `scripts`.
+"""
+
+import sys
 import tkinter as tk
+import tkinter.font as tkfont
 from tkinter import ttk, filedialog, messagebox
 from scripts import aes, des, vigenere, playfair
 from style_dark import apply_dark_theme
 
+if sys.platform.startswith("win"):
+    try:
+        from ctypes import windll
+        windll.shcore.SetProcessDpiAwareness(1)
+    except Exception:
+        try:
+            from ctypes import windll as _windll
+            _windll.user32.SetProcessDPIAware()
+        except Exception:
+            pass
+
 class CipherGUI:
+    """Main application GUI for (De)cipher.
+
+    Responsibilities:
+    - Build and manage the Tkinter widgets (tabs, file selectors, actions).
+    - Validate user input and call the appropriate cipher module functions.
+    - Provide lightweight logging to the UI.
+
+    The class keeps references to the important widgets so action handlers
+    (e.g., `run_cipher`) can read user selections and report results.
+    """
     def __init__(self, root):
+        """Initialize the GUI and build all tabs and widgets.
+
+        Args:
+            root: The Tkinter root window (tk.Tk instance).
+        """
         self.root = root
         self.root.title("(De)cipher™")
         self.root.geometry("960x540")
         self.root.resizable(True, True)
 
-        # Aplica tema escuro
         apply_dark_theme(self.root)
 
-        # Notebook
         self.notebook = ttk.Notebook(root)
         self.notebook.pack(fill="both", expand=True, padx=10, pady=10)
 
@@ -23,47 +64,59 @@ class CipherGUI:
             self.notebook.add(frame, text=tab_name)
             self.tabs[tab_name] = frame
 
-            # Centraliza o texto das abas
         for i in range(len(self.notebook.tabs())):
-            # Notebook.tab supports padding; ignore other options if not supported on a platform
             try:
                 self.notebook.tab(i, padding=[30, 10])
             except Exception:
                 pass
 
         self.setup_start_tab()
-        # Create cipher tabs' controls
         self.setup_cipher_tab("AES")
         self.setup_cipher_tab("DES")
         self.setup_cipher_tab("Vigenère")
         self.setup_cipher_tab("Playfair")
 
-        # Center the main window on the screen
         try:
             self.center_window()
         except Exception:
-            # If centering fails for any reason, don't crash the app
             pass
 
     def setup_start_tab(self):
         frame = self.tabs["Início"]
+        try:
+            scale = float(self.root.tk.call('tk', 'scaling'))
+        except Exception:
+            scale = 1.0
+        welcome_size = max(8, int(round(11 * scale)))
         label = ttk.Label(
             frame,
             text=(
-                "🔐 Bem-vindo à aplicação de Cifra e Decifra de Ficheiros\n\n"
+                "🔐 Bem-vindo à aplicação (De)cipher™\n\n"
+                "Aqui pode fazer a Cifra e Decifra de Ficheiros.\n\n"
                 "Selecione uma aba acima para escolher o método de cifra.\n\n"
-                "• AES e DES utilizam ficheiros de chave binários ou texto.\n"
-                "• Vigenère e Playfair utilizam ficheiros de tabela e texto ASCII."
             ),
             justify="center",
-            font=("Segoe UI", 11)
+            font=("Segoe UI", welcome_size)
         )
         label.pack(expand=True, pady=100)
+        """Populate the 'Início' (start) tab with a brief welcome message.
+
+        This method keeps the widget creation focused and separate from the
+        rest of the layout code so the welcome content is easy to locate.
+        """
     def setup_cipher_tab(self, cipher_type):
         frame = self.tabs[cipher_type]
 
-        # Create a centered content frame inside the tab frame.
-        # Configure outer frame to have three rows and three columns so the middle cell stays centered.
+        """Create controls for a given cipher tab.
+
+        Args:
+            cipher_type: One of "AES", "DES", "Vigenère", or "Playfair".
+
+        The controls include key/table selection, input/output file selectors,
+        action (encrypt/decrypt) radio buttons, an Execute button and a
+        read-only log text box.
+        """
+
         frame.grid_rowconfigure(0, weight=1)
         frame.grid_rowconfigure(1, weight=0)
         frame.grid_rowconfigure(2, weight=1)
@@ -72,25 +125,23 @@ class CipherGUI:
         frame.grid_columnconfigure(2, weight=1)
 
         content = ttk.Frame(frame)
-        # place content in the middle cell
         content.grid(row=1, column=1)
 
-        # Determinar rótulo do arquivo de chave/tabela e construir widgets inside content
         if cipher_type == "Playfair":
             ttk.Label(content, text="Ficheiro da Tabela:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
-            key_entry = ttk.Entry(content, width=55)
+            key_entry = ttk.Entry(content, width=55, state="readonly")
             key_entry.grid(row=0, column=1, padx=10, pady=5)
             ttk.Button(content, text="Procurar", command=lambda e=key_entry: self.browse_file(e)).grid(row=0, column=2, padx=5)
             key_row = 1
 
         elif cipher_type == "Vigenère":
             ttk.Label(content, text="Ficheiro da Tabela:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
-            self.vig_table_entry = ttk.Entry(content, width=55)
+            self.vig_table_entry = ttk.Entry(content, width=55, state="readonly")
             self.vig_table_entry.grid(row=0, column=1, padx=10, pady=5)
             ttk.Button(content, text="Procurar", command=lambda: self.browse_file(self.vig_table_entry)).grid(row=0, column=2, padx=5)
 
             ttk.Label(content, text="Ficheiro da Chave:").grid(row=1, column=0, padx=10, pady=5, sticky="e")
-            self.vig_key_entry = ttk.Entry(content, width=55)
+            self.vig_key_entry = ttk.Entry(content, width=55, state="readonly")
             self.vig_key_entry.grid(row=1, column=1, padx=10, pady=5)
             ttk.Button(content, text="Procurar", command=lambda: self.browse_file(self.vig_key_entry)).grid(row=1, column=2, padx=5)
             key_entry = self.vig_key_entry
@@ -98,28 +149,40 @@ class CipherGUI:
 
         else:
             ttk.Label(content, text="Ficheiro da Chave:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
-            key_entry = ttk.Entry(content, width=55)
+            key_entry = ttk.Entry(content, width=55, state="readonly")
             key_entry.grid(row=0, column=1, padx=10, pady=5)
             ttk.Button(content, text="Procurar", command=lambda e=key_entry: self.browse_file(e)).grid(row=0, column=2, padx=5)
             key_row = 0
 
-        # Entradas de input e output
         ttk.Label(content, text="Ficheiro de Entrada:").grid(row=key_row+1, column=0, padx=10, pady=5, sticky="e")
-        input_entry = ttk.Entry(content, width=55)
+        input_entry = ttk.Entry(content, width=55, state="readonly")
         input_entry.grid(row=key_row+1, column=1, padx=10, pady=5)
         ttk.Button(content, text="Procurar", command=lambda e=input_entry: self.browse_file(e)).grid(row=key_row+1, column=2, padx=5)
 
         ttk.Label(content, text="Ficheiro de Saída:").grid(row=key_row+2, column=0, padx=10, pady=5, sticky="e")
-        output_entry = ttk.Entry(content, width=55)
+        output_entry = ttk.Entry(content, width=55, state="readonly")
         output_entry.grid(row=key_row+2, column=1, padx=10, pady=5)
         ttk.Button(content, text="Guardar como", command=lambda e=output_entry: self.save_file(e)).grid(row=key_row+2, column=2, padx=5)
 
-        # Ação (cifrar/decifrar)
         action_var = tk.StringVar(value="encrypt")
-        ttk.Radiobutton(content, text="Cifrar", variable=action_var, value="encrypt").grid(row=key_row+3, column=1, sticky="w", padx=10)
-        ttk.Radiobutton(content, text="Decifrar", variable=action_var, value="decrypt").grid(row=key_row+3, column=1, sticky="e", padx=10)
+        rb_frame = ttk.Frame(content)
+        rb_frame.grid(row=key_row+3, column=1)
+        try:
+            dark_bg = "#1e1e1e"
+            dark_active = "#3a3a3a"
+            fg = "#ffffff"
+            tk.Radiobutton(rb_frame, text="Cifrar", variable=action_var, value="encrypt",
+                           bg=dark_bg, fg=fg, selectcolor=dark_active,
+                           activebackground=dark_active, activeforeground=fg,
+                           bd=0, highlightthickness=0, anchor="w").pack(side="left", padx=(0, 10))
+            tk.Radiobutton(rb_frame, text="Decifrar", variable=action_var, value="decrypt",
+                           bg=dark_bg, fg=fg, selectcolor=dark_active,
+                           activebackground=dark_active, activeforeground=fg,
+                           bd=0, highlightthickness=0, anchor="w").pack(side="left")
+        except Exception:
+            ttk.Radiobutton(rb_frame, text="Cifrar", variable=action_var, value="encrypt").pack(side="left", padx=(0, 10))
+            ttk.Radiobutton(rb_frame, text="Decifrar", variable=action_var, value="decrypt").pack(side="left")
 
-        # Botão executar
         if cipher_type == "Vigenère":
             cmd = self.run_vigenere
         else:
@@ -127,18 +190,19 @@ class CipherGUI:
 
         ttk.Button(content, text="Executar", command=cmd).grid(row=key_row+4, column=1, pady=10)
 
-        # Caixa de log
         log_box = tk.Text(content, height=10, width=90, bg="#2d2d2d", fg="#ffffff", insertbackground="white")
         log_box.grid(row=key_row+5, column=0, columnspan=3, padx=10, pady=10)
+        try:
+            log_box.config(state="disabled")
+        except Exception:
+            pass
 
-        # Armazenar referências
         frame.key_entry = key_entry
         frame.input_entry = input_entry
         frame.output_entry = output_entry
         frame.action_var = action_var
         frame.log_box = log_box
 
-        # Se for Vigenère, manter referências de forma que run_vigenere as encontre
         if cipher_type == "Vigenère":
             self.vig_input_entry = input_entry
             self.vig_output_entry = output_entry
@@ -146,25 +210,83 @@ class CipherGUI:
             self.vig_log = log_box
 
     def browse_file(self, entry):
+        """Show an open-file dialog and put the chosen path into `entry`.
+
+        The function preserves the Entry widget's previous state (for
+        example `readonly`) by temporarily enabling it if needed.
+
+        Args:
+            entry: A ttk.Entry (or similar) where the selected path will be
+                   inserted.
+        """
+
         path = filedialog.askopenfilename()
         if path:
-            entry.delete(0, tk.END)
-            entry.insert(0, path)
+            prev_state = None
+            try:
+                prev_state = entry.cget('state')
+            except Exception:
+                prev_state = None
+            try:
+                if prev_state == 'readonly':
+                    entry.config(state='normal')
+                entry.delete(0, tk.END)
+                entry.insert(0, path)
+            finally:
+                if prev_state == 'readonly':
+                    try:
+                        entry.config(state='readonly')
+                    except Exception:
+                        pass
 
     def save_file(self, entry):
+        """Show a save-as dialog and put the chosen path into `entry`.
+
+        Mirrors `browse_file` behavior but uses a save dialog and defaults to
+        a `.txt` extension. Preserves the Entry's prior widget state.
+
+        Args:
+            entry: A ttk.Entry (or similar) where the selected save path will be
+                   inserted.
+        """
+
         path = filedialog.asksaveasfilename(defaultextension=".txt")
         if path:
-            entry.delete(0, tk.END)
-            entry.insert(0, path)
+            prev_state = None
+            try:
+                prev_state = entry.cget('state')
+            except Exception:
+                prev_state = None
+            try:
+                if prev_state == 'readonly':
+                    entry.config(state='normal')
+                entry.delete(0, tk.END)
+                entry.insert(0, path)
+            finally:
+                if prev_state == 'readonly':
+                    try:
+                        entry.config(state='readonly')
+                    except Exception:
+                        pass
 
     def log_message(self, box, message):
+        """Append a single-line message to the GUI log `box`.
+
+        The method makes the text widget temporarily writable, inserts the
+        message followed by a newline, then restores the widget to
+        read-only. Errors are ignored to keep the UI robust.
+
+        Args:
+            box: A tk.Text widget used for logging.
+            message: The message string to append.
+        """
+
         try:
             box.config(state="normal")
             box.insert(tk.END, message + "\n")
             box.config(state="disabled")
             box.see(tk.END)
         except Exception:
-            # If the log box is not available, silently ignore to avoid crashes
             pass
 
     def center_window(self):
@@ -173,19 +295,16 @@ class CipherGUI:
         This computes the desired geometry and updates the window position.
         Works even if the window manager hasn't fully realized the window yet.
         """
-        # Ensure geometry info is up to date
         self.root.update_idletasks()
 
-        # Try to get the current size; fall back to parsing geometry string if needed
         width = self.root.winfo_width()
         height = self.root.winfo_height()
         if width <= 1 or height <= 1:
-            geom = self.root.geometry()  # format: 'WxH+X+Y'
+            geom = self.root.geometry()
             try:
                 size = geom.split('+')[0]
                 width, height = map(int, size.split('x'))
             except Exception:
-                # fallback to a reasonable default
                 width, height = 960, 540
 
         screen_width = self.root.winfo_screenwidth()
@@ -257,5 +376,36 @@ class CipherGUI:
 
 if __name__ == "__main__":
     root = tk.Tk()
+    try:
+        dpi = root.winfo_fpixels('1i')
+        scaling = dpi / 96.0
+        root.tk.call('tk', 'scaling', scaling)
+        try:
+            names = [
+                "TkDefaultFont",
+                "TkMenuFont",
+                "TkTextFont",
+                "TkHeadingFont",
+                "TkCaptionFont",
+                "TkSmallCaptionFont",
+                "TkIconFont",
+            ]
+            for name in names:
+                try:
+                    f = tkfont.nametofont(name)
+                    orig = f.cget("size")
+                    try:
+                        orig_val = float(orig)
+                    except Exception:
+                        orig_val = 10.0
+                    new_size = max(6, int(round(orig_val * scaling)))
+                    f.configure(size=new_size)
+                except Exception:
+                    pass
+        except Exception:
+            pass
+    except Exception:
+        pass
+
     app = CipherGUI(root)
     root.mainloop()
