@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber Relatorio"] 1761777774.72024 "Relatorio.bcf" "Relatorio.bbl" "Relatorio" 1761835291.39838 0
-  "Recursos/referencias.bib" 1761775670 2833 96ca06d03dc3e8275b511af858d59e7d ""
-  "Relatorio.bcf" 1761835290 134659 f3e27167f6b15d4b296533035c999cfd "pdflatex"
+["biber Relatorio"] 1761837401.91373 "Relatorio.bcf" "Relatorio.bbl" "Relatorio" 1761837620.11678 0
+  "Recursos/referencias.bib" 1761836942 1840 7c7ec3149ea98174998f17755282866a ""
+  "Relatorio.bcf" 1761837619 134277 2880332a783422432c01471b6004466c "pdflatex"
   (generated)
   "Relatorio.bbl"
   "Relatorio.blg"
   (rewritten before read)
-["pdflatex"] 1761835286.4772 "c:/Users/Marti/Documents/Decipher-Tool/LaTeX Report/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1761835291.40088 0
+["pdflatex"] 1761837615.76613 "c:/Users/Marti/Documents/Decipher-Tool/LaTeX Report/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1761837620.11852 0
   "C:/Users/Marti/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1746122313 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Marti/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1728.pk" 1731243685 71788 1e02f162203728df16030782559135b3 ""
   "C:/Users/Marti/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1730970230 25420 7f407e2bc8380997d24e59de81372356 ""
@@ -16,7 +16,6 @@
   "C:/Users/Marti/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1000.pk" 1730970225 23808 355ec6d6cf4f121ed1c035616578ed7b ""
   "C:/Users/Marti/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecrm1200.pk" 1730970239 28440 35295194afbbae534bde256f45956426 ""
   "C:/Users/Marti/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecti1000.pk" 1730970220 31892 b9069c5f9406dbef02b30a2d95d5159c ""
-  "C:/Users/Marti/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk" 1731242494 20028 237f9997a7c99dc48255c8ba0cf2b445 ""
   "C:/Users/Marti/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1730970145 11948315 99c4d2326d981d6683364617ad651fdf ""
   "C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/ecbi1728.tfm" 993061912 2896 9cb37f107d422e25c899cb210f19c053 ""
   "C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/ecbx1000.tfm" 993061956 3200 328792ff19833a39406f06fa0555a6dc ""
@@ -133,7 +132,6 @@
   "C:/Users/Marti/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty" 1719393830 5275 b64d8404d74d2860b9c6558239dd0784 ""
   "C:/Users/Marti/AppData/Local/Programs/MiKTeX/tex/latex/base/ifthen.sty" 1719393830 5525 3792dcd5bc92158cfaf00cc591e557cf ""
   "C:/Users/Marti/AppData/Local/Programs/MiKTeX/tex/latex/base/size10.clo" 1719393830 8448 358bf3de18513f057a13bdc6e6770c41 ""
-  "C:/Users/Marti/AppData/Local/Programs/MiKTeX/tex/latex/base/t1cmtt.fd" 1719393830 2443 790016d75def8d3127df5c216a45abcc ""
   "C:/Users/Marti/AppData/Local/Programs/MiKTeX/tex/latex/biblatex-apa/apa.bbx" 1680859608 68546 9e1a16021ee55f6bb5378029f145647b ""
   "C:/Users/Marti/AppData/Local/Programs/MiKTeX/tex/latex/biblatex-apa/apa.cbx" 1680859608 20499 0ad31db7b661b1a75fb75fe9aa337922 ""
   "C:/Users/Marti/AppData/Local/Programs/MiKTeX/tex/latex/biblatex-apa/apa.dbx" 1680859608 2676 4c4c5f7972322150712501515143ddd7 ""
@@ -207,15 +205,14 @@
   "C:/Users/Marti/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
   "Recursos/Logos/IPBejaESTIG.jpg" 1746632934 24524 8256cc09fbb9140893a7ec292a0eb389 ""
   "Recursos/Logos/LOGO_IPB.png" 1746632934 70931 8e4fd2cd3676e6d3adc0f137d7334c9f ""
-  "Recursos/Server.png" 1761775257 63022 3a41653ba5611d3f640c3933c7ae5acd ""
-  "Relatorio.aux" 1761835290 6661 175478bbf836c705e262f7a4624440bb "pdflatex"
-  "Relatorio.bbl" 1761777776 38405 1fbd192b161c2453773ece801ae901ae "biber Relatorio"
-  "Relatorio.lof" 1761835290 139 13b0fa8d5f4a3417ebf1c7cc3b50cf8b "pdflatex"
-  "Relatorio.out" 1761835290 2363 d4ae3210ffc2848da26391fc4cbf9dae "pdflatex"
-  "Relatorio.run.xml" 1761835290 2410 717c0927f41f216f3cf4bba59bbfc439 "pdflatex"
-  "Relatorio.tex" 1761835285 12703 c3be75157feb8128003210211a1cd42d ""
-  "Relatorio.toc" 1761835290 1592 316457beca62a5ed4ed182c439a2472f "pdflatex"
-  "c:/Users/Marti/Documents/Decipher-Tool/LaTeX Report/Relatorio.tex" 1761835285 12703 c3be75157feb8128003210211a1cd42d ""
+  "Relatorio.aux" 1761837619 4137 3912b28d6355809b7a2e55a2e61b69e2 "pdflatex"
+  "Relatorio.bbl" 1761837406 24325 56f7c8ee61701c0555dabed3b076414b "biber Relatorio"
+  "Relatorio.lof" 1761837619 33 e37f84d12b50aa32dade73d7d1c52b61 "pdflatex"
+  "Relatorio.out" 1761837619 1381 260cb03fc2f5ba9157c3cc98b80858a5 "pdflatex"
+  "Relatorio.run.xml" 1761837619 2410 717c0927f41f216f3cf4bba59bbfc439 "pdflatex"
+  "Relatorio.tex" 1761837614 9309 0e0495064c50fc1c01f59cd99ca4d0b8 ""
+  "Relatorio.toc" 1761837619 1023 7ed42454e1d8b05f4a57c16cd2374b45 "pdflatex"
+  "c:/Users/Marti/Documents/Decipher-Tool/LaTeX Report/Relatorio.tex" 1761837614 9309 0e0495064c50fc1c01f59cd99ca4d0b8 ""
   (generated)
   "Relatorio.aux"
   "Relatorio.bcf"

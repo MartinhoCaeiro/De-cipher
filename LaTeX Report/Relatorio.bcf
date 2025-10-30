@@ -3073,18 +3073,12 @@
     <bcf:citekey order="1" intorder="1">paglpd</bcf:citekey>
     <bcf:citekey order="2" intorder="1">paglpd</bcf:citekey>
     <bcf:citekey order="3" intorder="1">python</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">kali</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">github</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">port</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">udpflood</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">synflood</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">logging</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">portknocking</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">password</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">2fa</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">kali</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">virtualbox</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">vscode</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">github</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">aes</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">des</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">vigenere</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">playfair</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">vscode</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

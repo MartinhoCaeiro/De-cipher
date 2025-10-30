@@ -392,16 +392,6 @@ INPUT .\Relatorio.lof
 INPUT .\Relatorio.lof
 INPUT Relatorio.lof
 OUTPUT Relatorio.lof
-INPUT .\Recursos\Server.png
-INPUT .\Recursos\Server.png
-INPUT .\Recursos\Server.png
-INPUT .\Recursos\Server.png
-INPUT .\Recursos\Server.png
-INPUT .\Recursos\Server.png
-INPUT .\Recursos\Server.png
-INPUT C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex\latex\base\t1cmtt.fd
-INPUT C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex\latex\base\t1cmtt.fd
-INPUT C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex\latex\base\t1cmtt.fd
 INPUT C:\Users\Marti\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecti1000.tfm
 INPUT Relatorio.aux
 INPUT .\Relatorio.out
@@ -410,8 +400,6 @@ INPUT Relatorio.run.xml
 OUTPUT Relatorio.run.xml
 INPUT C:\Users\Marti\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk
 INPUT C:\Users\Marti\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk
-INPUT C:\Users\Marti\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
-INPUT C:\Users\Marti\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
 INPUT C:\Users\Marti\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk
 INPUT C:\Users\Marti\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk
 INPUT C:\Users\Marti\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1000.pk

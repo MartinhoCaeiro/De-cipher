@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  30 OCT 2025 14:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  30 OCT 2025 15:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -976,12 +976,12 @@ Package hyperref Info: Link coloring OFF on input line 124.
 \@outlinefile=\write5
 \openout5 = `Relatorio.out'.
 
-<Recursos/Logos/LOGO_IPB.png, id=89, 646.415pt x 499.8675pt>
+<Recursos/Logos/LOGO_IPB.png, id=61, 646.415pt x 499.8675pt>
 File: Recursos/Logos/LOGO_IPB.png Graphic file (type png)
 <use Recursos/Logos/LOGO_IPB.png>
 Package pdftex.def Info: Recursos/Logos/LOGO_IPB.png  used on input line 130.
 (pdftex.def)             Requested size: 170.71652pt x 132.01424pt.
-<Recursos/Logos/IPBejaESTIG.jpg, id=90, 501.875pt x 301.125pt>
+<Recursos/Logos/IPBejaESTIG.jpg, id=62, 501.875pt x 301.125pt>
 File: Recursos/Logos/IPBejaESTIG.jpg Graphic file (type jpg)
 <use Recursos/Logos/IPBejaESTIG.jpg>
 Package pdftex.def Info: Recursos/Logos/IPBejaESTIG.jpg  used on input line 130.
@@ -1003,14 +1003,14 @@ l.132 \secondtitlepage
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.146 \newpage
+l.145 \newpage
                [1]
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.164 \newpage
+l.163 \newpage
                [2] (Relatorio.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
  (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1033,39 +1033,21 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.170 \newpage
+l.169 \newpage
                [3]
 
 [1]
 
 [2]
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
+
+ []
+
+
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 221--224
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 225--227
-
- []
-
-<Recursos/Server.png, id=183, 370.986pt x 329.43076pt>
-File: Recursos/Server.png Graphic file (type png)
-<use Recursos/Server.png>
-Package pdftex.def Info: Recursos/Server.png  used on input line 230.
-(pdftex.def)             Requested size: 334.60422pt x 297.13338pt.
-
-
-[4 <./Recursos/Server.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 245--247
-
- []
-
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 249.
-(C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
+[4]
 
 [5]
 
@@ -1074,45 +1056,40 @@ File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 [7]
 
 [8]
-
-[9]
-
-[10]
-
-[11]
-
-[12]
-
-[13]
-Overfull \hbox (7.78456pt too wide) in paragraph at lines 306--306
+Overfull \hbox (7.78456pt too wide) in paragraph at lines 244--244
 [][]\T1/cmr/m/n/10 Python Soft-ware Foun-da-tion. (2025). \T1/cmr/m/it/10 Wel-come to Python.org \T1/cmr/m/n/10 [Lin-gua-gem de Pro-gra-ma-ção Python].
  []
 
 
+Overfull \hbox (2.20901pt too wide) in paragraph at lines 244--244
+[][]\T1/cmr/m/n/10 Wikipedia. (2025d). \T1/cmr/m/it/10 Data En-cryp-tion Stan-dard\T1/cmr/m/n/10 . Ob-tido ou-tu-bro 30, 2025, de []$https : / / en . wikipedia .
+ []
 
-[14] (Relatorio.aux)
+
+
+[9] (Relatorio.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
  ***********
 Package rerunfilecheck Info: File `Relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: D4AE3210FFC2848DA26391FC4CBF9DAE;2363.
+(rerunfilecheck)             Checksum: 260CB03FC2F5BA9157C3CC98B80858A5;1381.
 Package logreq Info: Writing requests to 'Relatorio.run.xml'.
 \openout1 = `Relatorio.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36640 strings out of 473897
- 736955 string characters out of 5726462
- 1599731 words of memory out of 5000000
- 58958 multiletter control sequences out of 15000+600000
+ 36549 strings out of 473897
+ 734581 string characters out of 5726462
+ 1595302 words of memory out of 5000000
+ 58888 multiletter control sequences out of 15000+600000
  568412 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,6n,107p,752b,2805s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1728.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk>
-Output written on Relatorio.pdf (19 pages, 298374 bytes).
+ <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1728.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk>
+Output written on Relatorio.pdf (14 pages, 223362 bytes).
 PDF statistics:
- 672 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 518 PDF objects out of 1000 (max. 8388607)
+ 39 named destinations out of 1000 (max. 500000)
+ 135 words of extra memory for PDF output out of 10000 (max. 10000000)
 

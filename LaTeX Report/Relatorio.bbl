@@ -41,33 +41,33 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Página LPD}
-      \field{title}{Disciplina: Linguagens de Programação Dinâmicas | IPBeja}
-      \field{urlday}{29}
+      \field{title}{Disciplina: Criptografia e Criptanalise Aplicadas | IPBeja}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://cms.ipbeja.pt/course/view.php?id=1164
+      \verb https://cms.ipbeja.pt/course/view.php?id=544
       \endverb
       \verb{url}
-      \verb https://cms.ipbeja.pt/course/view.php?id=1164
+      \verb https://cms.ipbeja.pt/course/view.php?id=544
       \endverb
     \endentry
     \entry{github}{online}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=064833feffb84419af9b76fbb8f78cd0}{%
-           family={Martinho\bibnamedelima Caeiro},
-           familyi={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=caed1ca672183e6b85178471aad6ea6c}{%
+           family={Martinho\bibnamedelima Caeiro\bibnamedelima \&\bibnamedelima Paulo\bibnamedelima Abade},
+           familyi={M\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim \\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
       }
-      \strng{namehash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{fullhash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{fullhashraw}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{bibnamehash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{authorbibnamehash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{authornamehash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{authorfullhash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{authorfullhashraw}{064833feffb84419af9b76fbb8f78cd0}
+      \strng{namehash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{fullhash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{fullhashraw}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{bibnamehash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{authorbibnamehash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{authornamehash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{authorfullhash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{authorfullhashraw}{caed1ca672183e6b85178471aad6ea6c}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{extradatescope}{labelyear}
@@ -75,18 +75,18 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Repositório da Aplicação LPD-Tool}
-      \field{title}{LPD-Tool - Repositório de Código}
-      \field{urlday}{29}
+      \field{note}{Repositório da Aplicação Decipher-Tool}
+      \field{title}{Decipher-Tool - Repositório de Código}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://github.com/MartinhoCaeiro/LPD-Tool
+      \verb https://github.com/MartinhoCaeiro/Decipher-Tool
       \endverb
       \verb{url}
-      \verb https://github.com/MartinhoCaeiro/LPD-Tool
+      \verb https://github.com/MartinhoCaeiro/Decipher-Tool
       \endverb
     \endentry
     \entry{vscode}{online}{}{}
@@ -112,7 +112,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Editor de Texto Visual Studio Code}
       \field{title}{Visual Studio Code}
-      \field{urlday}{29}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
@@ -122,76 +122,6 @@
       \endverb
       \verb{url}
       \verb https://code.visualstudio.com/
-      \endverb
-    \endentry
-    \entry{kali}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=540ce2d2fdce92b7b1ab7693f09d9b14}{%
-           family={OffSec\bibnamedelima Services\bibnamedelima Limited},
-           familyi={O\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-      }
-      \strng{namehash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{fullhash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{fullhashraw}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{bibnamehash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{authorbibnamehash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{authornamehash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{authorfullhash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{authorfullhashraw}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \field{sortinit}{O}
-      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Instalador Kali Linux}
-      \field{title}{Get Kali | Kali Linux}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://www.kali.org/get-kali/#kali-platforms
-      \endverb
-      \verb{url}
-      \verb https://www.kali.org/get-kali/#kali-platforms
-      \endverb
-    \endentry
-    \entry{virtualbox}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=d51288dc67d9f5e0330d927a009e208b}{%
-           family={Oracle\bibnamedelima Corporation},
-           familyi={O\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-      }
-      \strng{namehash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{fullhash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{fullhashraw}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{bibnamehash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{authorbibnamehash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{authornamehash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{authorfullhash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{authorfullhashraw}{d51288dc67d9f5e0330d927a009e208b}
-      \field{sortinit}{O}
-      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Software de Virtualização VirtualBox}
-      \field{title}{VirtualBox}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://www.virtualbox.org/
-      \endverb
-      \verb{url}
-      \verb https://www.virtualbox.org/
       \endverb
     \endentry
     \entry{python}{online}{}{}
@@ -217,7 +147,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Linguagem de Programação Python}
       \field{title}{Welcome to Python.org}
-      \field{urlday}{29}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
@@ -229,7 +159,7 @@
       \verb https://www.python.org/
       \endverb
     \endentry
-    \entry{2fa}{online}{}{}
+    \entry{aes}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -252,20 +182,20 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Autenticação de Dois Fatores}
-      \field{urlday}{29}
+      \field{title}{Advanced Encryption Standard}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Multi-factor_authentication
+      \verb https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
       \endverb
       \verb{url}
-      \verb https://en.wikipedia.org/wiki/Multi-factor_authentication
+      \verb https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
       \endverb
     \endentry
-    \entry{logging}{online}{}{}
+    \entry{playfair}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -288,20 +218,20 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Logging (Computação)}
-      \field{urlday}{29}
+      \field{title}{Cifra de Playfair}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Logging_(computing)
+      \verb https://en.wikipedia.org/wiki/Playfair_cipher
       \endverb
       \verb{url}
-      \verb https://en.wikipedia.org/wiki/Logging_(computing)
+      \verb https://en.wikipedia.org/wiki/Playfair_cipher
       \endverb
     \endentry
-    \entry{password}{online}{}{}
+    \entry{vigenere}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -324,20 +254,20 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Password}
-      \field{urlday}{29}
+      \field{title}{Cifra de Vigenère}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Password
+      \verb https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
       \endverb
       \verb{url}
-      \verb https://en.wikipedia.org/wiki/Password
+      \verb https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
       \endverb
     \endentry
-    \entry{portknocking}{online}{}{}
+    \entry{des}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -360,125 +290,17 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Port Knocking}
-      \field{urlday}{29}
+      \field{title}{Data Encryption Standard}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Port_knocking
+      \verb https://en.wikipedia.org/wiki/Data_Encryption_Standard
       \endverb
       \verb{url}
-      \verb https://en.wikipedia.org/wiki/Port_knocking
-      \endverb
-    \endentry
-    \entry{port}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
-           family={Wikipedia},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \field{extraname}{5}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extradate}{5}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Porto (Redes de Computadores)}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Port_(computer_networking)
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/Port_(computer_networking)
-      \endverb
-    \endentry
-    \entry{synflood}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
-           family={Wikipedia},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \field{extraname}{6}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extradate}{6}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{SYN flood}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/SYN_flood
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/SYN_flood
-      \endverb
-    \endentry
-    \entry{udpflood}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
-           family={Wikipedia},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \field{extraname}{7}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extradate}{7}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{UDP flood}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/UDP_flood
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/UDP_flood
+      \verb https://en.wikipedia.org/wiki/Data_Encryption_Standard
       \endverb
     \endentry
   \enddatalist
@@ -505,33 +327,33 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Página LPD}
-      \field{title}{Disciplina: Linguagens de Programação Dinâmicas | IPBeja}
-      \field{urlday}{29}
+      \field{title}{Disciplina: Criptografia e Criptanalise Aplicadas | IPBeja}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://cms.ipbeja.pt/course/view.php?id=1164
+      \verb https://cms.ipbeja.pt/course/view.php?id=544
       \endverb
       \verb{url}
-      \verb https://cms.ipbeja.pt/course/view.php?id=1164
+      \verb https://cms.ipbeja.pt/course/view.php?id=544
       \endverb
     \endentry
     \entry{github}{online}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=064833feffb84419af9b76fbb8f78cd0}{%
-           family={Martinho\bibnamedelima Caeiro},
-           familyi={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=caed1ca672183e6b85178471aad6ea6c}{%
+           family={Martinho\bibnamedelima Caeiro\bibnamedelima \&\bibnamedelima Paulo\bibnamedelima Abade},
+           familyi={M\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim \\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
       }
-      \strng{namehash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{fullhash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{fullhashraw}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{bibnamehash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{authorbibnamehash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{authornamehash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{authorfullhash}{064833feffb84419af9b76fbb8f78cd0}
-      \strng{authorfullhashraw}{064833feffb84419af9b76fbb8f78cd0}
+      \strng{namehash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{fullhash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{fullhashraw}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{bibnamehash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{authorbibnamehash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{authornamehash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{authorfullhash}{caed1ca672183e6b85178471aad6ea6c}
+      \strng{authorfullhashraw}{caed1ca672183e6b85178471aad6ea6c}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{extradatescope}{labelyear}
@@ -539,18 +361,18 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Repositório da Aplicação LPD-Tool}
-      \field{title}{LPD-Tool - Repositório de Código}
-      \field{urlday}{29}
+      \field{note}{Repositório da Aplicação Decipher-Tool}
+      \field{title}{Decipher-Tool - Repositório de Código}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://github.com/MartinhoCaeiro/LPD-Tool
+      \verb https://github.com/MartinhoCaeiro/Decipher-Tool
       \endverb
       \verb{url}
-      \verb https://github.com/MartinhoCaeiro/LPD-Tool
+      \verb https://github.com/MartinhoCaeiro/Decipher-Tool
       \endverb
     \endentry
     \entry{vscode}{online}{}{}
@@ -576,7 +398,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Editor de Texto Visual Studio Code}
       \field{title}{Visual Studio Code}
-      \field{urlday}{29}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
@@ -586,76 +408,6 @@
       \endverb
       \verb{url}
       \verb https://code.visualstudio.com/
-      \endverb
-    \endentry
-    \entry{kali}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=540ce2d2fdce92b7b1ab7693f09d9b14}{%
-           family={OffSec\bibnamedelima Services\bibnamedelima Limited},
-           familyi={O\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
-      }
-      \strng{namehash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{fullhash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{fullhashraw}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{bibnamehash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{authorbibnamehash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{authornamehash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{authorfullhash}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \strng{authorfullhashraw}{540ce2d2fdce92b7b1ab7693f09d9b14}
-      \field{sortinit}{O}
-      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Instalador Kali Linux}
-      \field{title}{Get Kali | Kali Linux}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://www.kali.org/get-kali/#kali-platforms
-      \endverb
-      \verb{url}
-      \verb https://www.kali.org/get-kali/#kali-platforms
-      \endverb
-    \endentry
-    \entry{virtualbox}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=d51288dc67d9f5e0330d927a009e208b}{%
-           family={Oracle\bibnamedelima Corporation},
-           familyi={O\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-      }
-      \strng{namehash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{fullhash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{fullhashraw}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{bibnamehash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{authorbibnamehash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{authornamehash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{authorfullhash}{d51288dc67d9f5e0330d927a009e208b}
-      \strng{authorfullhashraw}{d51288dc67d9f5e0330d927a009e208b}
-      \field{sortinit}{O}
-      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Software de Virtualização VirtualBox}
-      \field{title}{VirtualBox}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://www.virtualbox.org/
-      \endverb
-      \verb{url}
-      \verb https://www.virtualbox.org/
       \endverb
     \endentry
     \entry{python}{online}{}{}
@@ -681,7 +433,7 @@
       \field{labeltitlesource}{title}
       \field{note}{Linguagem de Programação Python}
       \field{title}{Welcome to Python.org}
-      \field{urlday}{29}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
@@ -693,7 +445,7 @@
       \verb https://www.python.org/
       \endverb
     \endentry
-    \entry{2fa}{online}{}{}
+    \entry{aes}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -716,20 +468,20 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Autenticação de Dois Fatores}
-      \field{urlday}{29}
+      \field{title}{Advanced Encryption Standard}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Multi-factor_authentication
+      \verb https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
       \endverb
       \verb{url}
-      \verb https://en.wikipedia.org/wiki/Multi-factor_authentication
+      \verb https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
       \endverb
     \endentry
-    \entry{logging}{online}{}{}
+    \entry{playfair}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -752,20 +504,20 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Logging (Computação)}
-      \field{urlday}{29}
+      \field{title}{Cifra de Playfair}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Logging_(computing)
+      \verb https://en.wikipedia.org/wiki/Playfair_cipher
       \endverb
       \verb{url}
-      \verb https://en.wikipedia.org/wiki/Logging_(computing)
+      \verb https://en.wikipedia.org/wiki/Playfair_cipher
       \endverb
     \endentry
-    \entry{password}{online}{}{}
+    \entry{vigenere}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -788,20 +540,20 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Password}
-      \field{urlday}{29}
+      \field{title}{Cifra de Vigenère}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Password
+      \verb https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
       \endverb
       \verb{url}
-      \verb https://en.wikipedia.org/wiki/Password
+      \verb https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
       \endverb
     \endentry
-    \entry{portknocking}{online}{}{}
+    \entry{des}{online}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
@@ -824,125 +576,17 @@
       \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Port Knocking}
-      \field{urlday}{29}
+      \field{title}{Data Encryption Standard}
+      \field{urlday}{30}
       \field{urlmonth}{10}
       \field{urlyear}{2025}
       \field{year}{2025}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Port_knocking
+      \verb https://en.wikipedia.org/wiki/Data_Encryption_Standard
       \endverb
       \verb{url}
-      \verb https://en.wikipedia.org/wiki/Port_knocking
-      \endverb
-    \endentry
-    \entry{port}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
-           family={Wikipedia},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \field{extraname}{5}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extradate}{5}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Porto (Redes de Computadores)}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Port_(computer_networking)
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/Port_(computer_networking)
-      \endverb
-    \endentry
-    \entry{synflood}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
-           family={Wikipedia},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \field{extraname}{6}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extradate}{6}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{SYN flood}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/SYN_flood
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/SYN_flood
-      \endverb
-    \endentry
-    \entry{udpflood}{online}{}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
-           family={Wikipedia},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhashraw}{9c677286866aad38f8e9b660f5411814}
-      \field{extraname}{7}
-      \field{sortinit}{W}
-      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extradate}{7}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{UDP flood}
-      \field{urlday}{29}
-      \field{urlmonth}{10}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/UDP_flood
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/UDP_flood
+      \verb https://en.wikipedia.org/wiki/Data_Encryption_Standard
       \endverb
     \endentry
   \enddatalist

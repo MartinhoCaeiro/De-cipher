@@ -135,26 +135,25 @@
 % Abstract
 \section*{\LARGE\textbf{\textit{Resumo}}}
 
-Este relatório descreve o desenvolvimento de uma aplicação de segurança informática, implementada em Python,
-uma linguagem de programação dinâmica. O objetivo é explorar conceitos fundamentais de segurança
-e demonstrar a aplicação prática desses conceitos. Esta aplicação é desenvolvida no âmbito da unidade curricular
-de Linguagens de Programação Dinâmicas \cite{paglpd}.
+Este relatório descreve o desenvolvimento de uma aplicação de cifra e decifra de ficheiros, implementada em Python,
+uma linguagem de alto nível. O objetivo é explorar cifras de criptografia simétrica e demonstrar a aplicação prática das mesmas.
+Esta aplicação é desenvolvida no âmbito da unidade curricular de Criptografia e Criptanalise Aplicadas \cite{paglpd}.
 
 \vspace{1cm}
 % Keywords
-\textbf{Keywords:} python, segurança informática, programação dinâmica
+\textbf{Keywords:} python, criptanalise, criptografia simétrica
 \newpage
 %--------------------------------------------------------------------------------------------------------------------------------------
 
 \section*{\LARGE\textbf{\textit{Abstract}}}
 
-This report describes the development of a cybersecurity application implemented in Python,
-a dynamic programming language. The goal is to explore fundamental security concepts and demonstrate their practical application.
-This application is developed within the scope of the Dynamic Programming Languages course \cite{paglpd}.
+This report describes the development of a file encryption and decryption application, implemented in Python,
+a high-level language. The objective is to explore symmetric encryption ciphers and demonstrate their practical application.
+This application is developed within the scope of the course Cryptography and Applied Cryptanalysis \cite{paglpd}.
 
 \vspace{1cm}
 % Keywords
-\textbf{Keywords:} python, cybersecurity, dynamic programming language
+\textbf{Keywords:} python, cryptanalysis, symmetric cryptography
 
 
 \renewcommand{\contentsname}{Índice}       % Título do sumário
@@ -171,131 +170,70 @@ This application is developed within the scope of the Dynamic Programming Langua
 \pagenumbering{arabic}
 
 \section{Introdução}\label{intro}
-Esta aplicação consistirá na junção de várias ferramentas de segurança informática, tais como Port Scanner, UDP Flooder,
-SYN Flooder, sistema de Logging, sistema de troca de Mensagens, Port Knocker e Password Manager.
-A aplicação será desenvolvida em Python (\cite{python}) e tem como base uma interface de linha de comandos (CLI),
+Esta aplicação consistirá na junção de 4 cifras de criptografia simétrica, AES, DES, Vigenère e PlayFair.
+A aplicação será desenvolvida em Python (\cite{python}) e tem como base uma interface gráfica simples (GUI),
 permitindo ao utilizador interagir com o sistema de forma simples e eficiente.
-O sistema base a ser utilizado será o Kali Linux (\cite{kali}), devido à sua popularidade na área de
-segurança informática e à vasta gama de ferramentas disponíveis.
 Todo o progresso do projeto será documentado no repositório GitHub (\cite{github}).
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \section{Introdução Teórica}\label{theory}
-\subsection{Porto}
-Um porto (\cite{port}) é um ponto de extremidade lógico para comunicação em rede, usado para identificar serviços ou aplicações específicas em um dispositivo.
-Os protocolos que usam principalmente portas são os protocolos da camada de transporte, tais como o Protocolo de controle de transmissão (TCP)
-e User Datagram Protocol (UDP) do conjunto de protocolos da internet.
+\subsection{AES}
+O AES (Advanced Encryption Standard) (\cite{aes}) é um padrão de criptografia simétrica amplamente utilizado para proteger dados.
+Ele utiliza blocos de 128 bits e chaves de 128, 192 ou 256 bits, oferecendo alta segurança e eficiência.
 
-\subsection{UDP Flood}
-Um ataque UDP flood (\cite{udpflood}) é um tipo de ataque de negação de serviço (DoS) que visa inundar um alvo com pacotes UDP,
-sobrecarregando a largura de banda e os recursos do sistema.
+\subsection{DES}
+O DES (Data Encryption Standard) (\cite{des}) é um algoritmo de criptografia simétrica que foi amplamente utilizado no passado.
+Ele opera em blocos de 64 bits e utiliza uma chave de 56 bits.
+Embora tenha sido substituído por algoritmos mais seguros, o DES ainda é relevante para fins educacionais.
 
-\subsection{SYN Flood}
-Um ataque SYN flood (\cite{synflood}) é um tipo de ataque de negação de serviço (DoS) que explora o processo de handshake do TCP,
-enviando uma série de pacotes SYN para um servidor, mas nunca completando o handshake, o que pode levar à exaustão dos recursos do mesmo.
+\subsection{Vigenère}
+A cifra de Vigenère (\cite{vigenere}) é um método de criptografia que utiliza uma palavra-chave para cifrar o texto.
+Ela é baseada na cifra de César, mas em vez de usar um único deslocamento, ela aplica deslocamentos diferentes com
+base nas letras da palavra-chave.
 
-\subsection{Logging}
-Logging (\cite{logging}) refere-se ao processo de registrar eventos que ocorrem em um sistema de computador.
-Esses registos, conhecidos como logs, são essenciais para a análise de segurança,
-pois permitem que os administradores identifiquem atividades suspeitas e respondam a incidentes de segurança.
-
-\newpage
-\subsection{Port Knocking}
-Port Knocking (\cite{portknocking}) é uma técnica de segurança que envolve o envio de uma sequência de pacotes para portas específicas em um servidor,
-a fim de abrir uma porta de acesso (geralmente SSH) que está fechada por padrão. Essa técnica é usada para ocultar
-serviços de rede e proteger servidores contra ataques automatizados.
-
-\subsection{Password}
-Uma password (ou senha) (\cite{password}) é uma sequência de caracteres usada para autenticar a identidade de um utilizador.
-As passwords são uma das formas mais comuns de autenticação e são usadas para proteger o acesso a sistemas, contas e dados sensíveis.
-
-\subsection{2FA}
-A autenticação de dois fatores (2FA) (\cite{2fa}) é um método de segurança que requer dois tipos diferentes de autenticação para verificar
-a identidade de um utilizador. Normalmente, isso envolve algo que o utilizador sabe (como uma password) e algo que o
-utilizador possui (como um dispositivo móvel para receber um código temporário).
-
-%---------------------------------------------------------------------------------------------------------------------------
-\newpage
-\section{Configuração do Servidor}\label{obj}
-A instalação do Kali Linux (\cite{kali}), foi feita numa maquina virtual utilizando o VirtualBox (\cite{virtualbox}).
-Para facilitar a instalação foi utilizado um .iso feito especificamente para o VirtualBox, que já tinha o processo de instalação
-automatizado, poupando assim tempo na instalação do sistema operativo.\\
-
-Informações adicionais incluem 4GB de RAM e seis processadores de CPU e a rede está em modo 'bridge'.
-Foi utilizado o Visual Studio Code (\cite{vscode}) como editor de texto para facilitar a edição dos scripts.\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.8\textwidth]{Recursos/Server.png}
-	\caption{Exemplo de Maquina Utilizada}
-	\label{fig:nfswarning}
-\end{figure}
+\subsection{PlayFair}
+A cifra de PlayFair (\cite{playfair}) é um método de criptografia que utiliza uma matriz de 5x5 para cifrar pares de letras.
+Ela é mais segura do que a cifra de César, pois não utiliza um deslocamento fixo.
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \section{Desenvolvimento dos Scripts}\label{dev}
-Todos os seguintes scripts foram desenvolvidos em Python e todos verificam se a maquina possui os pacotes necessários
+Todos os seguintes scripts foram desenvolvidos em Python com o uso do VS Code (\cite{vscode}) e todos verificam se a maquina possui os pacotes necessários
 para o funcionamento da ferramenta, irá perguntar se quer instalar para poder continuar a utilizar. Caso
 o utilizador deseje prosseguir, o script irá instalar os pacotes necessários e depois irá ativá-los.
-Cada script pode ser executado individualmente ou através do menu principal.
 
 %---------------------------------------------------------------------------------------------------------------------------
-\subsection{Menu}
-O menu é o metodo principal para a interação com a ferramenta. Para aceder a uma funcionalidade, o utilizador deve selecionar a opção correspondente no menu.
-Para executar o menu apenas é necessário escrever `python menu.py`.\\
+\subsection{GUI}
+O menu GUI é o metodo principal de interação com a ferramenta. Para aceder a um dos metodos de cifra/decifra, o utilizador deve selecionar a aba correspondente.
+Para executar o menu apenas é necessário escrever `python gui.py`.\\
 
-O menu apresenta-se da seguinte forma:
-\begin{verbatim}
-    ========== MENU PRINCIPAL - LPD-TOOL ==========
-    1 - Port Scanner
-    2 - UDP Flooder
-    3 - SYN Flooder
-    4 - Logger
-    5 - Messenger
-    6 - Port Knocker
-    7 - Password Manager
-    0 - Sair
-    ===============================================
-    Escolha uma opção: 
-\end{verbatim}
+O menu GUI apresenta-se da seguinte forma:
+
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
-\subsection{Port Scanner}
+\subsection{AES}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
-\subsection{UDP Flooder}
+\subsection{DES}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
-\subsection{SYN Flooder}
+\subsection{Vigenère}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
-\subsection{Logger}
-
-%---------------------------------------------------------------------------------------------------------------------------
-\newpage
-\subsection{Messenger}
-
-%---------------------------------------------------------------------------------------------------------------------------
-\newpage
-\subsection{Port Knocker}
-
-%---------------------------------------------------------------------------------------------------------------------------
-\newpage
-\subsection{Password Manager}
+\subsection{PlayFair}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \section{Conclusão}\label{con}
-O desenvolvimento deste laboratório permitiu explorar conceitos fundamentais de segurança informática 
-e linguagens de programação dinâmicas. Apesar de alguns desafios encontrados, foi possível implementar as 
-ferramentas solicitadas e configurar um menu centralizado para facilitar a utilização dos mesmos. 
-Durante este processo, foram revistos conceitos previamente estudados, como o Port Knocking, 
-e foi dada a oportunidade de aprender novos, como UDP Flooding e SYN Flooding.
+O desenvolvimento desta aplicação permitiu explorar conceitos fundamentais sobre cifras simétricas.
+Apesar de alguns desafios encontrados, foi possível implementar as
+cifras solicitadas e configurar uma interface centralizada para facilitar a utilização das mesmas.
+Durante este processo, foram revistos conceitos previamente estudados na licenciatura de Engenharia Informática.
 %---------------------------------------------------------------------------------------------------------------------------
 
 \newpage
