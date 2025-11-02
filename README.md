@@ -21,18 +21,8 @@ This repository includes the code, resources (keys, tables, GUI screenshot) and 
 - Python 3.8+
 - pycryptodome
 - tkinter (usually included with Python on most platforms)
-- Any other GUI dependencies used by the project (see requirements.txt if present)
+- Any other GUI dependencies used by the project 
 
-Install dependencies (if a requirements.txt exists):
-```bash
-python -m pip install -r requirements.txt
-```
-Or install the main crypto dependency manually:
-```bash
-python -m pip install pycryptodome
-```
-
-The application will attempt to check for required packages at runtime and ask to install missing ones if necessary.
 
 ## Repository layout (indicative)
 - gui.py                 — main GUI script
@@ -45,7 +35,6 @@ The application will attempt to check for required packages at runtime and ask t
   - GUI.png
   - referencias.bib
 - Relatorio.tex          — LaTeX report describing implementation and tests
-- requirements.txt       — (optional) Python dependencies
 
 Note: File names and layout are described based on the report.
 
