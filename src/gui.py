@@ -14,11 +14,110 @@ operations are delegated to the modules in `scripts`.
 """
 
 import sys
+import importlib
+import subprocess
 import tkinter as tk
 import tkinter.font as tkfont
 from tkinter import ttk, filedialog, messagebox
-from scripts import aes, des, vigenere, playfair
 from style_dark import apply_dark_theme
+
+
+def _ensure_packages(pack_map):
+    """Ensure external packages are available.
+
+    pack_map: mapping of import_name -> pip_package_name
+
+    For each mapping, try to import the module. If import fails, prompt
+    the user (via a temporarily created hidden Tk root) asking whether
+    the program may install the required pip package. If the user
+    agrees, run `python -m pip install <package>` using the current
+    interpreter. If installation fails or the user declines, the
+    function will raise ImportError.
+    """
+    missing = []
+    for import_name in pack_map:
+        try:
+            importlib.import_module(import_name)
+        except Exception:
+            missing.append((import_name, pack_map[import_name]))
+
+    if not missing:
+        return
+
+    # Create a temporary hidden Tk root for dialogs
+    _tmp_root = None
+    try:
+        _tmp_root = tk.Tk()
+        _tmp_root.withdraw()
+    except Exception:
+        _tmp_root = None
+
+    for import_name, pip_name in missing:
+        msg = (
+            f"A biblioteca requerida '{import_name}' não está instalada.\n\n"
+            f"Deseja permitir que a aplicação instale '{pip_name}' agora?"
+        )
+        allow = False
+        try:
+            allow = messagebox.askyesno("Instalar dependência", msg, parent=_tmp_root)
+        except Exception:
+            # fallback to console prompt if messagebox not available
+            try:
+                resp = input(msg + " [y/N]: ")
+                allow = resp.strip().lower().startswith("y")
+            except Exception:
+                allow = False
+
+        if not allow:
+            if _tmp_root:
+                try:
+                    _tmp_root.destroy()
+                except Exception:
+                    pass
+            raise ImportError(f"Dependência ausente: {import_name}")
+
+        # Run pip install using the current Python executable
+        try:
+            messagebox.showinfo("Instalação", f"Instalando {pip_name}...", parent=_tmp_root)
+        except Exception:
+            pass
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
+        except Exception as e:
+            try:
+                messagebox.showerror("Erro", f"Falha na instalação de {pip_name}: {e}", parent=_tmp_root)
+            except Exception:
+                pass
+            if _tmp_root:
+                try:
+                    _tmp_root.destroy()
+                except Exception:
+                    pass
+            raise
+
+    if _tmp_root:
+        try:
+            _tmp_root.destroy()
+        except Exception:
+            pass
+
+
+# Map import names to pip package names when they differ. Add more
+# entries if future scripts require other third-party libraries.
+_REQUIRED_PACKAGES = {
+    "Crypto": "pycryptodome",
+}
+
+# Ensure dependencies are present before importing modules that need them.
+try:
+    _ensure_packages(_REQUIRED_PACKAGES)
+except ImportError as e:
+    # If dependencies are missing and user declined install, exit.
+    print(f"Erro: {e}")
+    sys.exit(1)
+
+# Now safe to import local cipher modules that may depend on third-party libs
+from scripts import aes, des, vigenere, playfair
 
 if sys.platform.startswith("win"):
     try:
