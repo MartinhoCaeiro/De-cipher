@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,10pt]{article}
 % Pacotes necessários
 \usepackage[portuguese]{babel}
 \usepackage[backend=biber, style=apa, citestyle=apa, language=portuguese]{biblatex}
@@ -19,10 +19,23 @@
 \usepackage{amsmath}
 \usepackage{karnaugh-map}
 \usepackage[section]{placeins}
-\usepackage{geometry}
+\usepackage[margin=2cm]{geometry}
 \usepackage{amssymb}
 \usepackage{titling}
 \usepackage[T1]{fontenc}
+
+% Set main font to Arial. If compiling with XeLaTeX/LuaLaTeX, use fontspec to select the system Arial.
+% Otherwise fall back to the uarial package (pdfLaTeX). If uarial is not available, Helvetica will be used.
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
+    \usepackage{fontspec}
+    % For best results compile with XeLaTeX or LuaLaTeX so the system Arial is used.
+    \setmainfont{Arial}
+\else
+    % pdfLaTeX fallback: attempt to use a close sans-serif (uarial) and make it the document default.
+    \usepackage[scaled]{uarial}
+    \renewcommand*\familydefault{\sfdefault}
+\fi
 \usepackage{float}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
@@ -33,8 +46,10 @@
 \usepackage{soul}
 \usepackage{afterpage}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
-\onehalfspacing
-
+\singlespacing
+% Reduce paragraph spacing and set a normal paragraph indent so more text fits on each page
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.25em}
 
 % Comando para criar uma página vazia
 \newcommand\myemptypage{
