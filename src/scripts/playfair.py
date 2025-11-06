@@ -7,6 +7,7 @@ merging 'J' into 'I'.
 """
 
 import os
+from typing import Optional, Set
 
 
 def read_board_from_file(path: str):
@@ -23,34 +24,85 @@ def read_board_from_file(path: str):
         raise FileNotFoundError(f"Ficheiro da tabela não encontrado: {path}")
 
     with open(path, "r", encoding="utf-8") as f:
-        lines = [line.strip().upper().replace("J", "I") for line in f if line.strip()]
+        # Read non-empty lines (preserve original characters). We'll
+        # interpret the file either as a classical 5x5 A..Z board or an
+        # extended/custom board containing arbitrary visible ASCII.
+        raw_lines = [line.rstrip("\n") for line in f if line.strip()]
+        # Remove BOM if present in first line
+        if raw_lines and raw_lines[0].startswith('\ufeff'):
+            raw_lines[0] = raw_lines[0].lstrip('\ufeff')
+        # For processing, strip surrounding whitespace but keep internal
+        # characters (including punctuation and digits).
+        lines = [line.strip() for line in raw_lines]
 
-    board = []
+    # Collect characters preserving order, ignoring whitespace. We'll
+    # keep duplicates out so the first occurrence determines placement.
+    seen = []
     for line in lines:
         for ch in line:
-            if ch.isalpha() and ch not in [c for row in board for c in row]:
-                if len(board) == 0 or len(board[-1]) == 5:
-                    board.append([])
-                if len(board[-1]) < 5:
-                    board[-1].append(ch)
+            # For extended/custom boards we want to allow space and other
+            # visible whitespace characters as valid board cells. Do not
+            # skip whitespace here; keep the character as-is so files
+            # that include a space in the table (e.g. the 10x10 sample)
+            # will include it in the board.
+            if ch not in seen:
+                seen.append(ch)
 
-    # Flatten collected letters. Ensure we always return a 5x5 board:
-    # - If fewer than 25 letters were provided, fill the remainder with
-    #   the remaining alphabet (without J).
-    # - If more than 25 letters were provided, ignore extras and truncate
-    #   to the first 25 unique letters encountered.
-    flat = [c for row in board for c in row]
-    if len(flat) < 25:
+    # Determine whether the provided board is a standard 5x5 A..Z board.
+    # Criteria: all characters are letters A..Z or a..z and there are at
+    # most 25 unique letter characters. In that case we normalize to the
+    # classic uppercase A..Z without J (map J->I) behavior.
+    letters_only = all(("A" <= c <= "Z") or ("a" <= c <= "z") for c in seen)
+    if letters_only:
+        # Build legacy 5x5 board: uppercase, map J->I, and keep A..Z only
+        flat = []
+        for ch in seen:
+            ch2 = ch.upper().replace("J", "I")
+            if "A" <= ch2 <= "Z" and ch2 not in flat:
+                flat.append(ch2)
+        # Fill with remaining alphabet (without J)
         for ch in "ABCDEFGHIKLMNOPQRSTUVWXYZ":
             if ch not in flat:
                 flat.append(ch)
-            if len(flat) == 25:
+            if len(flat) >= 25:
                 break
-    elif len(flat) > 25:
         flat = flat[:25]
+        board = [flat[i:i+5] for i in range(0, 25, 5)]
+        return board
 
-    board = [flat[i:i+5] for i in range(0, 25, 5)]
+    # Otherwise treat the file as an extended/custom board. We'll build a
+    # square board (N x N) from the unique characters provided. If the
+    # provided characters don't form a perfect square we'll choose the
+    # smallest N such that N*N >= len(flat) and fill remaining slots
+    # with visible ASCII characters (33..125) not already used.
+    flat = list(seen)
+    if not flat:
+        raise ValueError("Provided board file contains no usable characters")
 
+    # Determine smallest square size that fits the provided characters
+    import math
+    n = int(math.ceil(math.sqrt(len(flat))))
+
+    # Fill remaining slots up to n*n with visible ASCII characters
+    for code in range(33, 126):
+        if len(flat) >= n * n:
+            break
+        ch = chr(code)
+        if ch not in flat:
+            flat.append(ch)
+
+    # If still not enough (very unlikely), expand n until we can fill
+    while len(flat) > n * n:
+        n += 1
+        for code in range(33, 126):
+            if len(flat) >= n * n:
+                break
+            ch = chr(code)
+            if ch not in flat:
+                flat.append(ch)
+
+    flat = flat[: n * n]
+    board = [flat[i:i + n] for i in range(0, n * n, n)]
     return board
 
 
@@ -80,7 +132,16 @@ def search_letter(board, letter: str):
 
     Letter 'J' is mapped to 'I' and search is case-insensitive.
     """
-    letter = letter.upper().replace("J", "I")
+    # Decide whether this is the classical board (5x5 uppercase letters)
+    flat = [c for row in board for c in row]
+    is_classic = len(flat) == 25 and all("A" <= c <= "Z" for c in flat)
+
+    if is_classic:
+        # For the classical board do case-insensitive lookup and map J->I
+        letter = letter.upper().replace("J", "I")
+    # Otherwise keep letter as provided (extended boards may be case-
+    # sensitive and contain punctuation/digits).
+
     for i, row in enumerate(board):
         for j, char in enumerate(row):
             if char == letter:
@@ -88,20 +149,29 @@ def search_letter(board, letter: str):
     return None
 
 
-def fix_message(message: str) -> str:
+def fix_message(message: str, allowed_chars: Optional[Set[str]] = None, map_j: bool = True) -> str:
     """Normalize a message for Playfair.
 
-    Behaviour changed: accept all visible ASCII characters with codes
-    from 33 to 125 (inclusive). Characters outside that range are removed.
-
-    The function still uppercases the message (so letters become A..Z).
-    Repeated characters are split with 'X' and the result is padded to
-    even length with 'X' as before.
+    Only ASCII letters A..Z are retained (J mapped to I). Other characters
+    (digits, punctuation, accented letters, etc.) are removed. The result
+    is uppercased. Repeated characters in a digraph are split with 'X' and
+    the output is padded to even length with 'X'.
     """
-    # Accept visible ASCII in the requested range (33..125). We uppercase
-    # the input so letters are normalized; non-letter symbols remain as-is
-    # if they are in the allowed ASCII range.
-    message = ''.join(ch for ch in message.upper() if 33 <= ord(ch) <= 125)
+    if allowed_chars is None:
+        # Default behavior: classical Playfair with A..Z and J->I mapping
+        message = ''.join(ch for ch in message.upper().replace("J", "I") if "A" <= ch <= "Z")
+    else:
+        # Keep only characters present in allowed_chars. Do not change
+        # case or map J->I unless explicitly requested via map_j.
+        s = message
+        if map_j:
+            s = s.replace("J", "I")
+        # If we're using the classic mapping (map_j=True) the board
+        # characters are uppercase A..Z. Uppercase the input so lowercase
+        # letters are preserved when filtering against allowed_chars.
+        if map_j:
+            s = s.upper()
+        message = ''.join(ch for ch in s if ch in allowed_chars)
     i = 0
     result = ""
     while i < len(message):
@@ -129,17 +199,22 @@ def process_pair(board, a: str, b: str, mode: str = "encrypt") -> str:
     if not pos_a or not pos_b:
         return a + b
 
+    rows = len(board)
+    cols = len(board[0]) if rows > 0 else 0
+
+    # Same row: move right (encrypt) or left (decrypt), wrapping by columns
     if pos_a[0] == pos_b[0]:
         if mode == "encrypt":
-            return board[pos_a[0]][(pos_a[1] + 1) % 5] + board[pos_b[0]][(pos_b[1] + 1) % 5]
+            return board[pos_a[0]][(pos_a[1] + 1) % cols] + board[pos_b[0]][(pos_b[1] + 1) % cols]
         else:
-            return board[pos_a[0]][(pos_a[1] - 1) % 5] + board[pos_b[0]][(pos_b[1] - 1) % 5]
+            return board[pos_a[0]][(pos_a[1] - 1) % cols] + board[pos_b[0]][(pos_b[1] - 1) % cols]
 
+    # Same column: move down (encrypt) or up (decrypt), wrapping by rows
     elif pos_a[1] == pos_b[1]:
         if mode == "encrypt":
-            return board[(pos_a[0] + 1) % 5][pos_a[1]] + board[(pos_b[0] + 1) % 5][pos_b[1]]
+            return board[(pos_a[0] + 1) % rows][pos_a[1]] + board[(pos_b[0] + 1) % rows][pos_b[1]]
         else:
-            return board[(pos_a[0] - 1) % 5][pos_a[1]] + board[(pos_b[0] - 1) % 5][pos_b[1]]
+            return board[(pos_a[0] - 1) % rows][pos_a[1]] + board[(pos_b[0] - 1) % rows][pos_b[1]]
 
     else:
         return board[pos_a[0]][pos_b[1]] + board[pos_b[0]][pos_a[1]]
@@ -150,7 +225,13 @@ def encrypt_text(text: str, board) -> str:
 
     The text is normalized with :func:`fix_message` before processing.
     """
-    text = fix_message(text)
+    # Derive allowed characters from the board. For the classic 5x5 board
+    # this will be A..Z with J->I mapping; for extended boards we use the
+    # exact characters that appear in the board.
+    flat = [c for row in board for c in row]
+    is_classic = len(flat) == 25 and all("A" <= c <= "Z" for c in flat)
+    allowed = set(flat)
+    text = fix_message(text, allowed_chars=allowed, map_j=is_classic)
     result = ""
     for i in range(0, len(text), 2):
         result += process_pair(board, text[i], text[i + 1], "encrypt")
@@ -162,7 +243,13 @@ def decrypt_text(text: str, board) -> str:
 
     The function assumes input is already formatted as digraphs.
     """
-    text = text.upper().replace(" ", "")
+    # Normalize input by keeping only characters that appear in the board.
+    flat = [c for row in board for c in row]
+    is_classic = len(flat) == 25 and all("A" <= c <= "Z" for c in flat)
+    if is_classic:
+        text = ''.join(ch for ch in text.upper().replace("J", "I") if ch in flat)
+    else:
+        text = ''.join(ch for ch in text if ch in flat)
     result = ""
     for i in range(0, len(text), 2):
         result += process_pair(board, text[i], text[i + 1], "decrypt")
@@ -197,8 +284,14 @@ def decrypt_file(input_path: str, output_path: str, key: str = ""):
     with open(input_path, "r", encoding="utf-8") as f_in:
         text = f_in.read()
     plain = decrypt_text(text, board)
-    # When saving decrypted text, write 'I' as 'I/J' so the I/J convention
-    # is explicit in the output file (matches write_board_to_file behaviour).
-    out_text = plain.replace("I", "I/J")
+    # When saving decrypted text, for the classical 5x5 alphabet board we
+    # make the I/J convention explicit by writing I as I/J. For extended
+    # boards we preserve characters as-is.
+    flat = [c for row in board for c in row]
+    is_classic = len(flat) == 25 and all(("A" <= c <= "Z") or ("a" <= c <= "z") for c in flat)
+    if is_classic:
+        out_text = plain.replace("I", "I/J")
+    else:
+        out_text = plain
     with open(output_path, "w", encoding="utf-8") as f_out:
         f_out.write(out_text)

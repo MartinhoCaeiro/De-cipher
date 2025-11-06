@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  6 NOV 2025 18:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  6 NOV 2025 22:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1233,6 +1233,10 @@ Package pdftex.def Info: Recursos/playfair.png  used on input line 322.
 
 
 [6 <./Recursos/playfair.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 330--333
+
+ []
+
 <Recursos/aes_test1.png, id=190, 416.757pt x 107.2005pt>
 File: Recursos/aes_test1.png Graphic file (type png)
 <use Recursos/aes_test1.png>
@@ -1241,17 +1245,17 @@ Package pdftex.def Info: Recursos/aes_test1.png  used on input line 338.
 <Recursos/aes_test2.png, id=191, 412.54124pt x 91.542pt>
 File: Recursos/aes_test2.png Graphic file (type png)
 <use Recursos/aes_test2.png>
-Package pdftex.def Info: Recursos/aes_test2.png  used on input line 345.
+Package pdftex.def Info: Recursos/aes_test2.png  used on input line 346.
 (pdftex.def)             Requested size: 435.32422pt x 96.59825pt.
 <Recursos/des_test1.png, id=192, 460.72125pt x 90.3375pt>
 File: Recursos/des_test1.png Graphic file (type png)
 <use Recursos/des_test1.png>
-Package pdftex.def Info: Recursos/des_test1.png  used on input line 357.
+Package pdftex.def Info: Recursos/des_test1.png  used on input line 358.
 (pdftex.def)             Requested size: 435.32422pt x 85.35696pt.
 <Recursos/des_test2.png, id=193, 408.3255pt x 89.73524pt>
 File: Recursos/des_test2.png Graphic file (type png)
 <use Recursos/des_test2.png>
-Package pdftex.def Info: Recursos/des_test2.png  used on input line 364.
+Package pdftex.def Info: Recursos/des_test2.png  used on input line 366.
 (pdftex.def)             Requested size: 435.32422pt x 95.67068pt.
 
 
@@ -1259,35 +1263,47 @@ Package pdftex.def Info: Recursos/des_test2.png  used on input line 364.
 <Recursos/vigenere_test1.png, id=202, 401.70074pt x 84.315pt>
 File: Recursos/vigenere_test1.png Graphic file (type png)
 <use Recursos/vigenere_test1.png>
-Package pdftex.def Info: Recursos/vigenere_test1.png  used on input line 377.
+Package pdftex.def Info: Recursos/vigenere_test1.png  used on input line 379.
 (pdftex.def)             Requested size: 435.32422pt x 91.37402pt.
 <Recursos/vigenere_test2.png, id=203, 407.121pt x 90.3375pt>
 File: Recursos/vigenere_test2.png Graphic file (type png)
 <use Recursos/vigenere_test2.png>
-Package pdftex.def Info: Recursos/vigenere_test2.png  used on input line 384.
+Package pdftex.def Info: Recursos/vigenere_test2.png  used on input line 387.
 (pdftex.def)             Requested size: 435.32422pt x 96.60088pt.
-File: Recursos/des_test1.png Graphic file (type png)
-<use Recursos/des_test1.png>
-Package pdftex.def Info: Recursos/des_test1.png  used on input line 396.
-(pdftex.def)             Requested size: 435.32422pt x 85.35696pt.
-File: Recursos/des_test1.png Graphic file (type png)
-<use Recursos/des_test1.png>
-Package pdftex.def Info: Recursos/des_test1.png  used on input line 403.
-(pdftex.def)             Requested size: 435.32422pt x 85.35696pt.
+<Recursos/playfair_test1.png, id=204, 305.34074pt x 86.12175pt>
+File: Recursos/playfair_test1.png Graphic file (type png)
+<use Recursos/playfair_test1.png>
+Package pdftex.def Info: Recursos/playfair_test1.png  used on input line 403.
+(pdftex.def)             Requested size: 208.95375pt x 58.93784pt.
+<Recursos/playfair_test2.png, id=205, 331.83975pt x 79.497pt>
+File: Recursos/playfair_test2.png Graphic file (type png)
+<use Recursos/playfair_test2.png>
+Package pdftex.def Info: Recursos/playfair_test2.png  used on input line 411.
+(pdftex.def)             Requested size: 208.95375pt x 50.0591pt.
+<Recursos/playfair_test3.png, id=206, 406.51875pt x 79.497pt>
+File: Recursos/playfair_test3.png Graphic file (type png)
+<use Recursos/playfair_test3.png>
+Package pdftex.def Info: Recursos/playfair_test3.png  used on input line 423.
+(pdftex.def)             Requested size: 208.95375pt x 40.86195pt.
+<Recursos/playfair_test4.png, id=207, 407.72325pt x 81.30376pt>
+File: Recursos/playfair_test4.png Graphic file (type png)
+<use Recursos/playfair_test4.png>
+Package pdftex.def Info: Recursos/playfair_test4.png  used on input line 431.
+(pdftex.def)             Requested size: 208.95375pt x 41.66656pt.
 
 
-[8 <./Recursos/vigenere_test1.png> <./Recursos/vigenere_test2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 414--418
+[8 <./Recursos/vigenere_test1.png> <./Recursos/vigenere_test2.png> <./Recursos/playfair_test1.png> <./Recursos/playfair_test2.png> <./Recursos/playfair_test3.png> <./Recursos/playfair_test4.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 444--448
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 414--418
+Underfull \hbox (badness 10000) in paragraph at lines 444--448
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 414--418
+Underfull \hbox (badness 10000) in paragraph at lines 444--448
 
  []
 
@@ -1295,11 +1311,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 414--418
 
 [9]
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 9.49997pt on input line 430.
+(Font)              scaled to size 9.49997pt on input line 460.
 LaTeX Font Info:    Font shape `TS1/ua1/m/it' will be
-(Font)              scaled to size 9.49997pt on input line 430.
+(Font)              scaled to size 9.49997pt on input line 460.
 
-Overfull \hbox (6.98294pt too wide) in paragraph at lines 431--431
+Overfull \hbox (6.98294pt too wide) in paragraph at lines 461--461
 [][]\T1/ua1/m/n/10 Martinho Ca-eiro & Paulo Abade. (2025). \T1/ua1/m/it/10 (De)cipher\TS1/ua1/m/it/10 — \T1/ua1/m/it/10 - Re-po-si-tó-rio de Có-digo \T1/ua1/m/n/10 [Re-po-si-tó-rio da Apli-ca-ção (De)cipher\TS1/ua1/m/n/10 —\T1/ua1/m/n/10 ].
  []
 
@@ -1317,17 +1333,17 @@ Package logreq Info: Writing requests to 'Relatorio.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38280 strings out of 473897
- 763203 string characters out of 5726462
- 1620430 words of memory out of 5000000
- 60557 multiletter control sequences out of 15000+600000
+ 38312 strings out of 473897
+ 764248 string characters out of 5726462
+ 1620646 words of memory out of 5000000
+ 60589 multiletter control sequences out of 15000+600000
  631166 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,8n,107p,748b,2805s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,10n,107p,748b,2805s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1000.pk><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1b8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1bi8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1r8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1ri8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on Relatorio.pdf (15 pages, 435716 bytes).
+Output written on Relatorio.pdf (15 pages, 470774 bytes).
 PDF statistics:
- 273 PDF objects out of 1000 (max. 8388607)
+ 281 PDF objects out of 1000 (max. 8388607)
  51 named destinations out of 1000 (max. 500000)
- 216 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 236 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -329,7 +329,7 @@ ficheiros de texto usando o caminho da board como \texttt{key}. Em caso de fiche
 \subsection{Testes e Resultados}
 Os seguintes testes foram realizados para verificar o correto funcionamento das cifras implementadas.
 Os dados de entrada utilizados foram ficheiros de texto simples contendo frases comuns em português.
-Todos os ficheiros de chave e tabela foram criados previamente e armazenados em ficheiros separados.
+Todos os ficheiros de chave e tabela foram criados previamente e armazenados em ficheiros separados.\\
 
 \begin{figure}[H]
 	\centering
@@ -337,6 +337,7 @@ Todos os ficheiros de chave e tabela foram criados previamente e armazenados em 
 		\centering
 		\includegraphics[width=0.9\textwidth]{Recursos/aes_test1.png}
 		\caption{Depois da Cifragem}
+		\vspace{0.5cm}
 		\label{fig:aes_bf}
 	\end{subfigure}
 	\vspace{0.5cm}
@@ -356,6 +357,7 @@ Todos os ficheiros de chave e tabela foram criados previamente e armazenados em 
 		\centering
 		\includegraphics[width=0.9\textwidth]{Recursos/des_test1.png}
 		\caption{Depois da Cifragem}
+		\vspace{0.5cm}
 		\label{fig:des_bf}
 	\end{subfigure}
 	\vspace{0.5cm}
@@ -376,6 +378,7 @@ Todos os ficheiros de chave e tabela foram criados previamente e armazenados em 
 		\centering
 		\includegraphics[width=0.9\textwidth]{Recursos/vigenere_test1.png}
 		\caption{Depois da Cifragem}
+		\vspace{0.5cm}
 		\label{fig:vigenere_bf}
 	\end{subfigure}
 	\vspace{0.5cm}
@@ -389,23 +392,50 @@ Todos os ficheiros de chave e tabela foram criados previamente e armazenados em 
 	\label{fig:vigenere_test}
 \end{figure}
 
+\vspace{3cm}
+
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\centering
-		\includegraphics[width=0.9\textwidth]{Recursos/des_test1.png}
-		\caption{Depois da Cifragem}
-		\label{fig:playfair_bf}
+		\begin{subfigure}[b]{\textwidth}
+			\centering
+			\includegraphics[width=0.9\textwidth]{Recursos/playfair_test1.png}
+			\caption{Depois da Cifragem}
+			\vspace{0.5cm}
+			\label{fig:playfair_bf5}
+		\end{subfigure}
+		\vspace{0.5cm}
+		\begin{subfigure}[b]{\textwidth}
+			\centering
+			\includegraphics[width=0.9\textwidth]{Recursos/playfair_test2.png}
+			\caption{Depois da Decifragem}
+			\label{fig:playfair_af5}
+		\end{subfigure}
+		\caption{Testes com PlayFair 5x5}
 	\end{subfigure}
+	\hfill
 	\vspace{0.5cm}
-	\begin{subfigure}[b]{\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\centering
-		\includegraphics[width=0.9\textwidth]{Recursos/des_test1.png}
-		\caption{Depois da Decifragem}
-		\label{fig:playfair_af}
+		\begin{subfigure}[b]{\textwidth}
+			\centering
+			\includegraphics[width=0.9\textwidth]{Recursos/playfair_test3.png}
+			\caption{Depois da Cifragem}
+			\vspace{1cm}
+			\label{fig:playfair_bf10}
+		\end{subfigure}
+		\vspace{0.5cm}
+		\begin{subfigure}[b]{\textwidth}
+			\centering
+			\includegraphics[width=0.9\textwidth]{Recursos/playfair_test4.png}
+			\caption{Depois da Decifragem}
+			\label{fig:playfair_af10}
+		\end{subfigure}
+		\caption{Testes com PlayFair 10x10}
 	\end{subfigure}
-	\caption{Testes com PlayFair}
-	\label{fig:playfair_test}
+	\caption{Testes com PlayFair (5x5 e 10x10)}
+	\label{fig:playfair_test_combined}
 \end{figure}
 
 %---------------------------------------------------------------------------------------------------------------------------
