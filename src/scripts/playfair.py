@@ -60,10 +60,19 @@ def search_letter(board, letter: str):
 
 
 def fix_message(message: str) -> str:
-    """Normalize a message for Playfair: remove non-letters, uppercase,
-    split repeated letters with 'X', and ensure even length by padding 'X'.
+    """Normalize a message for Playfair.
+
+    Behaviour changed: accept all visible ASCII characters with codes
+    from 33 to 125 (inclusive). Characters outside that range are removed.
+
+    The function still uppercases the message (so letters become A..Z).
+    Repeated characters are split with 'X' and the result is padded to
+    even length with 'X' as before.
     """
-    message = ''.join(ch for ch in message.upper() if ch.isascii() and ch.isalpha())
+    # Accept visible ASCII in the requested range (33..125). We uppercase
+    # the input so letters are normalized; non-letter symbols remain as-is
+    # if they are in the allowed ASCII range.
+    message = ''.join(ch for ch in message.upper() if 33 <= ord(ch) <= 125)
     i = 0
     result = ""
     while i < len(message):
