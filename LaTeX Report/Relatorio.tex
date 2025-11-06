@@ -80,7 +80,7 @@
         \vspace{2cm}
         
         % Título do projeto
-        {\Huge \textbf{Aplicação de Cifra}} \\
+        {\Huge \textbf{(De)cipher™}} \\
         
         \vspace{1.5cm}
         
@@ -118,7 +118,7 @@
         \vspace{2cm}
         
         % Título do projeto
-        {\Huge \textbf{Aplicação de Cifra}} \\
+        {\Huge \textbf{(De)cipher™}} \\
         
         \vspace{1.5cm}
         
@@ -256,7 +256,7 @@ a descifragem valida e remove esse preenchimento. Em caso de ficheiro de chave i
 		\caption{Decifragem}
 		\label{fig:aes_dec}
 	\end{subfigure}
-	\caption{AES em modo CBC.}
+	\caption{Cifragem e Decifragem com AES}
 	\label{fig:aes_combined}
 \end{figure}
 
@@ -284,7 +284,7 @@ tamanho de chave inválido ou padding inválido, são lançadas exceções aprop
 		\caption{Decifragem}
 		\label{fig:des_dec}
 	\end{subfigure}
-	\caption{DES em modo CBC.}
+	\caption{Cifragem e Decifragem com DES}
 	\label{fig:des_combined}
 \end{figure}
 %---------------------------------------------------------------------------------------------------------------------------
@@ -302,7 +302,7 @@ tabela com formato inválido ou chave vazia, são lançadas exceções apropriad
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{Recursos/vigenere.png}
-	\caption{Cifragem e Decifragem com Vigenère.}
+	\caption{Cifragem e Decifragem com Vigenère}
 	\label{fig:vigenere}
 \end{figure}
 
@@ -320,13 +320,89 @@ ficheiros de texto usando o caminho da board como \texttt{key}. Em caso de fiche
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{Recursos/playfair.png}
-	\caption{Cifragem e Decifragem com PlayFair.}
+	\caption{Cifragem e Decifragem com PlayFair}
 	\label{fig:playfair}
 \end{figure}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{Testes e Resultados}
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_enc.png}
+		\caption{Antes da Cifragem}
+		\label{fig:aes_bf}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_dec.png}
+		\caption{Depois da Decifragem}
+		\label{fig:aes_af}
+	\end{subfigure}
+	\caption{Testes com AES}
+	\label{fig:aes_test}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_enc.png}
+		\caption{Antes da Cifragem}
+		\label{fig:des_bf}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_dec.png}
+		\caption{Depois da Decifragem}
+		\label{fig:des_af}
+	\end{subfigure}
+	\caption{Testes com DES}
+	\label{fig:des_test}
+\end{figure}
+
+\newpage
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_enc.png}
+		\caption{Antes da Cifragem}
+		\label{fig:vigenere_bf}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_dec.png}
+		\caption{Depois da Decifragem}
+		\label{fig:vigenere_af}
+	\end{subfigure}
+	\caption{Testes com Vigenère}
+	\label{fig:vigenere_test}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_enc.png}
+		\caption{Antes da Cifragem}
+		\label{fig:playfair_bf}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Recursos/aes_dec.png}
+		\caption{Depois da Decifragem}
+		\label{fig:playfair_af}
+	\end{subfigure}
+	\caption{Testes com PlayFair}
+	\label{fig:playfair_test}
+\end{figure}
 
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage

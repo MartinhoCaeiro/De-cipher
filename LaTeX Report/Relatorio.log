@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  5 NOV 2025 23:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  6 NOV 2025 15:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1028,6 +1028,12 @@ LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
 (Font)              scaled to size 23.63593pt on input line 147.
 LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
 (Font)              scaled to size 23.63593pt on input line 147.
+LaTeX Font Info:    Trying to load font information for TS1+ua1 on input line 147.
+ (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/arial\ts1ua1.fd
+File: ts1ua1.fd 2006/03/21 Fontinst v1.928 font definitions for TS1/ua1.
+)
+LaTeX Font Info:    Font shape `TS1/ua1/b/n' will be
+(Font)              scaled to size 23.63593pt on input line 147.
 <Recursos/Logos/IPBejaESTIG.jpg, id=66, 501.875pt x 301.125pt>
 File: Recursos/Logos/IPBejaESTIG.jpg Graphic file (type jpg)
 <use Recursos/Logos/IPBejaESTIG.jpg>
@@ -1114,7 +1120,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 224--226
 
  []
 
-<Recursos/GUI.png, id=138, 573.94424pt x 343.88475pt>
+<Recursos/GUI.png, id=146, 573.94424pt x 343.88475pt>
 File: Recursos/GUI.png Graphic file (type png)
 <use Recursos/GUI.png>
 Package pdftex.def Info: Recursos/GUI.png  used on input line 230.
@@ -1140,14 +1146,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--243
 
  []
 
-<Recursos/aes_enc.png, id=147, 466.1415pt x 413.1435pt>
+<Recursos/aes_enc.png, id=155, 466.1415pt x 413.1435pt>
 File: Recursos/aes_enc.png Graphic file (type png)
 <use Recursos/aes_enc.png>
 Package pdftex.def Info: Recursos/aes_enc.png  used on input line 248.
 (pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
 (Font)              scaled to size 8.54997pt on input line 249.
-<Recursos/aes_dec.png, id=148, 450.483pt x 451.6875pt>
+<Recursos/aes_dec.png, id=156, 450.483pt x 451.6875pt>
 File: Recursos/aes_dec.png Graphic file (type png)
 <use Recursos/aes_dec.png>
 Package pdftex.def Info: Recursos/aes_dec.png  used on input line 255.
@@ -1164,12 +1170,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 266--271
 
  []
 
-<Recursos/des_enc.png, id=156, 450.483pt x 373.395pt>
+<Recursos/des_enc.png, id=164, 450.483pt x 373.395pt>
 File: Recursos/des_enc.png Graphic file (type png)
 <use Recursos/des_enc.png>
 Package pdftex.def Info: Recursos/des_enc.png  used on input line 276.
 (pdftex.def)             Requested size: 232.17242pt x 192.44586pt.
-<Recursos/des_dec.png, id=157, 455.90324pt x 386.04225pt>
+<Recursos/des_dec.png, id=165, 455.90324pt x 386.04225pt>
 File: Recursos/des_dec.png Graphic file (type png)
 <use Recursos/des_dec.png>
 Package pdftex.def Info: Recursos/des_dec.png  used on input line 283.
@@ -1177,10 +1183,6 @@ Package pdftex.def Info: Recursos/des_dec.png  used on input line 283.
 
 
 [4 <./Recursos/des_enc.png> <./Recursos/des_dec.png>]
-LaTeX Font Info:    Trying to load font information for TS1+ua1 on input line 293.
- (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/arial\ts1ua1.fd
-File: ts1ua1.fd 2006/03/21 Fontinst v1.928 font definitions for TS1/ua1.
-)
 LaTeX Font Info:    Font shape `TS1/ua1/m/n' will be
 (Font)              scaled to size 9.49997pt on input line 293.
 
@@ -1193,7 +1195,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--301
 
  []
 
-<Recursos/vigenere.png, id=164, 488.42474pt x 256.5585pt>
+<Recursos/vigenere.png, id=172, 488.42474pt x 256.5585pt>
 File: Recursos/vigenere.png Graphic file (type png)
 <use Recursos/vigenere.png>
 Package pdftex.def Info: Recursos/vigenere.png  used on input line 304.
@@ -1223,7 +1225,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 312--319
 
  []
 
-<Recursos/playfair.png, id=170, 561.89925pt x 380.622pt>
+<Recursos/playfair.png, id=178, 561.89925pt x 380.622pt>
 File: Recursos/playfair.png Graphic file (type png)
 <use Recursos/playfair.png>
 Package pdftex.def Info: Recursos/playfair.png  used on input line 322.
@@ -1231,15 +1233,51 @@ Package pdftex.def Info: Recursos/playfair.png  used on input line 322.
 
 
 [6 <./Recursos/playfair.png>]
+File: Recursos/aes_enc.png Graphic file (type png)
+<use Recursos/aes_enc.png>
+Package pdftex.def Info: Recursos/aes_enc.png  used on input line 334.
+(pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
+File: Recursos/aes_dec.png Graphic file (type png)
+<use Recursos/aes_dec.png>
+Package pdftex.def Info: Recursos/aes_dec.png  used on input line 341.
+(pdftex.def)             Requested size: 232.17242pt x 232.79741pt.
+File: Recursos/aes_enc.png Graphic file (type png)
+<use Recursos/aes_enc.png>
+Package pdftex.def Info: Recursos/aes_enc.png  used on input line 353.
+(pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
+File: Recursos/aes_dec.png Graphic file (type png)
+<use Recursos/aes_dec.png>
+Package pdftex.def Info: Recursos/aes_dec.png  used on input line 360.
+(pdftex.def)             Requested size: 232.17242pt x 232.79741pt.
+
 
 [7]
+File: Recursos/aes_enc.png Graphic file (type png)
+<use Recursos/aes_enc.png>
+Package pdftex.def Info: Recursos/aes_enc.png  used on input line 373.
+(pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
+File: Recursos/aes_dec.png Graphic file (type png)
+<use Recursos/aes_dec.png>
+Package pdftex.def Info: Recursos/aes_dec.png  used on input line 380.
+(pdftex.def)             Requested size: 232.17242pt x 232.79741pt.
+File: Recursos/aes_enc.png Graphic file (type png)
+<use Recursos/aes_enc.png>
+Package pdftex.def Info: Recursos/aes_enc.png  used on input line 392.
+(pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
+File: Recursos/aes_dec.png Graphic file (type png)
+<use Recursos/aes_dec.png>
+Package pdftex.def Info: Recursos/aes_dec.png  used on input line 399.
+(pdftex.def)             Requested size: 232.17242pt x 232.79741pt.
+
 
 [8]
+
+[9]
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 9.49997pt on input line 344.
+(Font)              scaled to size 9.49997pt on input line 420.
 
 
-[9] (Relatorio.aux)
+[10] (Relatorio.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
@@ -1251,17 +1289,17 @@ Package logreq Info: Writing requests to 'Relatorio.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38205 strings out of 473897
- 761428 string characters out of 5726462
- 1617374 words of memory out of 5000000
- 60490 multiletter control sequences out of 15000+600000
- 630492 words of font info for 72 fonts, out of 8000000 for 9000
+ 38233 strings out of 473897
+ 761872 string characters out of 5726462
+ 1620387 words of memory out of 5000000
+ 60512 multiletter control sequences out of 15000+600000
+ 630807 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,8n,107p,748b,2805s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1000.pk><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1b8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1bi8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1r8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1ri8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on Relatorio.pdf (14 pages, 370727 bytes).
+Output written on Relatorio.pdf (15 pages, 373472 bytes).
 PDF statistics:
- 243 PDF objects out of 1000 (max. 8388607)
- 45 named destinations out of 1000 (max. 500000)
+ 256 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
  178 words of extra memory for PDF output out of 10000 (max. 10000000)
 

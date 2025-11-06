@@ -12,5 +12,5 @@
 \contentsline {subsection}{\numberline {3.4}Vigenère}{5}{subsection.3.4}%
 \contentsline {subsection}{\numberline {3.5}PlayFair}{6}{subsection.3.5}%
 \contentsline {subsection}{\numberline {3.6}Testes e Resultados}{7}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Conclusão}{8}{section.4}%
-\contentsline {section}{Bibliografia}{9}{section.4}%
+\contentsline {section}{\numberline {4}Conclusão}{9}{section.4}%
+\contentsline {section}{Bibliografia}{10}{section.4}%
