@@ -1,6 +1,10 @@
 \babel@toc {portuguese}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Exemplo da interface gráfica da aplicação.}}{3}{figure.caption.7}%
-\contentsline {figure}{\numberline {2}{\ignorespaces AES em modo CBC.}}{4}{figure.caption.8}%
-\contentsline {figure}{\numberline {3}{\ignorespaces DES em modo CBC.}}{5}{figure.caption.9}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Cifragem e Decifragem com Vigenère.}}{6}{figure.caption.10}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Cifragem e Decifragem com PlayFair.}}{7}{figure.caption.11}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Exemplo da interface gráfica da aplicação.}}{2}{figure.caption.7}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Cifragem e Decifragem com AES}}{3}{figure.caption.8}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Cifragem e Decifragem com DES}}{4}{figure.caption.9}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Cifragem e Decifragem com Vigenère}}{5}{figure.caption.10}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Cifragem e Decifragem com PlayFair}}{6}{figure.caption.11}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Testes com AES}}{7}{figure.caption.12}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Testes com DES}}{7}{figure.caption.13}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Testes com Vigenère}}{8}{figure.caption.14}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Testes com PlayFair}}{8}{figure.caption.15}%

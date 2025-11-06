@@ -320,23 +320,67 @@ class CipherGUI:
         """
 
         path = filedialog.askopenfilename()
-        if path:
-            prev_state = None
-            try:
-                prev_state = entry.cget('state')
-            except Exception:
-                prev_state = None
-            try:
-                if prev_state == 'readonly':
-                    entry.config(state='normal')
-                entry.delete(0, tk.END)
-                entry.insert(0, path)
-            finally:
-                if prev_state == 'readonly':
+        if not path:
+            return
+
+        # First try to set a bound textvariable (works even when readonly)
+        try:
+            tv_name = entry.cget('textvariable')
+            if tv_name:
+                try:
+                    entry.setvar(tv_name, path)
+                    print(f"browse_file: set textvariable {tv_name} -> {path}")
+                    return
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+        # If this is a ttk widget, prefer using the state() API to toggle
+        # readonly state instead of entry.config which may not work on all
+        # ttk implementations.
+        try:
+            state_fn = getattr(entry, 'state', None)
+            if callable(state_fn):
+                try:
+                    prev_states = list(entry.state())
+                except Exception:
+                    prev_states = []
+                # temporarily remove readonly if present
+                try:
+                    entry.state(['!readonly'])
+                except Exception:
+                    pass
+                try:
+                    entry.delete(0, tk.END)
+                    entry.insert(0, path)
+                finally:
                     try:
-                        entry.config(state='readonly')
+                        if 'readonly' in prev_states:
+                            entry.state(['readonly'])
                     except Exception:
                         pass
+                return
+        except Exception:
+            pass
+
+        # Fallback for plain tk.Entry or other widgets
+        prev_state = None
+        try:
+            prev_state = entry.cget('state')
+        except Exception:
+            prev_state = None
+        try:
+            if prev_state == 'readonly':
+                entry.config(state='normal')
+            entry.delete(0, tk.END)
+            entry.insert(0, path)
+        finally:
+            if prev_state == 'readonly':
+                try:
+                    entry.config(state='readonly')
+                except Exception:
+                    pass
 
     def save_file(self, entry):
         """Show a save-as dialog and put the chosen path into `entry`.
@@ -350,23 +394,64 @@ class CipherGUI:
         """
 
         path = filedialog.asksaveasfilename(defaultextension=".txt")
-        if path:
-            prev_state = None
-            try:
-                prev_state = entry.cget('state')
-            except Exception:
-                prev_state = None
-            try:
-                if prev_state == 'readonly':
-                    entry.config(state='normal')
-                entry.delete(0, tk.END)
-                entry.insert(0, path)
-            finally:
-                if prev_state == 'readonly':
+        if not path:
+            return
+
+        # Prefer setting the bound variable directly when available
+        try:
+            tv_name = entry.cget('textvariable')
+            if tv_name:
+                try:
+                    entry.setvar(tv_name, path)
+                    print(f"save_file: set textvariable {tv_name} -> {path}")
+                    return
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+        # Use ttk Entry state API when possible
+        try:
+            state_fn = getattr(entry, 'state', None)
+            if callable(state_fn):
+                try:
+                    prev_states = list(entry.state())
+                except Exception:
+                    prev_states = []
+                try:
+                    entry.state(['!readonly'])
+                except Exception:
+                    pass
+                try:
+                    entry.delete(0, tk.END)
+                    entry.insert(0, path)
+                finally:
                     try:
-                        entry.config(state='readonly')
+                        if 'readonly' in prev_states:
+                            entry.state(['readonly'])
                     except Exception:
                         pass
+                return
+        except Exception:
+            pass
+
+        # Fallback for plain tk.Entry
+        prev_state = None
+        try:
+            prev_state = entry.cget('state')
+        except Exception:
+            prev_state = None
+        try:
+            if prev_state == 'readonly':
+                entry.config(state='normal')
+            entry.delete(0, tk.END)
+            entry.insert(0, path)
+        finally:
+            if prev_state == 'readonly':
+                try:
+                    entry.config(state='readonly')
+                except Exception:
+                    pass
 
     def log_message(self, box, message):
         """Append a single-line message to the GUI log `box`.
