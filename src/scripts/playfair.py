@@ -34,6 +34,11 @@ def read_board_from_file(path: str):
                 if len(board[-1]) < 5:
                     board[-1].append(ch)
 
+    # Flatten collected letters. Ensure we always return a 5x5 board:
+    # - If fewer than 25 letters were provided, fill the remainder with
+    #   the remaining alphabet (without J).
+    # - If more than 25 letters were provided, ignore extras and truncate
+    #   to the first 25 unique letters encountered.
     flat = [c for row in board for c in row]
     if len(flat) < 25:
         for ch in "ABCDEFGHIKLMNOPQRSTUVWXYZ":
@@ -41,9 +46,33 @@ def read_board_from_file(path: str):
                 flat.append(ch)
             if len(flat) == 25:
                 break
-        board = [flat[i:i+5] for i in range(0, 25, 5)]
+    elif len(flat) > 25:
+        flat = flat[:25]
+
+    board = [flat[i:i+5] for i in range(0, 25, 5)]
 
     return board
+
+
+def write_board_to_file(path: str, board, use_ij: bool = True):
+    """Write a Playfair 5x5 `board` to `path`.
+
+    If `use_ij` is True, cells that contain 'I' will be written as the
+    two-character sequence "I/J" to make the I/J convention explicit in
+    the saved file. Other cells are written as their single-letter
+    representation. Each board row is written on its own line.
+    """
+    # Ensure directory exists
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        for row in board:
+            out_cells = []
+            for ch in row:
+                if use_ij and str(ch).upper() == "I":
+                    out_cells.append("I/J")
+                else:
+                    out_cells.append(str(ch))
+            f.write("".join(out_cells) + "\n")
 
 
 def search_letter(board, letter: str):
@@ -168,5 +197,8 @@ def decrypt_file(input_path: str, output_path: str, key: str = ""):
     with open(input_path, "r", encoding="utf-8") as f_in:
         text = f_in.read()
     plain = decrypt_text(text, board)
+    # When saving decrypted text, write 'I' as 'I/J' so the I/J convention
+    # is explicit in the output file (matches write_board_to_file behaviour).
+    out_text = plain.replace("I", "I/J")
     with open(output_path, "w", encoding="utf-8") as f_out:
-        f_out.write(plain)
+        f_out.write(out_text)
