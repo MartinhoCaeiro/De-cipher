@@ -97,7 +97,7 @@
             \includegraphics[width=6cm]{Recursos/Logos/IPBejaESTIG.jpg} % Substitua pelo caminho da imagem
         \end{figure}
         
-        \vspace{1cm}
+        \vspace{4cm}
         
         % Local e data
         {\large Beja, outubro de 2025}
@@ -327,18 +327,22 @@ ficheiros de texto usando o caminho da board como \texttt{key}. Em caso de fiche
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{Testes e Resultados}
+Os seguintes testes foram realizados para verificar o correto funcionamento das cifras implementadas.
+Os dados de entrada utilizados foram ficheiros de texto simples contendo frases comuns em português.
+Todos os ficheiros de chave e tabela foram criados previamente e armazenados em ficheiros separados.
+
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Recursos/aes_enc.png}
-		\caption{Antes da Cifragem}
+		\includegraphics[width=0.9\textwidth]{Recursos/aes_test1.png}
+		\caption{Depois da Cifragem}
 		\label{fig:aes_bf}
 	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.48\textwidth}
+	\vspace{0.5cm}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Recursos/aes_dec.png}
+		\includegraphics[width=0.9\textwidth]{Recursos/aes_test2.png}
 		\caption{Depois da Decifragem}
 		\label{fig:aes_af}
 	\end{subfigure}
@@ -348,16 +352,16 @@ ficheiros de texto usando o caminho da board como \texttt{key}. Em caso de fiche
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Recursos/aes_enc.png}
-		\caption{Antes da Cifragem}
+		\includegraphics[width=0.9\textwidth]{Recursos/des_test1.png}
+		\caption{Depois da Cifragem}
 		\label{fig:des_bf}
 	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.48\textwidth}
+	\vspace{0.5cm}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Recursos/aes_dec.png}
+		\includegraphics[width=0.9\textwidth]{Recursos/des_test2.png}
 		\caption{Depois da Decifragem}
 		\label{fig:des_af}
 	\end{subfigure}
@@ -368,16 +372,16 @@ ficheiros de texto usando o caminho da board como \texttt{key}. Em caso de fiche
 \newpage
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Recursos/aes_enc.png}
-		\caption{Antes da Cifragem}
+		\includegraphics[width=0.9\textwidth]{Recursos/vigenere_test1.png}
+		\caption{Depois da Cifragem}
 		\label{fig:vigenere_bf}
 	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.48\textwidth}
+	\vspace{0.5cm}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Recursos/aes_dec.png}
+		\includegraphics[width=0.9\textwidth]{Recursos/vigenere_test2.png}
 		\caption{Depois da Decifragem}
 		\label{fig:vigenere_af}
 	\end{subfigure}
@@ -387,16 +391,16 @@ ficheiros de texto usando o caminho da board como \texttt{key}. Em caso de fiche
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Recursos/aes_enc.png}
-		\caption{Antes da Cifragem}
+		\includegraphics[width=0.9\textwidth]{Recursos/des_test1.png}
+		\caption{Depois da Cifragem}
 		\label{fig:playfair_bf}
 	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.48\textwidth}
+	\vspace{0.5cm}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Recursos/aes_dec.png}
+		\includegraphics[width=0.9\textwidth]{Recursos/des_test1.png}
 		\caption{Depois da Decifragem}
 		\label{fig:playfair_af}
 	\end{subfigure}
@@ -410,7 +414,13 @@ ficheiros de texto usando o caminho da board como \texttt{key}. Em caso de fiche
 O desenvolvimento desta aplicação permitiu explorar conceitos fundamentais sobre cifras simétricas.
 Apesar de alguns desafios encontrados, foi possível implementar as
 cifras solicitadas e configurar uma interface centralizada para facilitar a utilização das mesmas.
-Durante este processo, foram revistos conceitos previamente estudados na licenciatura de Engenharia Informática.
+Durante este processo, foram revistos conceitos previamente estudados na licenciatura de Engenharia Informática.\\\\\\
+
+%---------------------------------------------------------------------------------------------------------------------------
+\section{Notas finais}\label{final}
+Irá ser entregue juntamente com o relatório e o código fonte da aplicação,
+os ficheiros de chave e tabela utilizados nos testes de modo a confirmar a sua veracidade
+e permitir a sua replicação em fase de avaliação, de uma forma igual à apresentada no relatório.
 %---------------------------------------------------------------------------------------------------------------------------
 
 \newpage

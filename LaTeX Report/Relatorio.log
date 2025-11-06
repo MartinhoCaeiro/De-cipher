@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  6 NOV 2025 15:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  6 NOV 2025 18:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1015,7 +1015,7 @@ Package hyperref Info: Link coloring OFF on input line 141.
 \openout5 = `Relatorio.out'.
 
 \c@lstlisting=\count504
-<Recursos/Logos/LOGO_IPB.png, id=65, 646.415pt x 499.8675pt>
+<Recursos/Logos/LOGO_IPB.png, id=69, 646.415pt x 499.8675pt>
 File: Recursos/Logos/LOGO_IPB.png Graphic file (type png)
 <use Recursos/Logos/LOGO_IPB.png>
 Package pdftex.def Info: Recursos/Logos/LOGO_IPB.png  used on input line 147.
@@ -1034,7 +1034,7 @@ File: ts1ua1.fd 2006/03/21 Fontinst v1.928 font definitions for TS1/ua1.
 )
 LaTeX Font Info:    Font shape `TS1/ua1/b/n' will be
 (Font)              scaled to size 23.63593pt on input line 147.
-<Recursos/Logos/IPBejaESTIG.jpg, id=66, 501.875pt x 301.125pt>
+<Recursos/Logos/IPBejaESTIG.jpg, id=70, 501.875pt x 301.125pt>
 File: Recursos/Logos/IPBejaESTIG.jpg Graphic file (type jpg)
 <use Recursos/Logos/IPBejaESTIG.jpg>
 Package pdftex.def Info: Recursos/Logos/IPBejaESTIG.jpg  used on input line 147.
@@ -1120,7 +1120,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 224--226
 
  []
 
-<Recursos/GUI.png, id=146, 573.94424pt x 343.88475pt>
+<Recursos/GUI.png, id=151, 573.94424pt x 343.88475pt>
 File: Recursos/GUI.png Graphic file (type png)
 <use Recursos/GUI.png>
 Package pdftex.def Info: Recursos/GUI.png  used on input line 230.
@@ -1146,14 +1146,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--243
 
  []
 
-<Recursos/aes_enc.png, id=155, 466.1415pt x 413.1435pt>
+<Recursos/aes_enc.png, id=160, 466.1415pt x 413.1435pt>
 File: Recursos/aes_enc.png Graphic file (type png)
 <use Recursos/aes_enc.png>
 Package pdftex.def Info: Recursos/aes_enc.png  used on input line 248.
 (pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
 (Font)              scaled to size 8.54997pt on input line 249.
-<Recursos/aes_dec.png, id=156, 450.483pt x 451.6875pt>
+<Recursos/aes_dec.png, id=161, 450.483pt x 451.6875pt>
 File: Recursos/aes_dec.png Graphic file (type png)
 <use Recursos/aes_dec.png>
 Package pdftex.def Info: Recursos/aes_dec.png  used on input line 255.
@@ -1170,12 +1170,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 266--271
 
  []
 
-<Recursos/des_enc.png, id=164, 450.483pt x 373.395pt>
+<Recursos/des_enc.png, id=169, 450.483pt x 373.395pt>
 File: Recursos/des_enc.png Graphic file (type png)
 <use Recursos/des_enc.png>
 Package pdftex.def Info: Recursos/des_enc.png  used on input line 276.
 (pdftex.def)             Requested size: 232.17242pt x 192.44586pt.
-<Recursos/des_dec.png, id=165, 455.90324pt x 386.04225pt>
+<Recursos/des_dec.png, id=170, 455.90324pt x 386.04225pt>
 File: Recursos/des_dec.png Graphic file (type png)
 <use Recursos/des_dec.png>
 Package pdftex.def Info: Recursos/des_dec.png  used on input line 283.
@@ -1195,7 +1195,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--301
 
  []
 
-<Recursos/vigenere.png, id=172, 488.42474pt x 256.5585pt>
+<Recursos/vigenere.png, id=177, 488.42474pt x 256.5585pt>
 File: Recursos/vigenere.png Graphic file (type png)
 <use Recursos/vigenere.png>
 Package pdftex.def Info: Recursos/vigenere.png  used on input line 304.
@@ -1225,7 +1225,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 312--319
 
  []
 
-<Recursos/playfair.png, id=178, 561.89925pt x 380.622pt>
+<Recursos/playfair.png, id=183, 561.89925pt x 380.622pt>
 File: Recursos/playfair.png Graphic file (type png)
 <use Recursos/playfair.png>
 Package pdftex.def Info: Recursos/playfair.png  used on input line 322.
@@ -1233,48 +1233,76 @@ Package pdftex.def Info: Recursos/playfair.png  used on input line 322.
 
 
 [6 <./Recursos/playfair.png>]
-File: Recursos/aes_enc.png Graphic file (type png)
-<use Recursos/aes_enc.png>
-Package pdftex.def Info: Recursos/aes_enc.png  used on input line 334.
-(pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
-File: Recursos/aes_dec.png Graphic file (type png)
-<use Recursos/aes_dec.png>
-Package pdftex.def Info: Recursos/aes_dec.png  used on input line 341.
-(pdftex.def)             Requested size: 232.17242pt x 232.79741pt.
-File: Recursos/aes_enc.png Graphic file (type png)
-<use Recursos/aes_enc.png>
-Package pdftex.def Info: Recursos/aes_enc.png  used on input line 353.
-(pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
-File: Recursos/aes_dec.png Graphic file (type png)
-<use Recursos/aes_dec.png>
-Package pdftex.def Info: Recursos/aes_dec.png  used on input line 360.
-(pdftex.def)             Requested size: 232.17242pt x 232.79741pt.
+<Recursos/aes_test1.png, id=190, 416.757pt x 107.2005pt>
+File: Recursos/aes_test1.png Graphic file (type png)
+<use Recursos/aes_test1.png>
+Package pdftex.def Info: Recursos/aes_test1.png  used on input line 338.
+(pdftex.def)             Requested size: 435.32422pt x 111.9766pt.
+<Recursos/aes_test2.png, id=191, 412.54124pt x 91.542pt>
+File: Recursos/aes_test2.png Graphic file (type png)
+<use Recursos/aes_test2.png>
+Package pdftex.def Info: Recursos/aes_test2.png  used on input line 345.
+(pdftex.def)             Requested size: 435.32422pt x 96.59825pt.
+<Recursos/des_test1.png, id=192, 460.72125pt x 90.3375pt>
+File: Recursos/des_test1.png Graphic file (type png)
+<use Recursos/des_test1.png>
+Package pdftex.def Info: Recursos/des_test1.png  used on input line 357.
+(pdftex.def)             Requested size: 435.32422pt x 85.35696pt.
+<Recursos/des_test2.png, id=193, 408.3255pt x 89.73524pt>
+File: Recursos/des_test2.png Graphic file (type png)
+<use Recursos/des_test2.png>
+Package pdftex.def Info: Recursos/des_test2.png  used on input line 364.
+(pdftex.def)             Requested size: 435.32422pt x 95.67068pt.
 
 
-[7]
-File: Recursos/aes_enc.png Graphic file (type png)
-<use Recursos/aes_enc.png>
-Package pdftex.def Info: Recursos/aes_enc.png  used on input line 373.
-(pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
-File: Recursos/aes_dec.png Graphic file (type png)
-<use Recursos/aes_dec.png>
-Package pdftex.def Info: Recursos/aes_dec.png  used on input line 380.
-(pdftex.def)             Requested size: 232.17242pt x 232.79741pt.
-File: Recursos/aes_enc.png Graphic file (type png)
-<use Recursos/aes_enc.png>
-Package pdftex.def Info: Recursos/aes_enc.png  used on input line 392.
-(pdftex.def)             Requested size: 232.17242pt x 205.77692pt.
-File: Recursos/aes_dec.png Graphic file (type png)
-<use Recursos/aes_dec.png>
-Package pdftex.def Info: Recursos/aes_dec.png  used on input line 399.
-(pdftex.def)             Requested size: 232.17242pt x 232.79741pt.
+[7 <./Recursos/aes_test1.png> <./Recursos/aes_test2.png> <./Recursos/des_test1.png> <./Recursos/des_test2.png>]
+<Recursos/vigenere_test1.png, id=202, 401.70074pt x 84.315pt>
+File: Recursos/vigenere_test1.png Graphic file (type png)
+<use Recursos/vigenere_test1.png>
+Package pdftex.def Info: Recursos/vigenere_test1.png  used on input line 377.
+(pdftex.def)             Requested size: 435.32422pt x 91.37402pt.
+<Recursos/vigenere_test2.png, id=203, 407.121pt x 90.3375pt>
+File: Recursos/vigenere_test2.png Graphic file (type png)
+<use Recursos/vigenere_test2.png>
+Package pdftex.def Info: Recursos/vigenere_test2.png  used on input line 384.
+(pdftex.def)             Requested size: 435.32422pt x 96.60088pt.
+File: Recursos/des_test1.png Graphic file (type png)
+<use Recursos/des_test1.png>
+Package pdftex.def Info: Recursos/des_test1.png  used on input line 396.
+(pdftex.def)             Requested size: 435.32422pt x 85.35696pt.
+File: Recursos/des_test1.png Graphic file (type png)
+<use Recursos/des_test1.png>
+Package pdftex.def Info: Recursos/des_test1.png  used on input line 403.
+(pdftex.def)             Requested size: 435.32422pt x 85.35696pt.
 
 
-[8]
+[8 <./Recursos/vigenere_test1.png> <./Recursos/vigenere_test2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 414--418
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 414--418
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 414--418
+
+ []
+
+
 
 [9]
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 9.49997pt on input line 420.
+(Font)              scaled to size 9.49997pt on input line 430.
+LaTeX Font Info:    Font shape `TS1/ua1/m/it' will be
+(Font)              scaled to size 9.49997pt on input line 430.
+
+Overfull \hbox (6.98294pt too wide) in paragraph at lines 431--431
+[][]\T1/ua1/m/n/10 Martinho Ca-eiro & Paulo Abade. (2025). \T1/ua1/m/it/10 (De)cipher\TS1/ua1/m/it/10 — \T1/ua1/m/it/10 - Re-po-si-tó-rio de Có-digo \T1/ua1/m/n/10 [Re-po-si-tó-rio da Apli-ca-ção (De)cipher\TS1/ua1/m/n/10 —\T1/ua1/m/n/10 ].
+ []
+
 
 
 [10] (Relatorio.aux)
@@ -1283,23 +1311,23 @@ LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
  ***********
 Package rerunfilecheck Info: File `Relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: DE37AC3AE346F8AA338A12B9C663C773;1479.
+(rerunfilecheck)             Checksum: 30CFEDD3650E2ED96256AF7F76E2150D;1586.
 Package logreq Info: Writing requests to 'Relatorio.run.xml'.
 \openout1 = `Relatorio.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38233 strings out of 473897
- 761872 string characters out of 5726462
- 1620387 words of memory out of 5000000
- 60512 multiletter control sequences out of 15000+600000
- 630807 words of font info for 73 fonts, out of 8000000 for 9000
+ 38280 strings out of 473897
+ 763203 string characters out of 5726462
+ 1620430 words of memory out of 5000000
+ 60557 multiletter control sequences out of 15000+600000
+ 631166 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,8n,107p,748b,2805s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1000.pk><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1b8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1bi8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1r8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1ri8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on Relatorio.pdf (15 pages, 373472 bytes).
+Output written on Relatorio.pdf (15 pages, 435716 bytes).
 PDF statistics:
- 256 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
- 178 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 273 PDF objects out of 1000 (max. 8388607)
+ 51 named destinations out of 1000 (max. 500000)
+ 216 words of extra memory for PDF output out of 10000 (max. 10000000)
 
