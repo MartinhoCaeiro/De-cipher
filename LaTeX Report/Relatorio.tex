@@ -235,11 +235,11 @@ A GUI apresenta-se da seguinte forma:\\
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{AES}
-Implementou-se uma ferramenta para cifragem e decifragem de ficheiros utilizando AES em modo CBC (biblioteca PyCryptodome).
+Implementou-se uma ferramenta para cifragem e decifragem de ficheiros utilizando AES em modo ECB (biblioteca PyCryptodome).
 A chave é carregada a partir de ficheiro através da rotina interna \texttt{\_read\_key\_file}. Essa rotina aceita uma string hexadecimal
 (preferencial) ou texto UTF‑8, converte para \texttt{bytes} e valida o comprimento (16, 24 ou 32 bytes). O formato do ficheiro cifrado utilizado
-pelo módulo é IV (16 bytes) concatenado com o ciphertext. A encriptação aplica preenchimento compatível com PKCS\#7 para completar blocos de 16 bytes;
-a descifragem valida e remove esse preenchimento. Em caso de ficheiro de chave inexistente, tamanho de chave inválido ou padding inválido, são lançadas exceções apropriadas.\\\\
+pelo módulo é o ciphertext puro (sem IV). A encriptação aplica preenchimento compatível com PKCS\#7 para completar blocos de 16 bytes;
+a descifragem valida e remove esse preenchimento. Em caso de ficheiro de chave inexistente, tamanho de chave inválido ou padding inválido, são lançadas exceções apropriadas.\\
 
 \begin{figure}[H]
 	\centering
@@ -263,11 +263,11 @@ a descifragem valida e remove esse preenchimento. Em caso de ficheiro de chave i
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{DES}
-Implementou‑se uma ferramenta para cifragem e decifragem de ficheiros utilizando DES em modo CBC (biblioteca PyCryptodome).
+Implementou‑se uma ferramenta para cifragem e decifragem de ficheiros utilizando DES em modo ECB (biblioteca PyCryptodome).
 A chave é carregada a partir de ficheiro pela rotina interna \texttt{\_read\_key\_file}, que aceita uma string hexadecimal (preferencial)
-ou texto UTF‑8, converte para \texttt{bytes} e valida o comprimento (exatamente 8 bytes). O formato do ficheiro cifrado é IV (8 bytes) concatenado com o ciphertext.
+ou texto UTF‑8, converte para \texttt{bytes} e valida o comprimento (exatamente 8 bytes). O formato do ficheiro cifrado é o ciphertext puro (sem IV).
 A encriptação aplica preenchimento compatível com PKCS\#5 (blocos de 8 bytes); a descifragem valida e remove esse preenchimento. Em caso de ficheiro de chave inexistente,
-tamanho de chave inválido ou padding inválido, são lançadas exceções apropriadas.\\\\
+tamanho de chave inválido ou padding inválido, são lançadas exceções apropriadas.\\
 
 \begin{figure}[H]
 	\centering

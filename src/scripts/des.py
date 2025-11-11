@@ -1,8 +1,8 @@
-"""DES file encrypt/decrypt helpers (CBC mode).
+"""DES file encrypt/decrypt helpers (ECB mode).
 
-Small helpers to encrypt and decrypt files using DES-CBC. The key is
+Small helpers to encrypt and decrypt files using DES-ECB. The key is
 read from a file that may contain a hex string or raw UTF-8 text. The
-encrypted output format is IV (8 bytes) followed by the ciphertext.
+encrypted output format is the raw ciphertext (no IV).
 """
 
 from Crypto.Cipher import DES
@@ -31,6 +31,7 @@ def _read_key_file(key_path: str) -> bytes:
 
 def encrypt_file(input_path: str, output_path: str, key: str = ""):
     """Encrypt a file using DES-CBC and write IV||ciphertext to output.
+    Encrypt a file using DES-ECB and write the raw ciphertext to output.
 
     Args:
         input_path: Path to the plaintext file (binary).
@@ -41,8 +42,7 @@ def encrypt_file(input_path: str, output_path: str, key: str = ""):
         raise FileNotFoundError(f"Ficheiro de chave não encontrado: {key}")
     key_bytes = _read_key_file(key)
 
-    cipher = DES.new(key_bytes, DES.MODE_CBC)
-    iv = cipher.iv
+    cipher = DES.new(key_bytes, DES.MODE_ECB)
 
     with open(input_path, "rb") as f_in:
         data = f_in.read()
@@ -53,7 +53,7 @@ def encrypt_file(input_path: str, output_path: str, key: str = ""):
     ciphertext = cipher.encrypt(data)
 
     with open(output_path, "wb") as f_out:
-        f_out.write(iv + ciphertext)
+        f_out.write(ciphertext)
 
 
 def decrypt_file(input_path: str, output_path: str, key: str = ""):
@@ -67,12 +67,10 @@ def decrypt_file(input_path: str, output_path: str, key: str = ""):
     if not os.path.isfile(key):
         raise FileNotFoundError(f"Ficheiro de chave não encontrado: {key}")
     key_bytes = _read_key_file(key)
-
     with open(input_path, "rb") as f_in:
-        iv = f_in.read(8)
         ciphertext = f_in.read()
 
-    cipher = DES.new(key_bytes, DES.MODE_CBC, iv=iv)
+    cipher = DES.new(key_bytes, DES.MODE_ECB)
     data = cipher.decrypt(ciphertext)
 
     pad_len = data[-1]

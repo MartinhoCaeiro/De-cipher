@@ -1,10 +1,9 @@
-"""AES file encrypt/decrypt helpers (CBC mode).
+"""AES file encrypt/decrypt helpers (ECB mode).
 
 This module provides a minimal helper API to encrypt and decrypt files
-using AES in CBC mode. The key is loaded from a file which may contain
-either a hex string or raw UTF-8 text. The encrypted output format is:
-
-    IV (16 bytes) || ciphertext
+using AES in ECB mode. The key is loaded from a file which may contain
+either a hex string or raw UTF-8 text. The encrypted output format is
+the raw ciphertext (no IV).
 
 Functions:
     - encrypt_file(input_path, output_path, key_path)
@@ -40,7 +39,7 @@ def _read_key_file(key_path: str) -> bytes:
 
 
 def encrypt_file(input_path: str, output_path: str, key: str = ""):
-    """Encrypt a file with AES-CBC and write IV||ciphertext to output.
+    """Encrypt a file with AES-ECB and write ciphertext to output.
 
     Args:
         input_path: Path to the plaintext input file (opened in binary).
@@ -54,8 +53,7 @@ def encrypt_file(input_path: str, output_path: str, key: str = ""):
         raise FileNotFoundError(f"Ficheiro de chave não encontrado: {key}")
     key_bytes = _read_key_file(key)
 
-    cipher = AES.new(key_bytes, AES.MODE_CBC)
-    iv = cipher.iv
+    cipher = AES.new(key_bytes, AES.MODE_ECB)
 
     with open(input_path, "rb") as f_in:
         data = f_in.read()
@@ -66,11 +64,11 @@ def encrypt_file(input_path: str, output_path: str, key: str = ""):
     ciphertext = cipher.encrypt(data)
 
     with open(output_path, "wb") as f_out:
-        f_out.write(iv + ciphertext)
+        f_out.write(ciphertext)
 
 
 def decrypt_file(input_path: str, output_path: str, key: str = ""):
-    """Decrypt a file produced by :func:`encrypt_file`.
+    """Decrypt a file produced by :func:`encrypt_file` (ECB mode).
 
     Args:
         input_path: Path to the encrypted input file.
@@ -86,10 +84,9 @@ def decrypt_file(input_path: str, output_path: str, key: str = ""):
     key_bytes = _read_key_file(key)
 
     with open(input_path, "rb") as f_in:
-        iv = f_in.read(16)
         ciphertext = f_in.read()
 
-    cipher = AES.new(key_bytes, AES.MODE_CBC, iv=iv)
+    cipher = AES.new(key_bytes, AES.MODE_ECB)
     data = cipher.decrypt(ciphertext)
 
     pad_len = data[-1]

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  6 NOV 2025 22:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  11 NOV 2025 21:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1141,11 +1141,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--243
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 238--243
-
- []
-
 <Recursos/aes_enc.png, id=160, 466.1415pt x 413.1435pt>
 File: Recursos/aes_enc.png Graphic file (type png)
 <use Recursos/aes_enc.png>
@@ -1161,11 +1156,6 @@ Package pdftex.def Info: Recursos/aes_dec.png  used on input line 255.
 
 
 [3 <./Recursos/aes_enc.png> <./Recursos/aes_dec.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 266--271
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 266--271
 
  []
@@ -1341,7 +1331,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  99i,10n,107p,748b,2805s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1000.pk><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1b8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1bi8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1r8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1ri8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on Relatorio.pdf (15 pages, 470774 bytes).
+Output written on Relatorio.pdf (15 pages, 470722 bytes).
 PDF statistics:
  281 PDF objects out of 1000 (max. 8388607)
  51 named destinations out of 1000 (max. 500000)
