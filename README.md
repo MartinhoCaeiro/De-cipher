@@ -2,8 +2,8 @@
 
 (De)cipher™ is an educational file encryption/decryption application written in Python. It was developed for the course "Cryptography and Applied Cryptanalysis" and implements four symmetric ciphers:
 
-- AES (CBC mode, PKCS#7 padding)
-- DES (CBC mode, PKCS#5 padding)
+- AES (ECB mode, PKCS#7 padding)
+- DES (ECB mode, PKCS#5 padding)
 - Vigenère (custom 26×26 table)
 - Playfair (custom 5×5 board)
 
@@ -26,8 +26,8 @@ This repository includes the code, resources (keys, tables, GUI screenshot) and 
 
 ## Repository layout (indicative)
 - gui.py                 — main GUI script
-- aes.py                 — AES implementation (CBC)
-- des.py                 — DES implementation (CBC)
+- aes.py                 — AES implementation (ECB)
+- des.py                 — DES implementation (ECB)
 - vigenere.py            — Vigenère implementation
 - playfair.py            — Playfair implementation
 - Recursos/              — resources used by the report and GUI (images, tables, keys)
