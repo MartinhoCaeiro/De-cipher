@@ -1,16 +1,12 @@
 """(De)cipher GUI application.
 
-This module provides a small Tkinter-based GUI wrapper around the
-encryption/decryption modules in `scripts` (AES, DES, Vigenère, Playfair).
+Tkinter wrapper for the cipher modules in `scripts` (AES, DES, Vigenère,
+Playfair). The layout and flow are preserved; the code is refactored to
+reduce duplication and improve readability without changing behavior.
 
-Run the file directly to start the GUI (creates a `tk.Tk()` root and
-instantiates `CipherGUI`). The GUI expects the cipher modules to expose
-`encrypt_file(input_path, output_path, key)` and
-`decrypt_file(input_path, output_path, key)` (Vigenère accepts a list of
-paths for table and key as shown in the implementation).
-
-The UI focuses on file selection and simple logging; cryptographic
-operations are delegated to the modules in `scripts`.
+This module provides helpers to ensure required packages are available,
+build the tabbed interface for each cipher, and run encrypt/decrypt
+operations via the underlying `scripts` modules.
 """
 
 import sys
@@ -25,98 +21,83 @@ from style_dark import apply_dark_theme
 def _ensure_packages(pack_map):
     """Ensure external packages are available.
 
-    pack_map: mapping of import_name -> pip_package_name
+    For each mapping (import_name -> pip_name) attempt to import the
+    package. If import fails, ask the user for permission to install
+    the corresponding `pip_name` using the current Python executable.
 
-    For each mapping, try to import the module. If import fails, prompt
-    the user (via a temporarily created hidden Tk root) asking whether
-    the program may install the required pip package. If the user
-    agrees, run `python -m pip install <package>` using the current
-    interpreter. If installation fails or the user declines, the
-    function will raise ImportError.
+    The function prefers Tkinter dialogs for prompts; if a Tk root cannot
+    be created it falls back to console input. If the user declines to
+    install a required package an ImportError is raised.
     """
     missing = []
-    for import_name in pack_map:
+    for import_name, pip_name in pack_map.items():
         try:
             importlib.import_module(import_name)
         except Exception:
-            missing.append((import_name, pack_map[import_name]))
+            missing.append((import_name, pip_name))
 
     if not missing:
         return
 
-    # Create a temporary hidden Tk root for dialogs
-    _tmp_root = None
+    tmp_root = None
     try:
-        _tmp_root = tk.Tk()
-        _tmp_root.withdraw()
+        tmp_root = tk.Tk()
+        tmp_root.withdraw()
     except Exception:
-        _tmp_root = None
+        tmp_root = None
 
-    for import_name, pip_name in missing:
-        msg = (
-            f"A biblioteca requerida '{import_name}' não está instalada.\n\n"
-            f"Deseja permitir que a aplicação instale '{pip_name}' agora?"
-        )
-        allow = False
-        try:
-            allow = messagebox.askyesno("Instalar dependência", msg, parent=_tmp_root)
-        except Exception:
-            # fallback to console prompt if messagebox not available
+    try:
+        for import_name, pip_name in missing:
+            msg = (
+                f"A biblioteca necessaria '{import_name}' não está instalada.\n\n"
+                f"Deseja permitir que a aplicação instale '{pip_name}' agora?"
+            )
+            allow = False
             try:
-                resp = input(msg + " [y/N]: ")
-                allow = resp.strip().lower().startswith("y")
+                allow = messagebox.askyesno("Instalar dependência", msg, parent=tmp_root)
             except Exception:
-                allow = False
-
-        if not allow:
-            if _tmp_root:
                 try:
-                    _tmp_root.destroy()
+                    resp = input(msg + " [y/N]: ")
+                    allow = resp.strip().lower().startswith("y")
                 except Exception:
-                    pass
-            raise ImportError(f"Dependência ausente: {import_name}")
+                    allow = False
 
-        # Run pip install using the current Python executable
-        try:
-            messagebox.showinfo("Instalação", f"Instalando {pip_name}...", parent=_tmp_root)
-        except Exception:
-            pass
-        try:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
-        except Exception as e:
+            if not allow:
+                raise ImportError(f"Dependência ausente: {import_name}")
+
             try:
-                messagebox.showerror("Erro", f"Falha na instalação de {pip_name}: {e}", parent=_tmp_root)
+                if tmp_root:
+                    messagebox.showinfo("Instalação", f"Instalando {pip_name}...", parent=tmp_root)
             except Exception:
                 pass
-            if _tmp_root:
+
+            try:
+                subprocess.check_call([sys.executable, "-m", "pip", "install", pip_name])
+            except Exception as e:
                 try:
-                    _tmp_root.destroy()
+                    if tmp_root:
+                        messagebox.showerror("Erro", f"Falha na instalação de {pip_name}: {e}", parent=tmp_root)
                 except Exception:
                     pass
-            raise
+                raise
+    finally:
+        if tmp_root:
+            try:
+                tmp_root.destroy()
+            except Exception:
+                pass
 
-    if _tmp_root:
-        try:
-            _tmp_root.destroy()
-        except Exception:
-            pass
 
-
-# Map import names to pip package names when they differ. Add more
-# entries if future scripts require other third-party libraries.
 _REQUIRED_PACKAGES = {
     "Crypto": "pycryptodome",
 }
 
-# Ensure dependencies are present before importing modules that need them.
 try:
     _ensure_packages(_REQUIRED_PACKAGES)
 except ImportError as e:
-    # If dependencies are missing and user declined install, exit.
     print(f"Erro: {e}")
     sys.exit(1)
 
-# Now safe to import local cipher modules that may depend on third-party libs
 from scripts import aes, des, vigenere, playfair
 
 if sys.platform.startswith("win"):
@@ -130,23 +111,11 @@ if sys.platform.startswith("win"):
         except Exception:
             pass
 
+
 class CipherGUI:
-    """Main application GUI for (De)cipher.
+    """Main application GUI for (De)cipher."""
 
-    Responsibilities:
-    - Build and manage the Tkinter widgets (tabs, file selectors, actions).
-    - Validate user input and call the appropriate cipher module functions.
-    - Provide lightweight logging to the UI.
-
-    The class keeps references to the important widgets so action handlers
-    (e.g., `run_cipher`) can read user selections and report results.
-    """
     def __init__(self, root):
-        """Initialize the GUI and build all tabs and widgets.
-
-        Args:
-            root: The Tkinter root window (tk.Tk instance).
-        """
         self.root = root
         self.root.title("(De)cipher™")
         self.root.geometry("960x540")
@@ -198,23 +167,121 @@ class CipherGUI:
             font=("Segoe UI", welcome_size)
         )
         label.pack(expand=True, pady=100)
-        """Populate the 'Início' (start) tab with a brief welcome message.
+        label.pack(expand=True, pady=100)
 
-        This method keeps the widget creation focused and separate from the
-        rest of the layout code so the welcome content is easy to locate.
+    def _set_entry_path(self, entry, path):
+        """Set `path` into an Entry widget while preserving readonly state.
+
+        The helper attempts several strategies in order:
+        - If the Entry uses a `textvariable`, set it via `setvar`.
+        - If the widget supports the ttk `state()` API, temporarily remove
+          `readonly`, update the value and restore previous states.
+        - Fall back to using `config(state=...)` on a tk.Entry.
         """
+        if not path:
+            return
+
+        try:
+            tv_name = entry.cget('textvariable')
+            if tv_name:
+                try:
+                    entry.setvar(tv_name, path)
+                    return
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+        try:
+            state_fn = getattr(entry, 'state', None)
+            if callable(state_fn):
+                try:
+                    prev_states = list(entry.state())
+                except Exception:
+                    prev_states = []
+                try:
+                    entry.state(['!readonly'])
+                except Exception:
+                    pass
+                try:
+                    entry.delete(0, tk.END)
+                    entry.insert(0, path)
+                finally:
+                    try:
+                        if 'readonly' in prev_states:
+                            entry.state(['readonly'])
+                    except Exception:
+                        pass
+                return
+        except Exception:
+            pass
+
+        try:
+            prev_state = entry.cget('state')
+        except Exception:
+            prev_state = None
+        try:
+            if prev_state == 'readonly':
+                entry.config(state='normal')
+            entry.delete(0, tk.END)
+            entry.insert(0, path)
+        finally:
+            if prev_state == 'readonly':
+                try:
+                    entry.config(state='readonly')
+                except Exception:
+                    pass
+
+    def _open_path_dialog(self, entry, save=False):
+        """Open a file dialog (open or save) and write the selected path.
+
+        If `save` is True opens a save-as dialog, otherwise opens an
+        open-file dialog. The selected path (if any) is written into the
+        provided `entry` via `_set_entry_path`.
+        """
+        if save:
+            path = filedialog.asksaveasfilename(defaultextension=".txt")
+        else:
+            path = filedialog.askopenfilename()
+        if path:
+            self._set_entry_path(entry, path)
+
+    def _make_radio_group(self, parent, var):
+        """Create and return a frame containing 'Encrypt'/'Decrypt' radios.
+
+        The function returns a frame containing two radio buttons bound
+        to `var`. The visual styling uses custom tk.Radiobuttons when
+        possible and falls back to ttk.Radiobuttons on error.
+        """
+        rb_frame = ttk.Frame(parent)
+        try:
+            dark_bg = "#1e1e1e"
+            dark_active = "#3a3a3a"
+            fg = "#ffffff"
+            tk.Radiobutton(rb_frame, text="Cifrar", variable=var, value="encrypt",
+                           bg=dark_bg, fg=fg, selectcolor=dark_active,
+                           activebackground=dark_active, activeforeground=fg,
+                           bd=0, highlightthickness=0, anchor="w").pack(side="left", padx=(0, 10))
+            tk.Radiobutton(rb_frame, text="Decifrar", variable=var, value="decrypt",
+                           bg=dark_bg, fg=fg, selectcolor=dark_active,
+                           activebackground=dark_active, activeforeground=fg,
+                           bd=0, highlightthickness=0, anchor="w").pack(side="left")
+        except Exception:
+            ttk.Radiobutton(rb_frame, text="Cifrar", variable=var, value="encrypt").pack(side="left", padx=(0, 10))
+            ttk.Radiobutton(rb_frame, text="Decifrar", variable=var, value="decrypt").pack(side="left")
+        return rb_frame
+
+    def _make_log_box(self, parent):
+        """Create and return a read-only log Text widget configured for dark theme."""
+        log_box = tk.Text(parent, height=10, width=90, bg="#2d2d2d", fg="#ffffff", insertbackground="white")
+        try:
+            log_box.config(state="disabled")
+        except Exception:
+            pass
+        return log_box
+
     def setup_cipher_tab(self, cipher_type):
         frame = self.tabs[cipher_type]
-
-        """Create controls for a given cipher tab.
-
-        Args:
-            cipher_type: One of "AES", "DES", "Vigenère", or "Playfair".
-
-        The controls include key/table selection, input/output file selectors,
-        action (encrypt/decrypt) radio buttons, an Execute button and a
-        read-only log text box.
-        """
 
         frame.grid_rowconfigure(0, weight=1)
         frame.grid_rowconfigure(1, weight=0)
@@ -230,19 +297,19 @@ class CipherGUI:
             ttk.Label(content, text="Ficheiro da Tabela:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
             key_entry = ttk.Entry(content, width=55, state="readonly")
             key_entry.grid(row=0, column=1, padx=10, pady=5)
-            ttk.Button(content, text="Procurar", command=lambda e=key_entry: self.browse_file(e)).grid(row=0, column=2, padx=5)
+            ttk.Button(content, text="Procurar", command=lambda e=key_entry: self._open_path_dialog(e)).grid(row=0, column=2, padx=5)
             key_row = 1
 
         elif cipher_type == "Vigenère":
             ttk.Label(content, text="Ficheiro da Tabela:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
             self.vig_table_entry = ttk.Entry(content, width=55, state="readonly")
             self.vig_table_entry.grid(row=0, column=1, padx=10, pady=5)
-            ttk.Button(content, text="Procurar", command=lambda: self.browse_file(self.vig_table_entry)).grid(row=0, column=2, padx=5)
+            ttk.Button(content, text="Procurar", command=lambda: self._open_path_dialog(self.vig_table_entry)).grid(row=0, column=2, padx=5)
 
             ttk.Label(content, text="Ficheiro da Chave:").grid(row=1, column=0, padx=10, pady=5, sticky="e")
             self.vig_key_entry = ttk.Entry(content, width=55, state="readonly")
             self.vig_key_entry.grid(row=1, column=1, padx=10, pady=5)
-            ttk.Button(content, text="Procurar", command=lambda: self.browse_file(self.vig_key_entry)).grid(row=1, column=2, padx=5)
+            ttk.Button(content, text="Procurar", command=lambda: self._open_path_dialog(self.vig_key_entry)).grid(row=1, column=2, padx=5)
             key_entry = self.vig_key_entry
             key_row = 1
 
@@ -250,37 +317,22 @@ class CipherGUI:
             ttk.Label(content, text="Ficheiro da Chave:").grid(row=0, column=0, padx=10, pady=5, sticky="e")
             key_entry = ttk.Entry(content, width=55, state="readonly")
             key_entry.grid(row=0, column=1, padx=10, pady=5)
-            ttk.Button(content, text="Procurar", command=lambda e=key_entry: self.browse_file(e)).grid(row=0, column=2, padx=5)
+            ttk.Button(content, text="Procurar", command=lambda e=key_entry: self._open_path_dialog(e)).grid(row=0, column=2, padx=5)
             key_row = 0
 
         ttk.Label(content, text="Ficheiro de Entrada:").grid(row=key_row+1, column=0, padx=10, pady=5, sticky="e")
         input_entry = ttk.Entry(content, width=55, state="readonly")
         input_entry.grid(row=key_row+1, column=1, padx=10, pady=5)
-        ttk.Button(content, text="Procurar", command=lambda e=input_entry: self.browse_file(e)).grid(row=key_row+1, column=2, padx=5)
+        ttk.Button(content, text="Procurar", command=lambda e=input_entry: self._open_path_dialog(e)).grid(row=key_row+1, column=2, padx=5)
 
         ttk.Label(content, text="Ficheiro de Saída:").grid(row=key_row+2, column=0, padx=10, pady=5, sticky="e")
         output_entry = ttk.Entry(content, width=55, state="readonly")
         output_entry.grid(row=key_row+2, column=1, padx=10, pady=5)
-        ttk.Button(content, text="Guardar como", command=lambda e=output_entry: self.save_file(e)).grid(row=key_row+2, column=2, padx=5)
+        ttk.Button(content, text="Guardar como", command=lambda e=output_entry: self._open_path_dialog(e, save=True)).grid(row=key_row+2, column=2, padx=5)
 
         action_var = tk.StringVar(value="encrypt")
-        rb_frame = ttk.Frame(content)
+        rb_frame = self._make_radio_group(content, action_var)
         rb_frame.grid(row=key_row+3, column=1)
-        try:
-            dark_bg = "#1e1e1e"
-            dark_active = "#3a3a3a"
-            fg = "#ffffff"
-            tk.Radiobutton(rb_frame, text="Cifrar", variable=action_var, value="encrypt",
-                           bg=dark_bg, fg=fg, selectcolor=dark_active,
-                           activebackground=dark_active, activeforeground=fg,
-                           bd=0, highlightthickness=0, anchor="w").pack(side="left", padx=(0, 10))
-            tk.Radiobutton(rb_frame, text="Decifrar", variable=action_var, value="decrypt",
-                           bg=dark_bg, fg=fg, selectcolor=dark_active,
-                           activebackground=dark_active, activeforeground=fg,
-                           bd=0, highlightthickness=0, anchor="w").pack(side="left")
-        except Exception:
-            ttk.Radiobutton(rb_frame, text="Cifrar", variable=action_var, value="encrypt").pack(side="left", padx=(0, 10))
-            ttk.Radiobutton(rb_frame, text="Decifrar", variable=action_var, value="decrypt").pack(side="left")
 
         if cipher_type == "Vigenère":
             cmd = self.run_vigenere
@@ -289,12 +341,8 @@ class CipherGUI:
 
         ttk.Button(content, text="Executar", command=cmd).grid(row=key_row+4, column=1, pady=10)
 
-        log_box = tk.Text(content, height=10, width=90, bg="#2d2d2d", fg="#ffffff", insertbackground="white")
+        log_box = self._make_log_box(content)
         log_box.grid(row=key_row+5, column=0, columnspan=3, padx=10, pady=10)
-        try:
-            log_box.config(state="disabled")
-        except Exception:
-            pass
 
         frame.key_entry = key_entry
         frame.input_entry = input_entry
@@ -308,163 +356,8 @@ class CipherGUI:
             self.vig_action = action_var
             self.vig_log = log_box
 
-    def browse_file(self, entry):
-        """Show an open-file dialog and put the chosen path into `entry`.
-
-        The function preserves the Entry widget's previous state (for
-        example `readonly`) by temporarily enabling it if needed.
-
-        Args:
-            entry: A ttk.Entry (or similar) where the selected path will be
-                   inserted.
-        """
-
-        path = filedialog.askopenfilename()
-        if not path:
-            return
-
-        # First try to set a bound textvariable (works even when readonly)
-        try:
-            tv_name = entry.cget('textvariable')
-            if tv_name:
-                try:
-                    entry.setvar(tv_name, path)
-                    print(f"browse_file: set textvariable {tv_name} -> {path}")
-                    return
-                except Exception:
-                    pass
-        except Exception:
-            pass
-
-        # If this is a ttk widget, prefer using the state() API to toggle
-        # readonly state instead of entry.config which may not work on all
-        # ttk implementations.
-        try:
-            state_fn = getattr(entry, 'state', None)
-            if callable(state_fn):
-                try:
-                    prev_states = list(entry.state())
-                except Exception:
-                    prev_states = []
-                # temporarily remove readonly if present
-                try:
-                    entry.state(['!readonly'])
-                except Exception:
-                    pass
-                try:
-                    entry.delete(0, tk.END)
-                    entry.insert(0, path)
-                finally:
-                    try:
-                        if 'readonly' in prev_states:
-                            entry.state(['readonly'])
-                    except Exception:
-                        pass
-                return
-        except Exception:
-            pass
-
-        # Fallback for plain tk.Entry or other widgets
-        prev_state = None
-        try:
-            prev_state = entry.cget('state')
-        except Exception:
-            prev_state = None
-        try:
-            if prev_state == 'readonly':
-                entry.config(state='normal')
-            entry.delete(0, tk.END)
-            entry.insert(0, path)
-        finally:
-            if prev_state == 'readonly':
-                try:
-                    entry.config(state='readonly')
-                except Exception:
-                    pass
-
-    def save_file(self, entry):
-        """Show a save-as dialog and put the chosen path into `entry`.
-
-        Mirrors `browse_file` behavior but uses a save dialog and defaults to
-        a `.txt` extension. Preserves the Entry's prior widget state.
-
-        Args:
-            entry: A ttk.Entry (or similar) where the selected save path will be
-                   inserted.
-        """
-
-        path = filedialog.asksaveasfilename(defaultextension=".txt")
-        if not path:
-            return
-
-        # Prefer setting the bound variable directly when available
-        try:
-            tv_name = entry.cget('textvariable')
-            if tv_name:
-                try:
-                    entry.setvar(tv_name, path)
-                    print(f"save_file: set textvariable {tv_name} -> {path}")
-                    return
-                except Exception:
-                    pass
-        except Exception:
-            pass
-
-        # Use ttk Entry state API when possible
-        try:
-            state_fn = getattr(entry, 'state', None)
-            if callable(state_fn):
-                try:
-                    prev_states = list(entry.state())
-                except Exception:
-                    prev_states = []
-                try:
-                    entry.state(['!readonly'])
-                except Exception:
-                    pass
-                try:
-                    entry.delete(0, tk.END)
-                    entry.insert(0, path)
-                finally:
-                    try:
-                        if 'readonly' in prev_states:
-                            entry.state(['readonly'])
-                    except Exception:
-                        pass
-                return
-        except Exception:
-            pass
-
-        # Fallback for plain tk.Entry
-        prev_state = None
-        try:
-            prev_state = entry.cget('state')
-        except Exception:
-            prev_state = None
-        try:
-            if prev_state == 'readonly':
-                entry.config(state='normal')
-            entry.delete(0, tk.END)
-            entry.insert(0, path)
-        finally:
-            if prev_state == 'readonly':
-                try:
-                    entry.config(state='readonly')
-                except Exception:
-                    pass
-
     def log_message(self, box, message):
-        """Append a single-line message to the GUI log `box`.
-
-        The method makes the text widget temporarily writable, inserts the
-        message followed by a newline, then restores the widget to
-        read-only. Errors are ignored to keep the UI robust.
-
-        Args:
-            box: A tk.Text widget used for logging.
-            message: The message string to append.
-        """
-
+        """Append a line to the log box, toggling read-only state briefly."""
         try:
             box.config(state="normal")
             box.insert(tk.END, message + "\n")
@@ -474,18 +367,14 @@ class CipherGUI:
             pass
 
     def center_window(self):
-        """Center the main window on the screen.
-
-        This computes the desired geometry and updates the window position.
-        Works even if the window manager hasn't fully realized the window yet.
-        """
+        """Center the main application window on the screen."""
         self.root.update_idletasks()
 
         width = self.root.winfo_width()
         height = self.root.winfo_height()
         if width <= 1 or height <= 1:
-            geom = self.root.geometry()
             try:
+                geom = self.root.geometry()
                 size = geom.split('+')[0]
                 width, height = map(int, size.split('x'))
             except Exception:
@@ -499,8 +388,16 @@ class CipherGUI:
 
         self.root.geometry(f"{width}x{height}+{x}+{y}")
 
-
     def run_cipher(self, cipher_type, key_entry, input_entry, output_entry, action_var):
+        """Run the selected cipher module to encrypt or decrypt a file.
+
+        Parameters:
+            cipher_type (str): one of 'AES', 'DES', 'Playfair'.
+            key_entry (tk.Entry): Entry widget holding the key or key path.
+            input_entry (tk.Entry): Entry widget holding input file path.
+            output_entry (tk.Entry): Entry widget holding output file path.
+            action_var (tk.StringVar): 'encrypt' or 'decrypt'.
+        """
         key = key_entry.get().strip() if key_entry is not None else ""
         input_path = input_entry.get().strip()
         output_path = output_entry.get().strip()
@@ -530,9 +427,8 @@ class CipherGUI:
             self.log_message(log_box, f"Erro: {e}")
 
     def run_vigenere(self):
-        tabela_path = getattr(self, 'vig_table_entry', None)
-        chave_entry = getattr(self, 'vig_key_entry', None)
-        if tabela_path is None or chave_entry is None:
+        """Run Vigenère-specific encrypt/decrypt using the GUI-provided paths."""
+        if not hasattr(self, 'vig_table_entry') or not hasattr(self, 'vig_key_entry'):
             messagebox.showerror("Erro", "Widgets do Vigenère não estão inicializados corretamente.")
             return
 

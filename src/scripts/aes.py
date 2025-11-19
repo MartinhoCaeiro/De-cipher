@@ -29,70 +29,59 @@ def _read_key_file(key_path: str) -> bytes:
 
     with open(key_path, "r", encoding="utf-8") as f:
         content = f.read().strip()
+
     try:
         key = bytes.fromhex(content)
     except ValueError:
-        key = content.encode("utf-8")
+        key = content.encode()
+
     if len(key) not in (16, 24, 32):
-        raise ValueError("A chave deve ter 16, 24 ou 32 bytes (128, 192 ou 256 bits).")
+        raise ValueError("A chave deve ter 16, 24 ou 32 bytes.")
     return key
 
 
-def encrypt_file(input_path: str, output_path: str, key: str = ""):
+def encrypt_file(input_path: str, output_path: str, key_path: str):
     """Encrypt a file with AES-ECB and write ciphertext to output.
 
     Args:
         input_path: Path to the plaintext input file (opened in binary).
         output_path: Path to write the encrypted file (binary).
-        key: Path to the key file (hex or text).
+        key_path: Path to the key file (hex or text).
 
-    Raises:
-        FileNotFoundError: if the key file doesn't exist.
     """
-    if not os.path.isfile(key):
-        raise FileNotFoundError(f"Ficheiro de chave não encontrado: {key}")
-    key_bytes = _read_key_file(key)
+    key = _read_key_file(key_path)
+    cipher = AES.new(key, AES.MODE_ECB)
 
-    cipher = AES.new(key_bytes, AES.MODE_ECB)
+    with open(input_path, "rb") as f:
+        data = f.read()
 
-    with open(input_path, "rb") as f_in:
-        data = f_in.read()
+    pad = AES.block_size - len(data) % AES.block_size
+    ciphertext = cipher.encrypt(data + bytes([pad])*pad)
 
-    pad_len = AES.block_size - (len(data) % AES.block_size)
-    data += bytes([pad_len]) * pad_len
-
-    ciphertext = cipher.encrypt(data)
-
-    with open(output_path, "wb") as f_out:
-        f_out.write(ciphertext)
+    with open(output_path, "wb") as f:
+        f.write(ciphertext)
 
 
-def decrypt_file(input_path: str, output_path: str, key: str = ""):
+def decrypt_file(input_path: str, output_path: str, key_path: str):
     """Decrypt a file produced by :func:`encrypt_file` (ECB mode).
 
     Args:
         input_path: Path to the encrypted input file.
         output_path: Path to write the decrypted plaintext.
-        key: Path to the key file (hex or text).
+        key_path: Path to the key file (hex or text).
 
     Raises:
-        FileNotFoundError: if the key file doesn't exist.
         ValueError: if padding is invalid (likely wrong key).
     """
-    if not os.path.isfile(key):
-        raise FileNotFoundError(f"Ficheiro de chave não encontrado: {key}")
-    key_bytes = _read_key_file(key)
+    key = _read_key_file(key_path)
+    cipher = AES.new(key, AES.MODE_ECB)
 
-    with open(input_path, "rb") as f_in:
-        ciphertext = f_in.read()
+    with open(input_path, "rb") as f:
+        data = cipher.decrypt(f.read())
 
-    cipher = AES.new(key_bytes, AES.MODE_ECB)
-    data = cipher.decrypt(ciphertext)
-
-    pad_len = data[-1]
-    if pad_len < 1 or pad_len > AES.block_size:
+    pad = data[-1]
+    if not 1 <= pad <= AES.block_size:
         raise ValueError("Padding inválido ou chave incorreta.")
-    data = data[:-pad_len]
 
-    with open(output_path, "wb") as f_out:
-        f_out.write(data)
+    with open(output_path, "wb") as f:
+        f.write(data[:-pad])

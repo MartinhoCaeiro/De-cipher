@@ -1,193 +1,222 @@
-"""Vigenère cipher helpers using a provided table file.
+"""Vigenère cipher helpers using a 94×94 table of visible ASCII chars.
 
-This module supports the classic 26x26 A–Z Vigenère table and an
-extended table containing all visible ASCII characters (33..126),
-i.e. a 94x94 table. The module reads a table file, a key file and
-provides text and file-level encrypt/decrypt helpers. The behaviour
-adapts depending on the table size:
+This module operates with a 94×94 Vigenère table built from the visible
+ASCII characters (code points 33..126). It provides helpers to read a
+table file and a key file, build mappings, encrypt/decrypt text and
+files using the provided table and key.
 
-- 26x26 : operates on uppercase A..Z (legacy behaviour)
-- 94x94 : operates on visible ASCII characters (codes 33..126)
+The implementation validates the table file strictly: it expects
+exactly 94 non-empty rows each containing exactly the 94 visible ASCII
+characters (33..126) in some order.
 """
 
 import os
 
 
 def read_table_from_file(path: str):
-    """Read a Vigenère table from `path`.
+    """Read a 94×94 Vigenère table from `path` and return list of rows.
 
-    The file must contain N lines of N characters each (a square table).
-    Rows must contain only visible ASCII characters (codes 33..126).
-    The function validates that all rows have the same length and that
-    the set of characters in each row matches the set in the first row.
-    Returns a list of strings representing the table rows.
+    Behavior:
+    - Reads non-empty lines from `path` and strips trailing newlines.
+    - Validates there are exactly 94 rows and each row has length 94.
+    - Validates the first row contains exactly the set of visible ASCII
+      characters (code points 33..126) and that every subsequent row
+      is a permutation of that set.
+
+    Returns:
+        list[str]: the table rows (94 strings of 94 characters).
+
+    Raises:
+        FileNotFoundError: if `path` does not exist.
+        ValueError: on malformed or empty table files.
     """
     if not os.path.isfile(path):
-        raise FileNotFoundError(f"Ficheiro da tabela não encontrado: {path}")
+        raise FileNotFoundError(f"Tabela não encontrada: {path}")
 
     with open(path, "r", encoding="utf-8") as f:
-        # preserve character case for extended tables; caller will
-        # interpret characters based on table size.
         lines = [line.rstrip("\n\r") for line in f if line.strip()]
 
     if not lines:
-        raise ValueError("A tabela Vigenère está vazia.")
+        raise ValueError("Tabela vazia.")
 
     n = len(lines)
-    row_len = len(lines[0])
-    if any(len(line) != row_len for line in lines):
-        raise ValueError("A tabela Vigenère deve ser quadrada (todas as linhas do mesmo comprimento).")
-    if n != row_len:
-        raise ValueError("A tabela Vigenère deve ser quadrada (N x N).")
+    if n != 94:
+        raise ValueError("A tabela deve ter 94 linhas (94×94 ASCII visíveis).")
 
-    # Validate characters: only visible ASCII allowed; include space (32..126)
-    visible = {chr(i) for i in range(32, 127)}
-    first_set = set(lines[0])
-    if not first_set.issubset(visible):
-        raise ValueError("A tabela contém caracteres não visíveis ASCII (somente 32..126 são suportados).")
+    if any(len(row) != 94 for row in lines):
+        raise ValueError("Todas as linhas devem ter exatamente 94 caracteres.")
 
-    # Ensure each row uses the same set of characters as the first row
+    allowed = {chr(i) for i in range(33, 127)}
+    first_row_set = set(lines[0])
+
+    if first_row_set != allowed:
+        raise ValueError("A primeira linha deve conter exatamente os ASCII visíveis (33..126) sem repetição.")
+
     for idx, row in enumerate(lines[1:], start=2):
-        if set(row) != first_set:
-            raise ValueError(f"A linha {idx} da tabela não contém o mesmo conjunto de caracteres da primeira linha.")
+        if set(row) != first_row_set:
+            raise ValueError(f"Linha {idx} não contém os mesmos caracteres da primeira linha.")
 
-    # Ensure first row has unique characters (no duplicates)
-    if len(first_set) != row_len:
-        raise ValueError("A primeira linha da tabela contém caracteres duplicados; cada caractere deve aparecer exatamente uma vez.")
-
-    return [line for line in lines]
+    return lines
 
 
-def read_key_from_file(path: str, allowed_chars: set = None) -> str:
-    """Read a Vigenère key from `path` and return characters filtered by allowed_chars.
+def read_key_from_file(path: str):
+    """Read a key from `path` and return only visible ASCII characters.
 
-    If `allowed_chars` is None the function returns visible ASCII
-    characters (33..126) found in the key file. If provided, only
-    characters present in `allowed_chars` are kept. Raises
-    FileNotFoundError or ValueError on problems.
+    The function reads the file and returns a string containing only
+    visible ASCII characters (code points 33..126) found in the file.
+
+    Raises:
+        FileNotFoundError: if `path` does not exist.
+        ValueError: if the resulting key is empty (no visible ASCII chars).
     """
     if not os.path.isfile(path):
-        raise FileNotFoundError(f"Ficheiro da chave não encontrado: {path}")
-    with open(path, 'r', encoding='utf-8') as f:
+        raise FileNotFoundError(f"Chave não encontrada: {path}")
+
+    with open(path, "r", encoding="utf-8") as f:
         data = f.read()
-    if allowed_chars is None:
-        # default allowed includes space (32) through 126
-        allowed_chars = {chr(i) for i in range(32, 127)}
-    key = ''.join(ch for ch in data if ch in allowed_chars)
+
+    allowed = {chr(i) for i in range(33, 127)}
+    key = ''.join(ch for ch in data if ch in allowed)
+
     if not key:
-        raise ValueError("A chave Vigenère está vazia ou inválida para a tabela fornecida.")
+        raise ValueError("A chave está vazia ou não contém ASCII visível.")
+
     return key
 
 
-def encrypt_char(ch: str, key_ch: str, table, mapping) -> str:
-    """Encrypt a single character `ch` using `table` and `mapping`.
+def build_mapping(table):
+    """Build mapping helpers from `table`.
 
-    `mapping` is a dict char->index for the table's charset. If a
-    character is not present in `mapping` the function returns the
-    character unchanged.
+    Returns a tuple (charset, mapping, reverse) where:
+    - `charset` is the ordered list of characters taken from first row.
+    - `mapping` maps character -> column index.
+    - `reverse` maps column index -> character.
     """
-    if key_ch not in mapping or ch not in mapping:
+    charset = list(table[0])
+    mapping = {c: i for i, c in enumerate(charset)}
+    reverse = {i: c for i, c in enumerate(charset)}
+    return charset, mapping, reverse
+
+
+def encrypt_char(ch, kch, table, mapping):
+    """Encrypt a single character `ch` using key character `kch`.
+
+    If either `ch` or `kch` is not present in `mapping`, the original
+    `ch` is returned unchanged (non-table characters are left alone).
+    """
+    if ch not in mapping or kch not in mapping:
         return ch
-    row = mapping[key_ch]
+    row = mapping[kch]
     col = mapping[ch]
     return table[row][col]
 
 
-def decrypt_char(ch: str, key_ch: str, table, mapping, rev_mapping) -> str:
-    """Decrypt a single character using `table` row defined by `key_ch`.
+def decrypt_char(ch, kch, table, mapping, reverse):
+    """Decrypt a single character `ch` using key character `kch`.
 
-    `mapping` maps char->index and `rev_mapping` maps index->char for the
-    table charset. If `ch` is not present in the row the function returns
-    `ch` unchanged.
+    If `kch` is not in `mapping` or `ch` is not found in the selected
+    row, the original `ch` is returned unchanged.
     """
-    if key_ch not in mapping:
+    if kch not in mapping:
         return ch
-    row = mapping[key_ch]
-    row_data = table[row]
-    col = row_data.find(ch)
+    row = table[mapping[kch]]
+    col = row.find(ch)
     if col == -1:
         return ch
-    return rev_mapping[col]
+    return reverse[col]
 
 
-def _build_charset_and_mappings(table):
-    # Derive charset from the first row of the table. The table must be
-    # validated earlier to ensure the first row contains unique visible
-    # ASCII characters and all rows share the same set.
-    charset = list(table[0])
-    mapping = {c: i for i, c in enumerate(charset)}
-    rev_mapping = {i: c for i, c in enumerate(charset)}
-    return charset, mapping, rev_mapping
+def vigenere(text, key, table, mode="encrypt"):
+    """Apply the Vigenère cipher to `text` using `key` and `table`.
 
+    The function:
+    - builds charset/mappings from `table` (first row defines charset),
+    - filters `text` to only characters present in the table charset,
+    - repeats `key` as necessary and applies per-character encrypt or
+      decrypt using `encrypt_char`/`decrypt_char`.
 
-def process_text(text: str, key: str, table, mode: str = "encrypt") -> str:
-    """Encrypt or decrypt `text` using Vigenère with the provided table.
-
-    The function adapts normalization depending on the table size: for a
-    26x26 table it uppercases and keeps A..Z; for a 94x94 table it keeps
-    visible ASCII characters (33..126) as-is.
+    `mode` may be "encrypt" or "decrypt".
     """
-    charset, mapping, rev_mapping = _build_charset_and_mappings(table)
-
+    charset, mapping, reverse = build_mapping(table)
     allowed = set(charset)
-    # Normalize text according to allowed charset. If charset contains
-    # alphabetic uppercase letters only, perform uppercasing; otherwise
-    # keep characters as-is (suitable for visible ASCII tables).
-    if all('A' <= c <= 'Z' for c in charset):
-        text = ''.join(ch for ch in text.upper() if ch in allowed)
-    else:
-        text = ''.join(ch for ch in text if ch in allowed)
 
-    result = ""
-    key_index = 0
+    text = ''.join(ch for ch in text if ch in allowed)
+
+    res = []
+    ki = 0
+
     for ch in text:
-        key_ch = key[key_index % len(key)]
+        kc = key[ki % len(key)]
         if mode == "encrypt":
-            result += encrypt_char(ch, key_ch, table, mapping)
+            res.append(encrypt_char(ch, kc, table, mapping))
         else:
-            result += decrypt_char(ch, key_ch, table, mapping, rev_mapping)
-        key_index += 1
-    return result
+            res.append(decrypt_char(ch, kc, table, mapping, reverse))
+        ki += 1
+
+    return "".join(res)
 
 
-def encrypt_file(input_path: str, output_path: str, key=""):
-    """Encrypt a text file using a Vigenère table and key file.
+def encrypt_file(input_path, output_path, key_paths):
+    """Encrypt the file at `input_path` and write ciphertext to `output_path`.
 
-    The `key` parameter must be a sequence (list/tuple) of two paths:
-    [table_path, key_path].
+    Parameters:
+        input_path (str): path to the plaintext input file (UTF-8).
+        output_path (str): path where ciphertext will be written (UTF-8).
+        key_paths (tuple): tuple of two paths `(table_path, key_path)`.
+
+    Behavior:
+        - Reads the Vigenère table using `read_table_from_file` and the
+          key using `read_key_from_file`.
+        - Reads the entire input file as UTF-8, filters characters to the
+          table charset, encrypts with `vigenere(..., mode="encrypt")`,
+          and writes the resulting ciphertext as UTF-8 to `output_path`.
+
+    Raises:
+        FileNotFoundError: if either `table_path`, `key_path` or `input_path`
+            does not exist.
+        ValueError: if the table or key files are malformed.
     """
-    if not isinstance(key, (list, tuple)) or len(key) != 2:
-        raise ValueError("O parâmetro 'key' deve ser uma lista/tuplo [tabela_path, chave_path].")
-
-    table_path, key_path = key
+    table_path, key_path = key_paths
     table = read_table_from_file(table_path)
-    # Derive allowed charset from the table
-    charset, _, _ = _build_charset_and_mappings(table)
-    allowed = set(charset)
-    key_str = read_key_from_file(key_path, allowed_chars=allowed)
+    key = read_key_from_file(key_path)
 
-    with open(input_path, "r", encoding="utf-8") as f_in:
-        text = f_in.read()
-    cipher = process_text(text, key_str, table, mode="encrypt")
+    with open(input_path, "r", encoding="utf-8") as f:
+        text = f.read()
 
-    with open(output_path, "w", encoding="utf-8") as f_out:
-        f_out.write(cipher)
+    cipher = vigenere(text, key, table, "encrypt")
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(cipher)
 
 
-def decrypt_file(input_path: str, output_path: str, key=""):
-    """Decrypt a Vigenère-encrypted text file using table and key files."""
-    if not isinstance(key, (list, tuple)) or len(key) != 2:
-        raise ValueError("O parâmetro 'key' deve ser uma lista/tuplo [tabela_path, chave_path].")
+def decrypt_file(input_path, output_path, key_paths):
+    """Decrypt the file at `input_path` and write plaintext to `output_path`.
 
-    table_path, key_path = key
+    Parameters:
+        input_path (str): path to the ciphertext input file (UTF-8).
+        output_path (str): path where plaintext will be written (UTF-8).
+        key_paths (tuple): tuple of two paths `(table_path, key_path)`.
+
+    Behavior:
+        - Reads the Vigenère table using `read_table_from_file` and the
+          key using `read_key_from_file`.
+        - Reads the entire input file as UTF-8, applies
+          `vigenere(..., mode="decrypt")`, and writes the resulting
+          plaintext as UTF-8 to `output_path`.
+
+    Raises:
+        FileNotFoundError: if either `table_path`, `key_path` or `input_path`
+            does not exist.
+        ValueError: if the table or key files are malformed.
+    """
+    table_path, key_path = key_paths
     table = read_table_from_file(table_path)
-    charset, _, _ = _build_charset_and_mappings(table)
-    allowed = set(charset)
-    key_str = read_key_from_file(key_path, allowed_chars=allowed)
+    key = read_key_from_file(key_path)
 
-    with open(input_path, "r", encoding="utf-8") as f_in:
-        text = f_in.read()
-    plain = process_text(text, key_str, table, mode="decrypt")
+    with open(input_path, "r", encoding="utf-8") as f:
+        cipher = f.read()
 
-    with open(output_path, "w", encoding="utf-8") as f_out:
-        f_out.write(plain)
+    text = vigenere(cipher, key, table, "decrypt")
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(text)
