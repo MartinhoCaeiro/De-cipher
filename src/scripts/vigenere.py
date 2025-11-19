@@ -1,31 +1,30 @@
-"""Vigenère cipher helpers using a 94×94 table of visible ASCII chars.
+"""Vigenère cipher helpers using a 95×95 table of visible ASCII chars.
 
-This module operates with a 94×94 Vigenère table built from the visible
-ASCII characters (code points 33..126). It provides helpers to read a
-table file and a key file, build mappings, encrypt/decrypt text and
-files using the provided table and key.
+This module operates with a 95×95 Vigenère table built from the visible
+ASCII characters including space (code points 32..126). It provides
+helpers to read a table file and a key file, build mappings, and
+encrypt/decrypt text and files using the provided table and key.
 
 The implementation validates the table file strictly: it expects
-exactly 94 non-empty rows each containing exactly the 94 visible ASCII
-characters (33..126) in some order.
+exactly 95 non-empty rows each containing exactly the 95 visible ASCII
+characters (32..126) in some order.
 """
 
 import os
 
 
 def read_table_from_file(path: str):
-    """Read a 94×94 Vigenère table from `path` and return list of rows.
+    """Read a 95×95 Vigenère table from `path` and return list of rows.
 
     Behavior:
     - Reads non-empty lines from `path` and strips trailing newlines.
-    - Validates there are exactly 94 rows and each row has length 94.
+    - Validates there are exactly 95 rows and each row has length 95.
     - Validates the first row contains exactly the set of visible ASCII
-      characters (code points 33..126) and that every subsequent row
+      characters (code points 32..126) and that every subsequent row
       is a permutation of that set.
 
     Returns:
-        list[str]: the table rows (94 strings of 94 characters).
-
+        list[str]: the table rows (95 strings of 95 characters).
     Raises:
         FileNotFoundError: if `path` does not exist.
         ValueError: on malformed or empty table files.
@@ -40,17 +39,17 @@ def read_table_from_file(path: str):
         raise ValueError("Tabela vazia.")
 
     n = len(lines)
-    if n != 94:
-        raise ValueError("A tabela deve ter 94 linhas (94×94 ASCII visíveis).")
+    if n != 95:
+        raise ValueError("A tabela deve ter 95 linhas (95×95 ASCII visíveis).")
 
-    if any(len(row) != 94 for row in lines):
-        raise ValueError("Todas as linhas devem ter exatamente 94 caracteres.")
+    if any(len(row) != 95 for row in lines):
+        raise ValueError("Todas as linhas devem ter exatamente 95 caracteres.")
 
-    allowed = {chr(i) for i in range(33, 127)}
+    allowed = {chr(i) for i in range(32, 127)}
     first_row_set = set(lines[0])
 
     if first_row_set != allowed:
-        raise ValueError("A primeira linha deve conter exatamente os ASCII visíveis (33..126) sem repetição.")
+        raise ValueError("A primeira linha deve conter exatamente os ASCII visíveis (32..126) sem repetição.")
 
     for idx, row in enumerate(lines[1:], start=2):
         if set(row) != first_row_set:
@@ -75,7 +74,7 @@ def read_key_from_file(path: str):
     with open(path, "r", encoding="utf-8") as f:
         data = f.read()
 
-    allowed = {chr(i) for i in range(33, 127)}
+    allowed = {chr(i) for i in range(32, 127)}
     key = ''.join(ch for ch in data if ch in allowed)
 
     if not key:

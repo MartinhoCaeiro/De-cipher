@@ -54,7 +54,10 @@ def _ensure_packages(pack_map):
             )
             allow = False
             try:
-                allow = messagebox.askyesno("Instalar dependência", msg, parent=tmp_root)
+                if tmp_root is not None:
+                    allow = messagebox.askyesno("Instalar dependência", msg, parent=tmp_root)
+                else:
+                    allow = messagebox.askyesno("Instalar dependência", msg)
             except Exception:
                 try:
                     resp = input(msg + " [y/N]: ")
