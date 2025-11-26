@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  26 NOV 2025 16:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.7)  26 NOV 2025 21:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -904,7 +904,8 @@ File: t1ua1.fd 2006/03/21 Fontinst v1.928 font definitions for T1/ua1.
 )
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
 (Font)              scaled to size 9.49997pt on input line 141.
- (Relatorio.aux)
+
+No file Relatorio.aux.
 \openout1 = `Relatorio.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
@@ -927,7 +928,7 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 141.
 LaTeX Font Info:    ... okay on input line 141.
 Package biblatex Info: Trying to load language 'portuguese' -> 'portuguese-apa'...
 Package biblatex Info: ... file 'portuguese-apa.lbx' found.
- (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-apa\portuguese-apa.lbx
+(C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-apa\portuguese-apa.lbx
 File: portuguese-apa.lbx 2023/03/20 v9.17 APA biblatex localisation
 Package biblatex Info: Trying to load language 'portuguese'...
 Package biblatex Info: ... file 'portuguese.lbx' found.
@@ -1010,12 +1011,11 @@ Package translations Info: no dictionary file `translations-basic-dictionary-por
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 141.
-(Relatorio.out) (Relatorio.out)
 \@outlinefile=\write5
 \openout5 = `Relatorio.out'.
 
 \c@lstlisting=\count504
-<Recursos/Logos/LOGO_IPB.png, id=69, 646.415pt x 499.8675pt>
+<Recursos/Logos/LOGO_IPB.png, id=6, 646.415pt x 499.8675pt>
 File: Recursos/Logos/LOGO_IPB.png Graphic file (type png)
 <use Recursos/Logos/LOGO_IPB.png>
 Package pdftex.def Info: Recursos/Logos/LOGO_IPB.png  used on input line 147.
@@ -1029,12 +1029,12 @@ LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
 LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
 (Font)              scaled to size 23.63593pt on input line 147.
 LaTeX Font Info:    Trying to load font information for TS1+ua1 on input line 147.
- (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/arial\ts1ua1.fd
+(C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/arial\ts1ua1.fd
 File: ts1ua1.fd 2006/03/21 Fontinst v1.928 font definitions for TS1/ua1.
 )
 LaTeX Font Info:    Font shape `TS1/ua1/b/n' will be
 (Font)              scaled to size 23.63593pt on input line 147.
-<Recursos/Logos/IPBejaESTIG.jpg, id=70, 501.875pt x 301.125pt>
+<Recursos/Logos/IPBejaESTIG.jpg, id=7, 501.875pt x 301.125pt>
 File: Recursos/Logos/IPBejaESTIG.jpg Graphic file (type jpg)
 <use Recursos/Logos/IPBejaESTIG.jpg>
 Package pdftex.def Info: Recursos/Logos/IPBejaESTIG.jpg  used on input line 147.
@@ -1044,6 +1044,19 @@ Package pdftex.def Info: Recursos/Logos/IPBejaESTIG.jpg  used on input line 147.
 [1
 
 {C:/Users/Marti/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./Recursos/Logos/LOGO_IPB.png> <./Recursos/Logos/IPBejaESTIG.jpg>]
+c:/Users/Marti/Documents/De-cipher/LaTeX Report/Relatorio.tex:149: Misplaced alignment tab character &.
+\secondtitlepage ...Orientador: Rui Miguel Silva &
+                                                   Daniel José Da Graça Pe...
+l.149 \secondtitlepage
+                      
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
@@ -1075,19 +1088,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has be
 <to be read again> 
                    \relax 
 l.180 \newpage
-               [2] (Relatorio.toc
-LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
- (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
- (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+               [2]
+No file Relatorio.toc.
 \tf@toc=\write6
 \openout6 = `Relatorio.toc'.
 
- (Relatorio.lof)
+No file Relatorio.lof.
 \tf@lof=\write7
 \openout7 = `Relatorio.lof'.
 
@@ -1120,7 +1126,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 224--226
 
  []
 
-<Recursos/GUI.png, id=151, 573.94424pt x 343.88475pt>
+<Recursos/GUI.png, id=60, 573.94424pt x 343.88475pt>
 File: Recursos/GUI.png Graphic file (type png)
 <use Recursos/GUI.png>
 Package pdftex.def Info: Recursos/GUI.png  used on input line 230.
@@ -1141,14 +1147,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--243
 
  []
 
-<Recursos/aes_enc.png, id=160, 436.029pt x 302.93175pt>
+<Recursos/aes_enc.png, id=72, 436.029pt x 302.93175pt>
 File: Recursos/aes_enc.png Graphic file (type png)
 <use Recursos/aes_enc.png>
 Package pdftex.def Info: Recursos/aes_enc.png  used on input line 248.
 (pdftex.def)             Requested size: 232.17242pt x 161.3065pt.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
 (Font)              scaled to size 8.54997pt on input line 249.
-<Recursos/aes_dec.png, id=161, 402.303pt x 340.8735pt>
+<Recursos/aes_dec.png, id=73, 402.303pt x 340.8735pt>
 File: Recursos/aes_dec.png Graphic file (type png)
 <use Recursos/aes_dec.png>
 Package pdftex.def Info: Recursos/aes_dec.png  used on input line 255.
@@ -1160,12 +1166,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 266--271
 
  []
 
-<Recursos/des_enc.png, id=169, 437.83575pt x 298.716pt>
+<Recursos/des_enc.png, id=83, 437.83575pt x 298.716pt>
 File: Recursos/des_enc.png Graphic file (type png)
 <use Recursos/des_enc.png>
 Package pdftex.def Info: Recursos/des_enc.png  used on input line 276.
 (pdftex.def)             Requested size: 232.17242pt x 158.40076pt.
-<Recursos/des_dec.png, id=170, 448.67625pt x 341.47575pt>
+<Recursos/des_dec.png, id=84, 448.67625pt x 341.47575pt>
 File: Recursos/des_dec.png Graphic file (type png)
 <use Recursos/des_dec.png>
 Package pdftex.def Info: Recursos/des_dec.png  used on input line 283.
@@ -1182,7 +1188,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--301
 
  []
 
-<Recursos/vigenere.png, id=177, 429.40425pt x 411.33675pt>
+<Recursos/vigenere.png, id=93, 429.40425pt x 411.33675pt>
 File: Recursos/vigenere.png Graphic file (type png)
 <use Recursos/vigenere.png>
 Package pdftex.def Info: Recursos/vigenere.png  used on input line 304.
@@ -1214,7 +1220,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 312--319
 
  []
 
-<Recursos/playfair.png, id=183, 442.65375pt x 463.7325pt>
+<Recursos/playfair.png, id=101, 442.65375pt x 463.7325pt>
 File: Recursos/playfair.png Graphic file (type png)
 <use Recursos/playfair.png>
 Package pdftex.def Info: Recursos/playfair.png  used on input line 322.
@@ -1226,22 +1232,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 330--333
 
  []
 
-<Recursos/aes_test1.png, id=190, 436.63126pt x 94.55325pt>
+<Recursos/aes_test1.png, id=110, 436.63126pt x 94.55325pt>
 File: Recursos/aes_test1.png Graphic file (type png)
 <use Recursos/aes_test1.png>
 Package pdftex.def Info: Recursos/aes_test1.png  used on input line 338.
 (pdftex.def)             Requested size: 435.32422pt x 94.27022pt.
-<Recursos/aes_test2.png, id=191, 412.54124pt x 91.542pt>
+<Recursos/aes_test2.png, id=111, 412.54124pt x 91.542pt>
 File: Recursos/aes_test2.png Graphic file (type png)
 <use Recursos/aes_test2.png>
 Package pdftex.def Info: Recursos/aes_test2.png  used on input line 346.
 (pdftex.def)             Requested size: 435.32422pt x 96.59825pt.
-<Recursos/des_test1.png, id=192, 407.121pt x 91.542pt>
+<Recursos/des_test1.png, id=112, 407.121pt x 91.542pt>
 File: Recursos/des_test1.png Graphic file (type png)
 <use Recursos/des_test1.png>
 Package pdftex.def Info: Recursos/des_test1.png  used on input line 358.
 (pdftex.def)             Requested size: 435.32422pt x 97.8889pt.
-<Recursos/des_test2.png, id=193, 408.3255pt x 89.73524pt>
+<Recursos/des_test2.png, id=113, 408.3255pt x 89.73524pt>
 File: Recursos/des_test2.png Graphic file (type png)
 <use Recursos/des_test2.png>
 Package pdftex.def Info: Recursos/des_test2.png  used on input line 366.
@@ -1249,22 +1255,22 @@ Package pdftex.def Info: Recursos/des_test2.png  used on input line 366.
 
 
 [7 <./Recursos/aes_test1.png> <./Recursos/aes_test2.png> <./Recursos/des_test1.png> <./Recursos/des_test2.png>]
-<Recursos/vigenere_test1.png, id=202, 401.70074pt x 84.315pt>
+<Recursos/vigenere_test1.png, id=125, 401.70074pt x 84.315pt>
 File: Recursos/vigenere_test1.png Graphic file (type png)
 <use Recursos/vigenere_test1.png>
 Package pdftex.def Info: Recursos/vigenere_test1.png  used on input line 379.
 (pdftex.def)             Requested size: 435.32422pt x 91.37402pt.
-<Recursos/vigenere_test2.png, id=203, 407.121pt x 90.3375pt>
+<Recursos/vigenere_test2.png, id=126, 407.121pt x 90.3375pt>
 File: Recursos/vigenere_test2.png Graphic file (type png)
 <use Recursos/vigenere_test2.png>
 Package pdftex.def Info: Recursos/vigenere_test2.png  used on input line 387.
 (pdftex.def)             Requested size: 435.32422pt x 96.60088pt.
-<Recursos/playfair_test1.png, id=204, 323.40825pt x 89.73524pt>
+<Recursos/playfair_test1.png, id=127, 323.40825pt x 89.73524pt>
 File: Recursos/playfair_test1.png Graphic file (type png)
 <use Recursos/playfair_test1.png>
 Package pdftex.def Info: Recursos/playfair_test1.png  used on input line 403.
 (pdftex.def)             Requested size: 435.32422pt x 120.78816pt.
-<Recursos/playfair_test2.png, id=205, 325.81725pt x 83.1105pt>
+<Recursos/playfair_test2.png, id=128, 325.81725pt x 83.1105pt>
 File: Recursos/playfair_test2.png Graphic file (type png)
 <use Recursos/playfair_test2.png>
 Package pdftex.def Info: Recursos/playfair_test2.png  used on input line 411.
@@ -1291,6 +1297,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 422--426
 [9]
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
 (Font)              scaled to size 9.49997pt on input line 438.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 438.
+ (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 438.
+ (C:\Users\Marti\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 LaTeX Font Info:    Font shape `TS1/ua1/m/it' will be
 (Font)              scaled to size 9.49997pt on input line 438.
 
@@ -1305,24 +1319,42 @@ Overfull \hbox (6.98294pt too wide) in paragraph at lines 439--439
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
  ***********
-Package rerunfilecheck Info: File `Relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: 30CFEDD3650E2ED96256AF7F76E2150D;1586.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `Relatorio.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Relatorio.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  30CFEDD3650E2ED96256AF7F76E2150D;1586.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                Relatorio
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'Relatorio.run.xml'.
 \openout1 = `Relatorio.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38293 strings out of 473897
- 763662 string characters out of 5726462
- 1620380 words of memory out of 5000000
- 60570 multiletter control sequences out of 15000+600000
+ 38245 strings out of 473897
+ 762778 string characters out of 5726462
+ 1615089 words of memory out of 5000000
+ 60532 multiletter control sequences out of 15000+600000
  631166 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,10n,107p,748b,2805s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Marti\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1000.pk><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1b8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1bi8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1r8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/arial/ua1ri8a.pfb><C:/Users/Marti/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on Relatorio.pdf (15 pages, 429452 bytes).
+Output written on Relatorio.pdf (15 pages, 419340 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
+ 203 PDF objects out of 1000 (max. 8388607)
  51 named destinations out of 1000 (max. 500000)
- 226 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 98 words of extra memory for PDF output out of 10000 (max. 10000000)
 

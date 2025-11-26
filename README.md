@@ -122,3 +122,7 @@ Contributions are welcome:
 - Open an issue describing the bug or feature.
 - Create a feature branch for your changes.
 - Submit a pull request with a clear description and tests where appropriate.
+
+## License
+
+- This repository is licensed under the GNU General Public License v3.0 (GPL-3.0).
