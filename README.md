@@ -4,7 +4,7 @@
 
 - AES (ECB mode, PKCS#7 padding)
 - DES (ECB mode, PKCS#5 padding)
-- Vigenère (custom 26×26 table)
+- Vigenère (custom 95x95 table)
 - Playfair (custom 5×5 board)
 
 This repository includes the code, resources (keys, tables, GUI screenshot) and a detailed project report in Portuguese (Relatorio.tex) describing the design decisions, formats and tests.
@@ -98,7 +98,7 @@ Check the scripts for exact argument names and behavior — the above are exampl
   - Library: PyCryptodome
 
 - Vigenère
-  - Requires a 26×26 table file (lines with 26 letters A–Z)
+  - Requires a 95x95 table file (lines with 96 ASCII characters)
   - Key file: letters A–Z only, returned as uppercase
   - Input is normalized to uppercase A–Z; non-letter characters are removed
   - Output contains only uppercase letters A–Z
