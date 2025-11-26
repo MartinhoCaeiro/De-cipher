@@ -125,7 +125,7 @@ def decrypt_char(ch, kch, table, mapping, reverse):
     return reverse[col]
 
 
-def vigenere(text, key, table, mode="encrypt"):
+def process_text(text, key, table, mode="encrypt"):
     """Apply the Vigenère cipher to `text` using `key` and `table`.
 
     The function:
@@ -182,7 +182,7 @@ def encrypt_file(input_path, output_path, key_paths):
     with open(input_path, "r", encoding="utf-8") as f:
         text = f.read()
 
-    cipher = vigenere(text, key, table, "encrypt")
+    cipher = process_text(text, key, table, "encrypt")
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(cipher)
@@ -215,7 +215,7 @@ def decrypt_file(input_path, output_path, key_paths):
     with open(input_path, "r", encoding="utf-8") as f:
         cipher = f.read()
 
-    text = vigenere(cipher, key, table, "decrypt")
+    text = process_text(cipher, key, table, "decrypt")
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(text)

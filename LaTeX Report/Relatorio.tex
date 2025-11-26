@@ -290,18 +290,18 @@ tamanho de chave inválido ou padding inválido, são lançadas exceções aprop
 %---------------------------------------------------------------------------------------------------------------------------
 \newpage
 \subsection{Vigenère}
-Implementou‑se uma ferramenta para cifragem e decifragem de ficheiros usando a cifra de Vigenère com base numa tabela 26×26 carregada através de um ficheiro.
-A rotina interna \texttt{read\_table\_from\_file} lê e valida uma tabela com 26 linhas de 26 letras (A–Z);
-\texttt{read\_key\_from\_file} lê a chave, filtra apenas letras A–Z e devolve uma string em maiúsculas (valida que não esteja vazia).
-O texto é normalizado para letras ASCII visíveis em maiúsculas antes do processamento;
-a função \texttt{process\_text} avança o índice da chave apenas sobre letras e usa \texttt{encrypt\_char}/\texttt{decrypt\_char} para cifrar/decifrar carácter a carácter segundo a
+Implementou‑se uma ferramenta para cifragem e decifragem de ficheiros usando a cifra de Vigenère com base numa tabela 95x95 carregada através de um ficheiro.
+A rotina interna \texttt{read\_table\_from\_file} lê e valida uma tabela com 95 linhas de 95 caracteres ASCII visíveis (32–126);
+\texttt{read\_key\_from\_file} lê a chave, filtra apenas caracteres ASCII visíveis e devolve uma string (valida que não esteja vazia).
+O texto é normalizado para caracteres ASCII visíveis antes do processamento;
+a função \texttt{process\_text} avança o índice da chave apenas sobre caracteres da tabela e usa \texttt{encrypt\_char}/\texttt{decrypt\_char} para cifrar/decifrar carácter a carácter segundo a
 linha da tabela definida pelo carácter da chave. As funções \texttt{encrypt\_file}/\texttt{decrypt\_file} recebem \texttt{key} como o par [\texttt{table\_path}, \texttt{key\_path}],
 lêem os ficheiros de entrada e escrevem ficheiros de saída contendo apenas letras maiúsculas A–Z. Em caso de ficheiro de tabela/chave inexistente,
 tabela com formato inválido ou chave vazia, são lançadas exceções apropriadas.\\\\
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{Recursos/vigenere.png}
+	\includegraphics[width=0.9\textwidth]{Recursos/vigenere.png}
 	\caption{Cifragem e Decifragem com Vigenère}
 	\label{fig:vigenere}
 \end{figure}
@@ -319,7 +319,7 @@ ficheiros de texto usando o caminho da board como \texttt{key}. Em caso de fiche
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{Recursos/playfair.png}
+	\includegraphics[width=0.9\textwidth]{Recursos/playfair.png}
 	\caption{Cifragem e Decifragem com PlayFair}
 	\label{fig:playfair}
 \end{figure}
@@ -396,7 +396,7 @@ Todos os ficheiros de chave e tabela foram criados previamente e armazenados em 
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{subfigure}[b]{\textwidth}
 		\centering
 		\begin{subfigure}[b]{\textwidth}
 			\centering
@@ -412,30 +412,8 @@ Todos os ficheiros de chave e tabela foram criados previamente e armazenados em 
 			\caption{Depois da Decifragem}
 			\label{fig:playfair_af5}
 		\end{subfigure}
-		\caption{Testes com PlayFair 5x5}
 	\end{subfigure}
-	\hfill
-	\vspace{0.5cm}
-	\begin{subfigure}[b]{0.48\textwidth}
-		\centering
-		\begin{subfigure}[b]{\textwidth}
-			\centering
-			\includegraphics[width=0.9\textwidth]{Recursos/playfair_test3.png}
-			\caption{Depois da Cifragem}
-			\vspace{1cm}
-			\label{fig:playfair_bf10}
-		\end{subfigure}
-		\vspace{0.5cm}
-		\begin{subfigure}[b]{\textwidth}
-			\centering
-			\includegraphics[width=0.9\textwidth]{Recursos/playfair_test4.png}
-			\caption{Depois da Decifragem}
-			\label{fig:playfair_af10}
-		\end{subfigure}
-		\caption{Testes com PlayFair 10x10}
-	\end{subfigure}
-	\caption{Testes com PlayFair (5x5 e 10x10)}
-	\label{fig:playfair_test_combined}
+	\caption{Testes com PlayFair}
 \end{figure}
 
 %---------------------------------------------------------------------------------------------------------------------------
