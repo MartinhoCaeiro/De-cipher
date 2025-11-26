@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber Relatorio"] 0 "Relatorio.bcf" "Relatorio.bbl" "Relatorio" 1764192251.7577 -1
+["biber Relatorio"] 0 "Relatorio.bcf" "Relatorio.bbl" "Relatorio" 1764192406.75604 -1
   "Recursos/referencias.bib" 1762455014 1836 354a6381b991bfa412c667112d995ca5 ""
-  "Relatorio.bcf" 1764192251 134277 2880332a783422432c01471b6004466c "pdflatex"
+  "Relatorio.bcf" 1764192406 134277 2880332a783422432c01471b6004466c "pdflatex"
   (generated)
   "Relatorio.bbl"
   "Relatorio.blg"
   (rewritten before read)
-["pdflatex"] 1764192248.70044 "c:/Users/Marti/Documents/De-cipher/LaTeX Report/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1764192251.75866 2
+["pdflatex"] 1764192404.17216 "c:/Users/Marti/Documents/De-cipher/LaTeX Report/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1764192406.75691 0
   "C:/Users/Marti/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1762366503 82794 3356c8c6c52528dda375b8aed03f628e ""
   "C:/Users/Marti/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcss1000.pk" 1762366512 10628 8a5e6b400b30ee845eb9ab645482b335 ""
   "C:/Users/Marti/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1730970145 11948315 99c4d2326d981d6683364617ad651fdf ""
@@ -245,13 +245,14 @@
   "Recursos/vigenere.png" 1764173918 53692 6e582545e632ff68acfc8e88db5bac97 ""
   "Recursos/vigenere_test1.png" 1762454356 10453 7b3f9148f3949ea78876b22393f85234 ""
   "Recursos/vigenere_test2.png" 1762454393 19545 878b6f6c8115b76b20763762c8003ad8 ""
-  "Relatorio.aux" 1764192251 8207 6fbbde1a9df5374b23b017b9b01f741e "pdflatex"
+  "Relatorio.aux" 1764192406 8210 7b568c78e47b6e9b2f0ef9dd05d31d54 "pdflatex"
   "Relatorio.bbl" 1762455019 24309 d3b9bcc1056155fbf7b7c2bfe27c4725 "biber Relatorio"
-  "Relatorio.lof" 1764192251 980 05e9ddb34089ea70fb3452d1b1690295 "pdflatex"
-  "Relatorio.out" 1764192251 1586 30cfedd3650e2ed96256af7f76e2150d "pdflatex"
-  "Relatorio.tex" 1764192244 18434 857ffb8631ebec093ba288e7c70b4d4d ""
-  "Relatorio.toc" 1764192251 1165 6ad3da04bec61c1db96392ccdf3f37c4 "pdflatex"
-  "c:/Users/Marti/Documents/De-cipher/LaTeX Report/Relatorio.tex" 1764192244 18434 857ffb8631ebec093ba288e7c70b4d4d ""
+  "Relatorio.lof" 1764192406 980 05e9ddb34089ea70fb3452d1b1690295 "pdflatex"
+  "Relatorio.out" 1764192406 1586 30cfedd3650e2ed96256af7f76e2150d "pdflatex"
+  "Relatorio.run.xml" 1764192406 2410 717c0927f41f216f3cf4bba59bbfc439 "pdflatex"
+  "Relatorio.tex" 1764192400 18435 558eb6d3e9ff77122691388eca5a2726 ""
+  "Relatorio.toc" 1764192406 1165 6ad3da04bec61c1db96392ccdf3f37c4 "pdflatex"
+  "c:/Users/Marti/Documents/De-cipher/LaTeX Report/Relatorio.tex" 1764192400 18435 558eb6d3e9ff77122691388eca5a2726 ""
   (generated)
   "Relatorio.aux"
   "Relatorio.bcf"
